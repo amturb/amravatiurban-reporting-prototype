@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — CEO Dashboard (Illustrative Prototype)</title>
+  <meta name="theme-color" content="#0f4c81" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Illustrative-data banner -->
+  <div class="proto-banner">
+    <strong>Illustrative prototype</strong> · numbers reconstructed from a handful of K3 PDF reports (P&L, BS, Trial Balance, Overdue list, Members &amp; Directors).
+    Final dashboards will pull from the live database once Peocit grants access. Use this to validate <em>layout, flow and metrics</em>, not the values.
+  </div>
+
+  <!-- App shell -->
+  <header class="app-bar">
+    <div class="brand">
+      <div class="logo">AU</div>
+      <div>
+        <div class="brand-name">Amaravati Urban Co.Op. Credit Society Ltd.</div>
+        <div class="brand-sub">CEO Dashboard · 54, 2nd Lane, Rathi Nagar, Amravati</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filter">
+        <label>Branch</label>
+        <select id="f-branch">
+          <option value="ho" selected>Amravati (HO) — only branch</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>Period</label>
+        <select id="f-period">
+          <option value="ytd" selected>FY 2025-26 (YTD)</option>
+          <option value="fy25">FY 2024-25</option>
+          <option value="fy24">FY 2023-24</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>Compare with</label>
+        <select id="f-compare">
+          <option value="prev" selected>Previous FY</option>
+          <option value="none">No comparison</option>
+        </select>
+      </div>
+      <button class="btn-ghost" id="btn-refresh" title="Refresh data">↻</button>
+    </div>
+
+    <div class="user">
+      <div class="user-name">CEO Office</div>
+      <div class="user-role">CEO · 16 May 2026</div>
+    </div>
+  </header>
+
+  <!-- Tab nav -->
+  <nav class="tabs">
+    <a class="tab active" href="index.html">CEO / Board</a>
+    <a class="tab" href="branch.html">Branch Manager</a>
+    <a class="tab" href="loans.html">Loans &amp; Recovery</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Deposits &amp; Liquidity</a>
+    <a class="tab" href="financials.html">Financials</a>
+    <a class="tab" href="compliance.html">Compliance &amp; Exceptions</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Reports catalogue</a>
+    <span class="tab-spacer"></span>
+    <input class="search" type="search" placeholder="Search member, account, voucher, mobile…" />
+  </nav>
+
+  <main>
+    <!-- =================== LOOK-BACK PANEL =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>What happened</h2>
+        <div class="panel-sub" id="period-label">FY 2025-26 (as of 31-Mar-2026) vs FY 2024-25</div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi positive" data-drill="netprofit">
+          <div class="kpi-label">Net Result (FY)</div>
+          <div class="kpi-value">+₹ 5.43 L</div>
+          <div class="kpi-delta up">▲ ₹ 32.98 L turnaround from FY25 loss of ₹27.55 L</div>
+          <svg class="spark" data-sparkline="netprofit" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="kpi" data-drill="deposits">
+          <div class="kpi-label">Total Deposits</div>
+          <div class="kpi-value">₹ 8.68 Cr</div>
+          <div class="kpi-delta up">▲ 78% YoY (₹4.87 Cr → ₹8.68 Cr)</div>
+          <svg class="spark" data-sparkline="deposits" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="kpi" data-drill="advances">
+          <div class="kpi-label">Total Advances</div>
+          <div class="kpi-value">₹ 7.00 Cr</div>
+          <div class="kpi-delta up">▲ 112% YoY (₹3.30 Cr → ₹7.00 Cr)</div>
+          <svg class="spark" data-sparkline="advances" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="kpi" data-drill="cdratio">
+          <div class="kpi-label">CD Ratio</div>
+          <div class="kpi-value">80.7%</div>
+          <div class="kpi-delta up">▲ 13.0 pp vs 67.7% prev FY</div>
+          <svg class="spark" data-sparkline="cdratio" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="kpi warning" data-drill="overdue">
+          <div class="kpi-label">Gross Overdue (book)</div>
+          <div class="kpi-value">8.1%</div>
+          <div class="kpi-delta down">₹ 28.02 L · 95 accounts · DRS dominating</div>
+          <svg class="spark" data-sparkline="overdue" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="kpi" data-drill="cti">
+          <div class="kpi-label">Cost-to-Income</div>
+          <div class="kpi-value">~94%</div>
+          <div class="kpi-delta up">▲ from &gt;200% in FY25 · still high; salary ₹22.3 L vs NII ₹45.8 L</div>
+          <svg class="spark" data-sparkline="cti" viewBox="0 0 100 28" preserveAspectRatio="none"></svg>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Two-year P&amp;L turnaround</h3>
+            <span class="muted">FY25 vs FY26 · ₹ in lakhs</span>
+          </div>
+          <div class="dual-bar">
+            <div class="bar-row">
+              <div class="bar-label">Interest on loans</div>
+              <div class="bar-track">
+                <div class="bar-fill green" style="width:100%"><span>75.46</span></div>
+              </div>
+              <div class="bar-target">FY25: 19.36 · ▲ 290%</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Investment interest</div>
+              <div class="bar-track">
+                <div class="bar-fill green" style="width:14.6%"><span>11.04</span></div>
+              </div>
+              <div class="bar-target">FY25: 3.14 · ▲ 252%</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Interest paid on deposits</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:58.1%"><span>43.80</span></div>
+              </div>
+              <div class="bar-target">FY25: 16.81 · ▲ 161%</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Salary to staff</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:29.6%"><span>22.31</span></div>
+              </div>
+              <div class="bar-target">FY25: 18.62 · ▲ 20% (well-controlled)</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">PIGMI / Gold commission</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:17.9%"><span>13.51</span></div>
+              </div>
+              <div class="bar-target">FY25: 5.80 · ▲ 133%</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Rent &amp; utilities</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:10.8%"><span>8.12</span></div>
+              </div>
+              <div class="bar-target">FY25: 8.05 · flat ✓</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Top exposures (single-borrower concentration)</h3>
+            <span class="muted">from overdue + outstanding lists · click for 360 view</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Borrower</th><th>Product</th><th class="r">Outstanding</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Member B-002</td><td>Home Loan</td><td class="r">₹ 64.94 L</td><td class="up">Current</td></tr>
+              <tr><td>Gold Loan (Merchant) — top 1</td><td>Gold Mer.</td><td class="r">~₹ 35-50 L</td><td class="up">Bullet</td></tr>
+              <tr><td>Member C-003</td><td>Personal</td><td class="r">₹ 1.69 L</td><td class="down">6 actions · OD ₹60.6K</td></tr>
+              <tr><td>Member E-005</td><td>Personal</td><td class="r">₹ 1.60 L</td><td class="down">OD ₹42.5K</td></tr>
+              <tr><td>Member D-004</td><td>Personal</td><td class="r">₹ 1.44 L</td><td class="down">OD ₹55.2K</td></tr>
+              <tr><td>Member I-009</td><td>Current A/c</td><td class="r">— (high churn)</td><td class="muted">Active</td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:8px">
+            Gold Loan (Merchant) book is <strong>₹2.50 Cr</strong> across multiple borrowers — full concentration table needs database access to extract top-10.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== LIVE / CURRENT STATE PANEL =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Where we stand now <span class="live-dot"></span></h2>
+        <div class="panel-sub">Position as of latest available trial balance · 01-Apr-2026 opening</div>
+      </div>
+
+      <div class="row three">
+        <div class="card cash">
+          <div class="card-head">
+            <h3>Cash &amp; liquidity</h3>
+            <span class="muted">from TB 01-Apr-2026</span>
+          </div>
+          <div class="cash-grid">
+            <div><div class="muted">Cash in hand</div><div class="big">₹ 5.31 L</div></div>
+            <div><div class="muted">ICICI Bank</div><div class="big">₹ 11.94 L</div></div>
+            <div><div class="muted">Jijau Bank</div><div class="big">₹ 9.21 L</div></div>
+            <div><div class="muted">ADCC Bank</div><div class="big">₹ 1.19 L</div></div>
+            <div><div class="muted">FD with Jijau (investment)</div><div class="big">₹ 1.05 Cr</div></div>
+            <div><div class="muted strong">Total liquid</div><div class="big strong">₹ 1.33 Cr</div></div>
+          </div>
+          <div class="muted small" style="margin-top:6px">
+            Bank balances surged 4× YoY — deposits growing faster than disbursement absorbs them.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Member &amp; account base</h3>
+            <span class="muted">from members + directors lists</span>
+          </div>
+          <div class="vou-grid">
+            <div><div class="muted">Active members</div><div class="big">2,621</div><div class="muted small">all onboarded Apr-2024 → Mar-2025</div></div>
+            <div><div class="muted">Last Client #</div><div class="big">2,634</div><div class="muted small">most-recent sign-up 29-Mar-2025</div></div>
+            <div><div class="muted">Directors</div><div class="big">12</div><div class="muted small">Chairman: Choudhari R.M.</div></div>
+            <div><div class="muted">Issued share capital</div><div class="big">₹ 49.89 L</div><div class="muted small">vs ₹2 Cr authorised — 25%</div></div>
+          </div>
+        </div>
+
+        <div class="card alerts">
+          <div class="card-head">
+            <h3>Top alerts</h3>
+            <span class="muted">prioritised</span>
+          </div>
+          <ul class="alert-list">
+            <li class="sev-high">🔴 <strong>Daily Repayment Scheme: 83% of ₹15.17 L book overdue.</strong> 16 K penal already booked. Decision needed.</li>
+            <li class="sev-high">⚠ Personal Loan (GL 93) overdue at 9.5% — above the 6-8% comfort band</li>
+            <li class="sev-med">▲ Gold Loan (Merchant) book doubled to ₹2.50 Cr — concentration to track</li>
+            <li class="sev-med">Idle bank balance ₹22 L could earn ~₹2 L/yr if redeployed to fresh lending</li>
+            <li class="sev-low">Accumulated loss now ₹22.12 L (44% of capital) — recovering, but watch CRAR</li>
+            <li class="sev-low">Reserve Fund opened (₹1.01 L) — statutory appropriation has kicked in</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Two-year balance-sheet growth</h3>
+            <span class="muted">FY24 → FY25 → FY26 · ₹ Cr</span>
+          </div>
+          <svg id="trend-chart" viewBox="0 0 600 220" preserveAspectRatio="none"></svg>
+          <div class="legend">
+            <span class="lg lg-d">Deposits</span>
+            <span class="lg lg-a">Advances</span>
+          </div>
+          <div class="muted small" style="margin-top:6px">
+            Monthly granularity will be available once we ingest the daybook — only year-end snapshots are visible from PDFs.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Overdue book by product (GL-wise)</h3>
+            <span class="muted">as on 14-May-2026 · % of outstanding</span>
+          </div>
+          <svg id="overdue-chart" viewBox="0 0 600 220" preserveAspectRatio="none"></svg>
+          <div class="legend">
+            <span class="lg lg-loss">DRS · 83%</span>
+            <span class="lg lg-d1">Personal · 9.5%</span>
+            <span class="lg lg-sub">CC · 7.2%</span>
+            <span class="lg lg-d2">PIGMI · 5.0%</span>
+            <span class="lg lg-std">Others &lt; 2%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DRS focused card -->
+      <div class="card drs-callout">
+        <div class="card-head">
+          <h3>Spotlight · Daily Repayment Scheme (GL 269)</h3>
+          <span class="muted">launched FY 2025-26 · already on radar</span>
+        </div>
+        <div class="drs-grid">
+          <div><div class="muted">Disbursed</div><div class="big">₹ 18.80 L</div></div>
+          <div><div class="muted">Outstanding</div><div class="big">₹ 15.17 L</div></div>
+          <div><div class="muted">Overdue principal</div><div class="big strong">₹ 10.98 L</div></div>
+          <div><div class="muted">Overdue interest</div><div class="big">₹ 1.49 L</div></div>
+          <div><div class="muted">Penal interest</div><div class="big">₹ 16,259</div></div>
+          <div><div class="muted strong">% Overdue</div><div class="big strong red">83.3%</div></div>
+        </div>
+        <div class="muted small" style="margin-top:8px">
+          DRS is the <em>only</em> product where penal interest is being charged across the entire book — the daily-collection model needs a process audit. This widget will become a dedicated workspace (per-agent collection, route view, daily target vs collected) once we have transaction data.
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== LOOK-AHEAD PANEL =================== -->
+    <section class="panel ahead">
+      <div class="panel-head">
+        <h2>What's next <span class="badge">Look-ahead</span></h2>
+        <div class="panel-sub">Projection model uses real FY26 baselines. Move levers to see indicative impact — final model lives in dbt.</div>
+      </div>
+
+      <div class="row three">
+        <div class="kpi forecast">
+          <div class="kpi-label">Deposits — end of next 12 months</div>
+          <div class="kpi-value">₹ <span id="proj-deposits">14.5</span> Cr</div>
+          <div class="kpi-band"><span class="muted">range</span> ₹ <span id="proj-deposits-lo">13.2</span> – <span id="proj-deposits-hi">15.8</span> Cr</div>
+        </div>
+        <div class="kpi forecast">
+          <div class="kpi-label">Advances — end of next 12 months</div>
+          <div class="kpi-value">₹ <span id="proj-advances">12.2</span> Cr</div>
+          <div class="kpi-band"><span class="muted">range</span> ₹ <span id="proj-advances-lo">11.0</span> – <span id="proj-advances-hi">13.4</span> Cr</div>
+        </div>
+        <div class="kpi forecast">
+          <div class="kpi-label">Net Result — next FY</div>
+          <div class="kpi-value">+₹ <span id="proj-ni">9.8</span> L</div>
+          <div class="kpi-band"><span class="muted">if all goes well, accumulated loss melts to ~₹12 L</span></div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>What-if levers</h3>
+            <span class="muted">illustrative · move a lever to see ratios react</span>
+          </div>
+
+          <div class="lever">
+            <label>Avg lending rate change (bp) — across new disbursements</label>
+            <input type="range" id="lv-fd-rate" min="-200" max="200" step="10" value="0" />
+            <div class="lv-val"><span id="lv-fd-rate-v">+0</span> bp</div>
+          </div>
+
+          <div class="lever">
+            <label>Monthly fresh disbursement target (₹ L)</label>
+            <input type="range" id="lv-disb" min="20" max="120" step="5" value="50" />
+            <div class="lv-val">₹ <span id="lv-disb-v">50</span> L/mo</div>
+          </div>
+
+          <div class="lever">
+            <label>Redeploy idle bank balance to loans (₹ L)</label>
+            <input type="range" id="lv-redeploy" min="0" max="22" step="1" value="0" />
+            <div class="lv-val">₹ <span id="lv-redeploy-v">0</span> L</div>
+          </div>
+
+          <div class="lever">
+            <label>DRS recovery intensity (×)</label>
+            <input type="range" id="lv-rec" min="0" max="100" step="5" value="20" />
+            <div class="lv-val"><span id="lv-rec-v">20</span>% recovered</div>
+          </div>
+
+          <button class="btn-ghost" id="lv-reset">Reset levers</button>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Impact on key ratios (next FY)</h3>
+            <span class="muted">vs current-pace baseline</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Metric</th><th class="r">Current FY26</th><th class="r">With levers</th><th class="r">Δ</th></tr></thead>
+            <tbody>
+              <tr><td>CD Ratio</td><td class="r">80.7%</td><td class="r" id="imp-cd">—</td><td class="r" id="imp-cd-d">—</td></tr>
+              <tr><td>NIM</td><td class="r">~5.0%</td><td class="r" id="imp-nim">—</td><td class="r" id="imp-nim-d">—</td></tr>
+              <tr><td>Cost-to-Income</td><td class="r">~94%</td><td class="r" id="imp-cti">—</td><td class="r" id="imp-cti-d">—</td></tr>
+              <tr><td>Net result (FY)</td><td class="r">+₹ 5.43 L</td><td class="r" id="imp-ni">—</td><td class="r" id="imp-ni-d">—</td></tr>
+              <tr><td>Accumulated loss</td><td class="r">₹ 22.12 L</td><td class="r" id="imp-acc">—</td><td class="r" id="imp-acc-d">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Known maturities &amp; flows — next 12 months</h3>
+            <span class="muted">illustrative; reconstructed from deposit-mix</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Bucket</th><th class="r">FD/RD maturity (out)</th><th class="r">Loan EMI (in)</th><th class="r">Net</th></tr></thead>
+            <tbody>
+              <tr><td>Spl 13-Month (rolling)</td><td class="r">₹ 3.25 Cr</td><td class="r">—</td><td class="r down">−₹ 3.25 Cr</td></tr>
+              <tr><td>Spl 100-Day</td><td class="r">₹ 1.61 Cr</td><td class="r">—</td><td class="r down">−₹ 1.61 Cr</td></tr>
+              <tr><td>MIS &amp; General FD</td><td class="r">₹ 2.23 Cr</td><td class="r">—</td><td class="r down">−₹ 2.23 Cr</td></tr>
+              <tr><td>EMI inflow (book)</td><td class="r">—</td><td class="r">₹ 2.10 Cr</td><td class="r up">+₹ 2.10 Cr</td></tr>
+              <tr><td>Renewal rate assumption</td><td class="r" colspan="2">85% of FD maturity rolls over → net liquidity gap ~₹ 1.05 Cr</td><td class="r">manageable</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Growth levers — ranked by FY26 contribution</h3>
+            <span class="muted">from real interest-earned numbers</span>
+          </div>
+          <ol class="growth">
+            <li>
+              <div class="grow-prod">Gold Loan (Merchant)</div>
+              <div class="grow-meta">Interest earned ₹ 29.29 L · Book ₹ 2.50 Cr · 105% YoY growth</div>
+              <div class="grow-rec good">Highest absolute contributor. Continue but cap single-borrower exposure.</div>
+            </li>
+            <li>
+              <div class="grow-prod">Personal Loan</div>
+              <div class="grow-meta">Interest earned ₹ 11.97 L · Book ₹ 1.04 Cr · OD 9.5% ⚠</div>
+              <div class="grow-rec warn">Tighten underwriting; cap new disbursements until OD falls below 7%.</div>
+            </li>
+            <li>
+              <div class="grow-prod">Cash Credit (CC)</div>
+              <div class="grow-meta">Interest earned ₹ 9.09 L · Book ₹ 56 L</div>
+              <div class="grow-rec good">Healthy. Push to MSME members; CC fees + float are extra wins.</div>
+            </li>
+            <li>
+              <div class="grow-prod">Loan Against Property</div>
+              <div class="grow-meta">Interest earned ₹ 8.00 L · Book ₹ 76 L · OD 1.0%</div>
+              <div class="grow-rec good">Lowest-risk growth lever. Push harder.</div>
+            </li>
+            <li>
+              <div class="grow-prod">Gold Loan (Retail)</div>
+              <div class="grow-meta">Interest earned ₹ 7.04 L · Book ₹ 91 L</div>
+              <div class="grow-rec good">Steady. Bullet-repay, low overdue exposure.</div>
+            </li>
+            <li>
+              <div class="grow-prod">Daily Repayment Scheme</div>
+              <div class="grow-meta">Interest earned ₹ 4.72 L · Book ₹ 15 L · OD 83% 🔴</div>
+              <div class="grow-rec bad">Pause new sanctions until collection process is audited.</div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>Illustrative prototype · numbers from K3 PDFs · 16 May 2026</span>
+      <span>Phase-1 deliverable per <a href="../03-Reporting-Layer-Plan.md">03-Reporting-Layer-Plan.md</a></span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Branch Manager (Prototype)</title>
+  <meta name="theme-color" content="#0f4c81" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="proto-banner">
+    <strong>Illustrative prototype</strong> · numbers reconstructed from K3 PDFs (P&amp;L, BS, Trial Balance, Overdue, Members &amp; Directors).
+    Branch-level data shown here is the <em>HO branch only</em> since Amaravati Urban operates from a single office today. Live, drillable data lands when Peocit grants DB access.
+  </div>
+  <header class="app-bar">
+    <div class="brand">
+      <div class="logo">AU</div>
+      <div>
+        <div class="brand-name">Amravati Urban</div>
+        <div class="brand-sub">Master Dashboard · Branch Manager</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filter">
+        <label>Branch</label>
+        <select id="f-branch">
+          <option value="ho" selected>Amravati (HO)</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>As of</label>
+        <select id="f-asof">
+          <option value="now" selected>Live (refreshed 11:42 IST)</option>
+          <option value="yesterday">Close of yesterday</option>
+        </select>
+      </div>
+      <button class="btn-ghost" id="btn-refresh" title="Refresh">↻</button>
+    </div>
+
+    <div class="user">
+      <div class="user-name">CEO Office</div>
+      <div class="user-role">CEO / Manager · HO · 16 May 2026</div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a class="tab" href="index.html">CEO / Board</a>
+    <a class="tab active" href="branch.html">Branch Manager</a>
+    <a class="tab" href="loans.html">Loans & Recovery</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Deposits & Liquidity</a>
+    <a class="tab" href="financials.html">Financials</a>
+    <a class="tab" href="compliance.html">Compliance & Exceptions</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Reports catalogue</a>
+    <span class="tab-spacer"></span>
+    <input class="search" type="search" placeholder="Search member, account, voucher, mobile…" />
+  </nav>
+
+  <main>
+    <!-- =================== TODAY AT A GLANCE =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Today at a glance <span class="live-dot"></span></h2>
+        <div class="panel-sub">From Day Book 16-May-2026 · cash position from TB 01-Apr-2026 opening</div>
+      </div>
+
+      <div class="kpi-grid five">
+        <div class="kpi">
+          <div class="kpi-label">Cash in hand (close)</div>
+          <div class="kpi-value">₹ 19.08 L</div>
+          <div class="kpi-delta up">▲ ₹ 1.72 L from open ₹17.36 L</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Bank balances (live)</div>
+          <div class="kpi-value">₹ 22.34 L</div>
+          <div class="kpi-delta muted">ICICI 11.94 · Jijau 9.21 · ADCC 1.19</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Receipts today</div>
+          <div class="kpi-value">₹ 24.88 L</div>
+          <div class="kpi-delta up">Cash ₹ 2.09 L · Transfer ₹ 22.78 L</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Payments today</div>
+          <div class="kpi-value">₹ 23.16 L</div>
+          <div class="kpi-delta up">Cash ₹ 0.37 L · Transfer ₹ 22.78 L</div>
+        </div>
+        <div class="kpi positive">
+          <div class="kpi-label">Net inflow today</div>
+          <div class="kpi-value">+₹ 1.72 L</div>
+          <div class="kpi-delta up">Cash-positive day</div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Today's movement by product head</h3>
+            <span class="muted">from Day Book 16-May-2026</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>GL Head</th><th class="r">Receipts</th><th class="r">Payments</th><th class="r">Net</th></tr></thead>
+            <tbody>
+              <tr><td>Saving Account (GL 54)</td><td class="r">₹ 10.48 L</td><td class="r">₹ 10.37 L</td><td class="r up">+₹ 0.11 L</td></tr>
+              <tr><td>Special 13M FD (GL 87)</td><td class="r">₹ 10.11 L</td><td class="r">₹ 0.11 L</td><td class="r up">+₹ 10.00 L</td></tr>
+              <tr><td>PIGMI Deposit (GL 38)</td><td class="r">₹ 70,000</td><td class="r">₹ 66,341</td><td class="r up">+₹ 3,659</td></tr>
+              <tr><td>Current Account (GL 57)</td><td class="r">₹ 10.37 L</td><td class="r">₹ 63,945</td><td class="r up">+₹ 9.74 L</td></tr>
+              <tr><td>ICICI Bank (GL 217)</td><td class="r">₹ 10.00 L (RTGS in)</td><td class="r">—</td><td class="r up">+₹ 10.00 L</td></tr>
+              <tr><td>Income (Penalty + Misc)</td><td class="r">₹ 70,000</td><td class="r">—</td><td class="r up">+₹ 70,000</td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">Bulk of the day = Member A-001 rotated ₹ 10 L into two Spl 13M FDs (Vouchers 21 &amp; 22) funded by an RTGS inflow.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Top vouchers today</h3>
+            <span class="muted">cheque / RTGS &gt; ₹ 50K</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Vou#</th><th>Party</th><th class="r">Amount</th><th>Type</th></tr></thead>
+            <tbody>
+              <tr><td>20</td><td>RTGS in — SBI → ICICI HO</td><td class="r">₹ 10.00 L</td><td>Receipt</td></tr>
+              <tr><td>21</td><td>Member A-001 → Spl 13M FD</td><td class="r">₹ 5.00 L</td><td>Transfer</td></tr>
+              <tr><td>22</td><td>Member A-001 → Spl 13M FD</td><td class="r">₹ 5.00 L</td><td>Transfer</td></tr>
+              <tr><td>10</td><td>Member I-009</td><td class="r">₹ 40,692</td><td>CC withdrawal</td></tr>
+              <tr><td>18</td><td>Member J-010</td><td class="r">₹ 66,341</td><td>PIGMI loan repay</td></tr>
+              <tr><td>9</td><td>Member J-010</td><td class="r">₹ 64,000</td><td>CC withdrawal</td></tr>
+              <tr><td>11</td><td>Member K-011</td><td class="r">₹ 7,000</td><td>CC withdrawal</td></tr>
+              <tr><td>13</td><td>Member L-012</td><td class="r">₹ 11,375</td><td>FD interest payout</td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">Drilling each row in the live app shows the full voucher trail · GL head · cheque #</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== ACCOUNT ACTIVITY =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Account activity</h2>
+        <div class="panel-sub">member &amp; product growth · illustrative until DB access</div>
+      </div>
+
+      <div class="row three">
+        <div class="card">
+          <div class="card-head">
+            <h3>Member base</h3>
+            <span class="muted">from members list</span>
+          </div>
+          <div class="vou-grid">
+            <div><div class="muted">Active members</div><div class="big">2,621</div><div class="muted small">all onboarded Apr-2024 → Mar-2025</div></div>
+            <div><div class="muted">Last Client #</div><div class="big">2,634</div><div class="muted small">most-recent 29-Mar-2025</div></div>
+            <div><div class="muted">New since FY26 close</div><div class="big">—</div><div class="muted small">DB needed for fresh sign-ups</div></div>
+            <div><div class="muted">Avg balance / member</div><div class="big">₹ 33.1 K</div><div class="muted small">deposit base ÷ members</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Deposit book by product</h3>
+            <span class="muted">TB 01-Apr-2026</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Product</th><th class="r">Outstanding</th><th class="r">% mix</th></tr></thead>
+            <tbody>
+              <tr><td>Special 13-Month</td><td class="r">₹ 3.25 Cr</td><td class="r">37%</td></tr>
+              <tr><td>Monthly Interest Scheme</td><td class="r">₹ 2.17 Cr</td><td class="r">25%</td></tr>
+              <tr><td>Special 100-Day</td><td class="r">₹ 1.61 Cr</td><td class="r">19%</td></tr>
+              <tr><td>PIGMI Deposit</td><td class="r">₹ 91.7 L</td><td class="r">11%</td></tr>
+              <tr><td>Saving Account</td><td class="r">₹ 42.2 L</td><td class="r">5%</td></tr>
+              <tr><td>RD + Gen FD + Current</td><td class="r">₹ 27.7 L</td><td class="r">3%</td></tr>
+              <tr><td><strong>Total deposits</strong></td><td class="r"><strong>₹ 8.68 Cr</strong></td><td class="r">100%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Loan book by product</h3>
+            <span class="muted">TB 01-Apr-2026</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Product</th><th class="r">Outstanding</th><th class="r">% mix</th></tr></thead>
+            <tbody>
+              <tr><td>Gold Loan (Merchant)</td><td class="r">₹ 2.50 Cr</td><td class="r">36%</td></tr>
+              <tr><td>Personal Loan</td><td class="r">₹ 1.06 Cr</td><td class="r">15%</td></tr>
+              <tr><td>Gold Loan (Retail)</td><td class="r">₹ 90.9 L</td><td class="r">13%</td></tr>
+              <tr><td>Loan Against Property</td><td class="r">₹ 72.2 L</td><td class="r">10%</td></tr>
+              <tr><td>Home Loan (new FY26)</td><td class="r">₹ 64.9 L</td><td class="r">9%</td></tr>
+              <tr><td>Cash Credit (CC)</td><td class="r">₹ 54.9 L</td><td class="r">8%</td></tr>
+              <tr><td>Daily Repayment</td><td class="r">₹ 15.4 L</td><td class="r">2%</td></tr>
+              <tr><td>Vehicle / FD / RD / Staff / PIGMI</td><td class="r">₹ 45.2 L</td><td class="r">7%</td></tr>
+              <tr><td><strong>Total advances</strong></td><td class="r"><strong>₹ 7.00 Cr</strong></td><td class="r">100%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== OVERDUE & RECOVERY =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Recovery worklist</h2>
+        <div class="panel-sub">from Loan-Overdue 14-May-2026 · 95 accounts · ₹ 28.02 L</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Overdue split by product (GL)</h3>
+            <span class="muted">click bar to drill</span>
+          </div>
+          <svg id="ageing-chart" viewBox="0 0 600 220" preserveAspectRatio="none"></svg>
+          <div class="legend">
+            <span class="muted small">Total overdue: ₹ 28.02 L · DRS dominates at ₹ 12.63 L (45% of total OD)</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Top overdue accounts</h3>
+            <span class="muted">from loan overdue list</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Borrower</th><th>Product</th><th class="r">OD amt</th><th class="r">Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Member C-003</td><td>Personal</td><td class="r">₹ 60,628</td><td class="r"><span class="pill red">6</span></td></tr>
+              <tr><td>Member D-004</td><td>Personal</td><td class="r">₹ 55,190</td><td class="r"><span class="pill red">4</span></td></tr>
+              <tr><td>Member E-005</td><td>Personal</td><td class="r">₹ 42,530</td><td class="r"><span class="pill amber">—</span></td></tr>
+              <tr><td>Member F-006</td><td>Personal</td><td class="r">₹ 29,197</td><td class="r"><span class="pill amber">5</span></td></tr>
+              <tr><td>Member G-007</td><td>Personal</td><td class="r">₹ 28,444</td><td class="r"><span class="pill amber">4</span></td></tr>
+              <tr><td>Member H-008</td><td>Personal</td><td class="r">₹ 14,532</td><td class="r"><span class="pill amber">2</span></td></tr>
+              <tr><td><em>Plus 89 more accounts</em></td><td>mostly DRS</td><td class="r">₹ 25.7 L</td><td class="r">—</td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">DRS account-level drill needs DB — PDF report only shows GL-totals for DRS, not member-by-member.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== EXCEPTIONS =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Branch exceptions &amp; risks</h2>
+        <div class="panel-sub">manager action list · reconstructed from PDFs + standard K3 exception catalogue</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Concentration &amp; structural risks</h3>
+            <span class="muted">from BS / TB</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Risk</th><th class="r">Exposure</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr><td>Gold Loan (Merchant) concentration</td><td class="r">₹ 2.50 Cr</td><td>36% of loan book in one product</td></tr>
+              <tr><td>Single borrower: Member B-002 (Home)</td><td class="r">₹ 64.94 L</td><td>9% of book in one borrower</td></tr>
+              <tr><td>DRS overdue</td><td class="r">₹ 12.63 L</td><td>83% of DRS book OD</td></tr>
+              <tr><td>13-M FDs maturing (year)</td><td class="r">₹ 3.25 Cr</td><td>renewal risk if rates drop</td></tr>
+              <tr><td>Idle bank balance</td><td class="r">₹ 22.34 L</td><td>opportunity cost ₹ 1.5–2.0 L/yr</td></tr>
+              <tr><td>Accumulated loss</td><td class="r">₹ 22.12 L</td><td>44% of issued capital</td></tr>
+              <tr><td>Statutory reserve adequacy</td><td class="r">₹ 1.01 L</td><td>just opened in FY26 — build up needed</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Top members to call this week</h3>
+            <span class="muted">overdue &gt; 3 actions · high OD</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Member</th><th>Mobile</th><th class="r">OD</th><th>Last action</th></tr></thead>
+            <tbody>
+              <tr><td>Member C-003</td><td>9XXXXXXX01</td><td class="r">₹ 60.6 K</td><td>20-Dec-2025</td></tr>
+              <tr><td>Member D-004</td><td>9XXXXXXX02</td><td class="r">₹ 55.2 K</td><td>13-Aug-2025</td></tr>
+              <tr><td>Member F-006</td><td>9XXXXXXX03</td><td class="r">₹ 29.2 K</td><td>20-Dec-2025</td></tr>
+              <tr><td>Member G-007</td><td>9XXXXXXX04</td><td class="r">₹ 28.4 K</td><td>15-Jan-2026</td></tr>
+              <tr><td>Member E-005</td><td>9XXXXXXX05</td><td class="r">₹ 42.5 K</td><td>22-Nov-2025</td></tr>
+              <tr><td>Member H-008</td><td>9XXXXXXX06</td><td class="r">₹ 14.5 K</td><td>28-Mar-2026</td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">Click a row in the live app to launch WhatsApp / call · log a recovery action.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== EXPENSES & BRANCH P&L =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Expenses &amp; Branch P&amp;L</h2>
+        <div class="panel-sub">FY 2025-26 actuals from K3 P&amp;L · vs FY 2024-25 · ₹ in lakhs</div>
+      </div>
+
+      <div class="kpi-grid five">
+        <div class="kpi positive" data-drill="branch-pnl">
+          <div class="kpi-label">Branch contribution (FY26)</div>
+          <div class="kpi-value">+₹ 5.43 L</div>
+          <div class="kpi-delta up">▲ ₹ 32.98 L from FY25 loss</div>
+        </div>
+        <div class="kpi" data-drill="income">
+          <div class="kpi-label">Total income (FY)</div>
+          <div class="kpi-value">₹ 98.54 L</div>
+          <div class="kpi-delta up">▲ 277% YoY</div>
+        </div>
+        <div class="kpi" data-drill="opex">
+          <div class="kpi-label">Total expenses (FY)</div>
+          <div class="kpi-value">₹ 93.11 L</div>
+          <div class="kpi-delta">▲ 70% YoY</div>
+        </div>
+        <div class="kpi" data-drill="salary">
+          <div class="kpi-label">Salary run-rate</div>
+          <div class="kpi-value">₹ 1.86 L/mo</div>
+          <div class="kpi-delta">FY26: ₹ 22.31 L · headcount controlled</div>
+        </div>
+        <div class="kpi warning" data-drill="commission">
+          <div class="kpi-label">PIGMY / Gold commission</div>
+          <div class="kpi-value">₹ 13.51 L</div>
+          <div class="kpi-delta down">▲ 133% — biggest jump in opex</div>
+        </div>
+      </div>
+
+      <div class="exp-grid">
+        <div class="card">
+          <div class="card-head"><h3>Top expense heads (FY26)</h3><span class="muted">click row to drill</span></div>
+          <table class="tbl">
+            <thead><tr><th>Head</th><th class="r">FY26</th><th class="r">FY25</th><th class="r">Δ</th></tr></thead>
+            <tbody>
+              <tr><td>Interest paid on deposits</td><td class="r">₹ 43.80 L</td><td class="r">₹ 16.81 L</td><td class="r down">+161%</td></tr>
+              <tr><td>Salary to staff</td><td class="r">₹ 22.31 L</td><td class="r">₹ 18.62 L</td><td class="r">+20%</td></tr>
+              <tr><td>PIGMI Agent commission</td><td class="r">₹ 13.41 L</td><td class="r">₹ 5.62 L</td><td class="r down">+139%</td></tr>
+              <tr><td>Banking &amp; mgmt charges</td><td class="r">₹ 6.50 L</td><td class="r">₹ 3.10 L</td><td class="r down">+110%</td></tr>
+              <tr><td>Office rent</td><td class="r">₹ 7.20 L</td><td class="r">₹ 7.20 L</td><td class="r">flat ✓</td></tr>
+              <tr><td>Advertisement</td><td class="r">₹ 1.44 L</td><td class="r">₹ 1.51 L</td><td class="r up">−5%</td></tr>
+              <tr><td>Electricity</td><td class="r">₹ 0.92 L</td><td class="r">₹ 0.85 L</td><td class="r">+8%</td></tr>
+              <tr><td>Branch insurance (new)</td><td class="r">₹ 0.80 L</td><td class="r">—</td><td class="r">new</td></tr>
+              <tr><td>Stationery &amp; printing</td><td class="r">₹ 0.41 L</td><td class="r">₹ 2.57 L</td><td class="r up">−84%</td></tr>
+              <tr><td>Other (10 heads)</td><td class="r">₹ 3.78 L</td><td class="r">~₹ 3.10 L</td><td class="r">+22%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Income vs cost — where money flows</h3><span class="muted">FY26 ₹ L</span></div>
+          <div class="dual-bar">
+            <div class="bar-row">
+              <div class="bar-label">Int. on loans</div>
+              <div class="bar-track"><div class="bar-fill green" style="width:77%"><span>75.46</span></div></div>
+              <div class="bar-target">▲ 290% YoY · biggest win</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Investment int.</div>
+              <div class="bar-track"><div class="bar-fill green" style="width:11%"><span>11.04</span></div></div>
+              <div class="bar-target">FD with Jijau at ~10.5% yield</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Banking charges (inc)</div>
+              <div class="bar-track"><div class="bar-fill green" style="width:7%"><span>6.50</span></div></div>
+              <div class="bar-target">Mgmt + QR + Insurance accounts</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Penal interest (inc)</div>
+              <div class="bar-track"><div class="bar-fill green" style="width:3%"><span>3.06</span></div></div>
+              <div class="bar-target">DRS contributes most of penal</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Int. paid (deposits)</div>
+              <div class="bar-track"><div class="bar-fill" style="width:45%"><span>43.80</span></div></div>
+              <div class="bar-target">Weighted cost ~5.9%</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Salary</div>
+              <div class="bar-track"><div class="bar-fill" style="width:23%"><span>22.31</span></div></div>
+              <div class="bar-target">+20% — kept lean</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">PIGMY commission</div>
+              <div class="bar-track"><div class="bar-fill" style="width:14%"><span>13.41</span></div></div>
+              <div class="bar-target">Tied to PIGMY collection</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Rent + utilities</div>
+              <div class="bar-track"><div class="bar-fill" style="width:8%"><span>8.12</span></div></div>
+              <div class="bar-target">Locked at ₹60K/mo rent</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Fixed assets (book value)</h3><span class="muted">from BS · ₹ L</span></div>
+          <table class="tbl">
+            <thead><tr><th>Asset</th><th class="r">Book value</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Furniture &amp; Fixture</td><td class="r">₹ 45.77 L</td><td>82% of FA — bulk of capex</td></tr>
+              <tr><td>Software</td><td class="r">₹ 6.04 L</td><td>K3One CBS · grew ₹1.43 L in FY26</td></tr>
+              <tr><td>Computers &amp; Printers</td><td class="r">₹ 1.76 L</td><td>flat</td></tr>
+              <tr><td>CCTV</td><td class="r">₹ 1.44 L</td><td>—</td></tr>
+              <tr><td>AC + Water cooler</td><td class="r">₹ 1.26 L</td><td>—</td></tr>
+              <tr><td>Security alarm (new)</td><td class="r">₹ 0.22 L</td><td>added FY26</td></tr>
+              <tr><td>Inverter + battery</td><td class="r">₹ 0.34 L</td><td>—</td></tr>
+              <tr><td>Currency counter + Gold scale</td><td class="r">₹ 0.55 L</td><td>—</td></tr>
+              <tr><td>Election fund + Deadstock</td><td class="r">₹ 0.24 L</td><td>statutory items added FY26</td></tr>
+              <tr><td><strong>Total fixed assets</strong></td><td class="r"><strong>₹ 57.61 L</strong></td><td>+₹ 1.89 L vs FY25 close</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Branch efficiency ratios (illustrative)</h3><span class="muted">computed from FY26</span></div>
+          <table class="tbl">
+            <thead><tr><th>Ratio</th><th class="r">FY26</th><th class="r">FY25</th><th>Verdict</th></tr></thead>
+            <tbody>
+              <tr><td>Net Interest Income</td><td class="r">₹ 45.76 L</td><td class="r">₹ 5.69 L</td><td class="up">8× — turnaround driver</td></tr>
+              <tr><td>Cost-to-Income</td><td class="r">~94%</td><td class="r">~209%</td><td class="up">improving fast</td></tr>
+              <tr><td>NIM (NII / total assets)</td><td class="r">~5.0%</td><td class="r">~1.0%</td><td class="up">healthy band</td></tr>
+              <tr><td>Salary / Total income</td><td class="r">22.6%</td><td class="r">71.2%</td><td class="up">scale leverage</td></tr>
+              <tr><td>Income per member</td><td class="r">₹ 3,760</td><td class="r">₹ 998</td><td class="up">activation up</td></tr>
+              <tr><td>CD Ratio</td><td class="r">80.7%</td><td class="r">67.7%</td><td class="up">redeployment improved</td></tr>
+              <tr><td>Bank-balance idle / Total liquid</td><td class="r">~17%</td><td class="r">~9%</td><td class="down">redeploy opportunity</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>Illustrative prototype · 16 May 2026</span>
+      <span>Phase-1 deliverable per <a href="../03-Reporting-Layer-Plan.md">03-Reporting-Layer-Plan.md</a></span>
+    </footer>
+  </main>
+
+  <script src="branch.js"></script>
+</body>
+</html>

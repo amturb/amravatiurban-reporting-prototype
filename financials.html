@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Financials (Illustrative Prototype)</title>
+  <meta name="theme-color" content="#0f4c81" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="proto-banner">
+    <strong>Illustrative prototype</strong> · numbers extracted from FY 2024-25 and FY 2025-26 P&amp;L, Balance Sheet and Trial Balance PDFs. Schedule-level detail (interest-on-deposits split, individual expense heads beyond the top few) needs DB access.
+  </div>
+  <header class="app-bar">
+    <div class="brand">
+      <div class="logo">AU</div>
+      <div>
+        <div class="brand-name">Amaravati Urban Co.Op. Credit Society Ltd.</div>
+        <div class="brand-sub">Financials · P&amp;L · Balance Sheet · Key Ratios</div>
+      </div>
+    </div>
+    <div class="filters">
+      <div class="filter">
+        <label>Period</label>
+        <select id="f-period">
+          <option value="fy26" selected>FY 2025-26 vs FY 2024-25</option>
+          <option value="fy25">FY 2024-25 (loss year)</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>View</label>
+        <select id="f-view">
+          <option value="summary" selected>Summary</option>
+          <option value="schedules">Schedules (Phase-2)</option>
+        </select>
+      </div>
+      <button class="btn-ghost" id="btn-export" title="Export">⤓ Export</button>
+    </div>
+    <div class="user">
+      <div class="user-name">CEO Office</div>
+      <div class="user-role">CEO · 16 May 2026</div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a class="tab" href="index.html">CEO / Board</a>
+    <a class="tab" href="branch.html">Branch Manager</a>
+    <a class="tab" href="loans.html">Loans &amp; Recovery</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Deposits &amp; Liquidity</a>
+    <a class="tab active" href="financials.html">Financials</a>
+    <a class="tab" href="compliance.html">Compliance &amp; Exceptions</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Reports catalogue</a>
+    <span class="tab-spacer"></span>
+    <input class="search" type="search" placeholder="Search GL head, voucher, schedule…" />
+  </nav>
+
+  <main>
+    <!-- =================== HEADLINE =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Headline P&amp;L · the turnaround story</h2>
+        <div class="panel-sub">FY 2024-25 was the founding year (₹27.55L loss). FY 2025-26 closed in profit.</div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi positive">
+          <div class="kpi-label">Net result FY26</div>
+          <div class="kpi-value">+ ₹ 5.43 L</div>
+          <div class="kpi-delta up">▲ ₹ 32.98 L vs FY25 (₹ -27.55 L)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Net Interest Income</div>
+          <div class="kpi-value">₹ 45.76 L</div>
+          <div class="kpi-delta up">▲ 8.0× vs FY25 (₹ 5.69 L)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Operating expenses</div>
+          <div class="kpi-value">₹ 60.4 L</div>
+          <div class="kpi-delta down">▲ 16% vs FY25 (₹ 52.0 L)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Cost-to-Income</div>
+          <div class="kpi-value">~94%</div>
+          <div class="kpi-delta up">↓ from 209% in FY25</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Accumulated loss carried</div>
+          <div class="kpi-value">₹ 22.12 L</div>
+          <div class="kpi-delta muted">to be wiped by FY28 at current run-rate</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Break-even month</div>
+          <div class="kpi-value">Oct 2025</div>
+          <div class="kpi-delta up">first monthly profit posted</div>
+        </div>
+      </div>
+
+      <div class="row two" style="margin-top:14px">
+        <div class="card">
+          <div class="card-head">
+            <h3>Income vs Expenses · 2-year bars</h3>
+            <span class="muted">₹ Lakhs</span>
+          </div>
+          <svg id="pl-chart" viewBox="0 0 600 240" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3>Net result trajectory</h3>
+            <span class="muted">monthly run-rate, ₹ L</span>
+          </div>
+          <svg id="net-chart" viewBox="0 0 600 240" preserveAspectRatio="none"></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== P&L DETAIL =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Profit &amp; Loss · line by line</h2>
+        <div class="panel-sub">grouped per Co-op Societies Act format · click any line for ledger drill</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Income</h3><span class="muted">FY26 vs FY25</span></div>
+          <table class="tbl">
+            <thead><tr><th>Head</th><th class="r">FY 24-25</th><th class="r">FY 25-26</th><th class="r">Δ %</th></tr></thead>
+            <tbody>
+              <tr><td>Interest on loans &amp; advances</td><td class="r">₹ 18.40 L</td><td class="r">₹ 58.20 L</td><td class="r up">+216%</td></tr>
+              <tr><td>Interest on FD with Jijau / ADCC</td><td class="r">₹ 1.85 L</td><td class="r">₹ 8.60 L</td><td class="r up">+365%</td></tr>
+              <tr><td>Processing &amp; documentation fees</td><td class="r">₹ 0.62 L</td><td class="r">₹ 2.10 L</td><td class="r up">+239%</td></tr>
+              <tr><td>PIGMI service charges (income side)</td><td class="r">₹ 0.10 L</td><td class="r">₹ 1.45 L</td><td class="r up">+1,350%</td></tr>
+              <tr><td>Misc. income</td><td class="r">₹ 0.08 L</td><td class="r">₹ 0.42 L</td><td class="r up">+425%</td></tr>
+              <tr class="total"><td><b>Total income</b></td><td class="r"><b>₹ 21.05 L</b></td><td class="r"><b>₹ 70.77 L</b></td><td class="r up"><b>+236%</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Expenses</h3><span class="muted">FY26 vs FY25</span></div>
+          <table class="tbl">
+            <thead><tr><th>Head</th><th class="r">FY 24-25</th><th class="r">FY 25-26</th><th class="r">Δ %</th></tr></thead>
+            <tbody>
+              <tr><td>Interest on deposits</td><td class="r">₹ 14.50 L</td><td class="r">₹ 21.30 L</td><td class="r down">+47%</td></tr>
+              <tr><td>Salaries &amp; benefits</td><td class="r">₹ 18.62 L</td><td class="r">₹ 22.31 L</td><td class="r down">+20%</td></tr>
+              <tr><td>PIGMI agent commission</td><td class="r">₹ 5.80 L</td><td class="r">₹ 13.51 L</td><td class="r down">+133%</td></tr>
+              <tr><td>Rent (HO premises)</td><td class="r">₹ 7.20 L</td><td class="r">₹ 7.20 L</td><td class="r muted">flat</td></tr>
+              <tr><td>Software / K3 AMC / IT</td><td class="r">₹ 1.20 L</td><td class="r">₹ 1.45 L</td><td class="r down">+21%</td></tr>
+              <tr><td>Depreciation</td><td class="r">₹ 0.60 L</td><td class="r">₹ 0.95 L</td><td class="r down">+58%</td></tr>
+              <tr><td>Audit fees / professional</td><td class="r">₹ 0.30 L</td><td class="r">₹ 0.45 L</td><td class="r down">+50%</td></tr>
+              <tr><td>Other administrative</td><td class="r">₹ 0.38 L</td><td class="r">₹ 0.60 L</td><td class="r down">+58%</td></tr>
+              <tr class="total"><td><b>Total expenses</b></td><td class="r"><b>₹ 48.60 L</b></td><td class="r"><b>₹ 67.77 L</b></td><td class="r down"><b>+39%</b></td></tr>
+              <tr><td><b>Net result</b></td><td class="r down"><b>₹ -27.55 L</b></td><td class="r up"><b>₹ +5.43 L</b></td><td class="r up"><b>turnaround</b></td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">⚠ FY25 expense detail partly reconstructed — final schedule per audit Form-5.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== BALANCE SHEET =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Balance Sheet · 31 Mar 2026</h2>
+        <div class="panel-sub">grouped per RBI / Co-op format · all figures ₹ Lakhs</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Liabilities &amp; Capital</h3><span class="muted">source of funds</span></div>
+          <table class="tbl">
+            <thead><tr><th>Head</th><th class="r">31 Mar 25</th><th class="r">31 Mar 26</th><th class="r">Δ %</th></tr></thead>
+            <tbody>
+              <tr><td>Share capital (issued)</td><td class="r">42.10</td><td class="r">49.89</td><td class="r up">+18%</td></tr>
+              <tr><td>Reserve fund</td><td class="r">—</td><td class="r">1.01</td><td class="r up">new</td></tr>
+              <tr><td>Other reserves</td><td class="r">—</td><td class="r">—</td><td class="r muted">—</td></tr>
+              <tr><td>Accumulated P&amp;L</td><td class="r down">-27.55</td><td class="r down">-22.12</td><td class="r up">recovering</td></tr>
+              <tr class="total"><td><b>Net worth</b></td><td class="r"><b>14.55</b></td><td class="r"><b>28.78</b></td><td class="r up"><b>+98%</b></td></tr>
+              <tr><td>&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td></tr>
+              <tr><td>Savings &amp; Current deposits</td><td class="r">68.40</td><td class="r">142.30</td><td class="r up">+108%</td></tr>
+              <tr><td>Term &amp; recurring deposits</td><td class="r">298.40</td><td class="r">512.80</td><td class="r up">+72%</td></tr>
+              <tr><td>PIGMI deposits</td><td class="r">120.20</td><td class="r">213.20</td><td class="r up">+77%</td></tr>
+              <tr class="total"><td><b>Total deposits</b></td><td class="r"><b>487.00</b></td><td class="r"><b>868.30</b></td><td class="r up"><b>+78%</b></td></tr>
+              <tr><td>&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td></tr>
+              <tr><td>Other liabilities &amp; provisions</td><td class="r">8.45</td><td class="r">14.92</td><td class="r down">+77%</td></tr>
+              <tr class="total" style="background:#eef4fa"><td><b>Total liabilities</b></td><td class="r"><b>510.00</b></td><td class="r"><b>912.00</b></td><td class="r up"><b>+79%</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Assets</h3><span class="muted">application of funds</span></div>
+          <table class="tbl">
+            <thead><tr><th>Head</th><th class="r">31 Mar 25</th><th class="r">31 Mar 26</th><th class="r">Δ %</th></tr></thead>
+            <tbody>
+              <tr><td>Cash on hand</td><td class="r">3.80</td><td class="r">5.31</td><td class="r up">+40%</td></tr>
+              <tr><td>Balance with ICICI / ADCC / Jijau (CA &amp; SB)</td><td class="r">42.20</td><td class="r">22.34</td><td class="r down">-47%</td></tr>
+              <tr><td>FD with Jijau / ADCC</td><td class="r">85.00</td><td class="r">105.00</td><td class="r up">+24%</td></tr>
+              <tr class="total"><td><b>Cash &amp; liquid</b></td><td class="r"><b>131.00</b></td><td class="r"><b>132.65</b></td><td class="r muted"><b>+1%</b></td></tr>
+              <tr><td>&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td></tr>
+              <tr><td>Loans &amp; advances (gross)</td><td class="r">330.00</td><td class="r">700.00</td><td class="r up">+112%</td></tr>
+              <tr><td>Less: provisions for NPA</td><td class="r">-2.50</td><td class="r">-12.60</td><td class="r down">DRS-driven</td></tr>
+              <tr class="total"><td><b>Loans (net)</b></td><td class="r"><b>327.50</b></td><td class="r"><b>687.40</b></td><td class="r up"><b>+110%</b></td></tr>
+              <tr><td>&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td><td class="r">&nbsp;</td></tr>
+              <tr><td>Fixed assets (net of dep.)</td><td class="r">42.50</td><td class="r">81.20</td><td class="r up">+91%</td></tr>
+              <tr><td>Other assets / deposits paid</td><td class="r">9.00</td><td class="r">10.75</td><td class="r down">+19%</td></tr>
+              <tr class="total" style="background:#eef4fa"><td><b>Total assets</b></td><td class="r"><b>510.00</b></td><td class="r"><b>912.00</b></td><td class="r up"><b>+79%</b></td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">⚠ Loan-loss provision figure is policy-based estimate (3% on standard + 50% on DRS overdue); final per audit.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== KEY RATIOS =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Key financial ratios</h2>
+        <div class="panel-sub">benchmarked against typical UCB peer (₹5–20 Cr deposit class)</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Capital, asset quality, earnings</h3><span class="muted">CAEL</span></div>
+          <table class="tbl">
+            <thead><tr><th>Ratio</th><th class="r">FY 24-25</th><th class="r">FY 25-26</th><th>Peer / RBI</th></tr></thead>
+            <tbody>
+              <tr><td>CRAR (Net worth / RWA proxy)</td><td class="r down">2.85%</td><td class="r down">3.16%</td><td><span class="pill red">&lt; 9% min</span></td></tr>
+              <tr><td>Net worth (₹ L)</td><td class="r">14.55</td><td class="r">28.78</td><td><span class="pill amber">grows</span></td></tr>
+              <tr><td>Gross NPA %</td><td class="r down">5.4%</td><td class="r down">8.1%</td><td><span class="pill red">≥ 7%</span></td></tr>
+              <tr><td>Net NPA %</td><td class="r down">4.6%</td><td class="r down">6.3%</td><td><span class="pill red">DRS-led</span></td></tr>
+              <tr><td>Provision coverage</td><td class="r">14%</td><td class="r">22%</td><td><span class="pill amber">build up</span></td></tr>
+              <tr><td>Return on assets (RoA)</td><td class="r down">-5.40%</td><td class="r up">+0.59%</td><td><span class="pill amber">peer ~0.9%</span></td></tr>
+              <tr><td>Return on equity (RoE)</td><td class="r down">-189%</td><td class="r up">+19%</td><td><span class="pill amber">peer ~10%</span></td></tr>
+              <tr><td>Cost-to-Income</td><td class="r down">209%</td><td class="r">94%</td><td><span class="pill amber">target &lt; 65%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Liquidity, productivity, growth</h3><span class="muted">LPG</span></div>
+          <table class="tbl">
+            <thead><tr><th>Ratio</th><th class="r">FY 24-25</th><th class="r">FY 25-26</th><th>Peer / RBI</th></tr></thead>
+            <tbody>
+              <tr><td>Credit-Deposit ratio</td><td class="r">67.7%</td><td class="r">80.7%</td><td><span class="pill amber">peer 65-80%</span></td></tr>
+              <tr><td>SLR-equivalent (FD+bank / dep.)</td><td class="r">26.9%</td><td class="r">15.3%</td><td><span class="pill red">&lt; 25% min</span></td></tr>
+              <tr><td>CASA share of deposits</td><td class="r">14.0%</td><td class="r">16.4%</td><td><span class="pill amber">peer ~30%</span></td></tr>
+              <tr><td>Yield on advances</td><td class="r">5.6%</td><td class="r">8.3%</td><td><span class="pill amber">target 11-13%</span></td></tr>
+              <tr><td>Cost of deposits</td><td class="r">3.0%</td><td class="r">2.5%</td><td><span class="pill green">good</span></td></tr>
+              <tr><td>Net Interest Margin</td><td class="r">1.5%</td><td class="r">5.0%</td><td><span class="pill green">peer ~3.5%</span></td></tr>
+              <tr><td>Business per employee (₹ L)</td><td class="r">~138</td><td class="r">~261</td><td><span class="pill green">+89%</span></td></tr>
+              <tr><td>Deposit growth YoY</td><td class="r">n/a</td><td class="r up">+78%</td><td><span class="pill green">peer ~12%</span></td></tr>
+              <tr><td>Advance growth YoY</td><td class="r">n/a</td><td class="r up">+112%</td><td><span class="pill green">peer ~14%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;border-left:4px solid var(--red)">
+        <div class="card-head"><h3>Top three financial risks the board should debate</h3><span class="muted">auditor lens</span></div>
+        <ol style="margin:6px 0 0 18px;padding:0">
+          <li><b>SLR-equivalent at 15.3%</b> — sub-statutory liquidity. Need to park ≥ ₹85 L more in approved securities / FD; currently ₹1.05 Cr in one bank (Jijau) = concentration risk too.</li>
+          <li><b>CRAR ~3.2%</b> — well below the 9% prudential floor. Either raise ₹50–60 L more share capital (authorised cap ₹2 Cr leaves room) or slow advance growth.</li>
+          <li><b>DRS book 83% overdue (₹12.63 L on ₹15.17 L)</b> — single product driving Gross NPA from 5.4% → 8.1%. Either recover or fully provide and write off; current 22% provision coverage is light.</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>Prototype · numbers from FY25 &amp; FY26 P&amp;L + BS + TB PDFs · 16 May 2026</span>
+      <span>Schedule-level granularity awaits DB access</span>
+    </footer>
+  </main>
+
+  <script src="financials.js"></script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Compliance & Exceptions (Prototype)</title>
+  <meta name="theme-color" content="#0f4c81" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="proto-banner">
+    <strong>Illustrative prototype</strong> · the <em>Statutory ratios &amp; structural compliance</em> panel below is computed from real BS / P&amp;L / TB numbers. The 21-tile exception catalogue, GST recon, TDS tracker and audit-trail rows are placeholders — actual counts come from DB once Peocit grants access.
+  </div>
+  <header class="app-bar">
+    <div class="brand">
+      <div class="logo">AU</div>
+      <div>
+        <div class="brand-name">Amravati Urban</div>
+        <div class="brand-sub">Master Dashboard · Compliance & Exceptions</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filter">
+        <label>Branch</label>
+        <select id="f-branch">
+          <option value="all" selected>All branches</option>
+          <option value="ho">Amravati (HO)</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>Period</label>
+        <select id="f-period">
+          <option value="today" selected>Today</option>
+          <option value="7d">Last 7 days</option>
+          <option value="30d">Last 30 days</option>
+        </select>
+      </div>
+      <button class="btn-ghost" id="btn-refresh" title="Refresh">↻</button>
+    </div>
+
+    <div class="user">
+      <div class="user-name">Auditor view</div>
+      <div class="user-role">Compliance · 16 May 2026</div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a class="tab" href="index.html">CEO / Board</a>
+    <a class="tab" href="branch.html">Branch Manager</a>
+    <a class="tab" href="loans.html">Loans & Recovery</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Deposits & Liquidity</a>
+    <a class="tab" href="financials.html">Financials</a>
+    <a class="tab active" href="compliance.html">Compliance & Exceptions</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Reports catalogue</a>
+    <span class="tab-spacer"></span>
+    <input class="search" type="search" placeholder="Search audit trail · user · voucher · member…" />
+  </nav>
+
+  <main>
+    <!-- =================== STATUTORY RATIOS — REAL =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Statutory ratios &amp; structural compliance · real numbers</h2>
+        <div class="panel-sub">computed from FY26 P&amp;L, BS and Trial Balance · these are the items DDR / auditor will flag first</div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi" style="border-left:3px solid var(--red)">
+          <div class="kpi-label">CRAR</div>
+          <div class="kpi-value" style="color:var(--red)">~3.2%</div>
+          <div class="kpi-delta down">vs 9% minimum (RBI prudential)</div>
+        </div>
+        <div class="kpi" style="border-left:3px solid var(--red)">
+          <div class="kpi-label">SLR-equivalent</div>
+          <div class="kpi-value" style="color:var(--red)">15.3%</div>
+          <div class="kpi-delta down">vs 25% minimum</div>
+        </div>
+        <div class="kpi" style="border-left:3px solid var(--amber)">
+          <div class="kpi-label">Gross NPA %</div>
+          <div class="kpi-value" style="color:var(--amber)">8.1%</div>
+          <div class="kpi-delta down">DRS-led · DDR threshold 7%</div>
+        </div>
+        <div class="kpi" style="border-left:3px solid var(--amber)">
+          <div class="kpi-label">Single-name exposure</div>
+          <div class="kpi-value" style="color:var(--amber)">9.28%</div>
+          <div class="kpi-delta down">vs 5% individual limit · Member B-002</div>
+        </div>
+        <div class="kpi" style="border-left:3px solid var(--amber)">
+          <div class="kpi-label">Product concentration</div>
+          <div class="kpi-value" style="color:var(--amber)">36%</div>
+          <div class="kpi-delta down">Gold-Merchant · vs 25% prudent cap</div>
+        </div>
+        <div class="kpi" style="border-left:3px solid var(--green)">
+          <div class="kpi-label">Reserve Fund</div>
+          <div class="kpi-value" style="color:var(--green)">₹ 1.01 L</div>
+          <div class="kpi-delta up">opened FY26 · 25% appropriation done</div>
+        </div>
+      </div>
+
+      <div class="row two" style="margin-top:14px">
+        <div class="card">
+          <div class="card-head"><h3>Co-operative Societies Act items</h3><span class="muted">MCS Act 1960 / RBI UCB directions</span></div>
+          <table class="tbl">
+            <thead><tr><th>Item</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Min share capital (₹ 5 L)</td><td><span class="pill green">₹ 49.89 L</span></td><td>—</td></tr>
+              <tr><td>Min members (typically 25)</td><td><span class="pill green">2,621</span></td><td>—</td></tr>
+              <tr><td>Board strength (5–15)</td><td><span class="pill green">12 directors</span></td><td>—</td></tr>
+              <tr><td>Reserve Fund (25% of net profit)</td><td><span class="pill green">₹ 1.01 L done</span></td><td>—</td></tr>
+              <tr><td>Statutory Audit FY26</td><td><span class="pill amber">In progress</span></td><td>Due 30 Sep 2026</td></tr>
+              <tr><td>AGM within 6 months of close</td><td><span class="pill amber">Planning</span></td><td>Due 30 Sep 2026</td></tr>
+              <tr><td>Net worth positive</td><td><span class="pill green">₹ 28.78 L</span></td><td>accumulated loss ₹22.12L still on books</td></tr>
+              <tr><td>CRAR ≥ 9%</td><td><span class="pill red">3.2%</span></td><td><b>Raise share capital ₹50–60 L</b></td></tr>
+              <tr><td>SLR ≥ 25% in approved securities/FD</td><td><span class="pill red">15.3%</span></td><td><b>Park ~₹85 L more in approved deposits</b></td></tr>
+              <tr><td>Gross NPA &lt; 7% (DDR comfort)</td><td><span class="pill red">8.1%</span></td><td>DRS recovery drive · top up provision</td></tr>
+              <tr><td>Single-party exposure &lt; 5%</td><td><span class="pill amber">3 borrowers above</span></td><td>Cap new disbursal to these names</td></tr>
+              <tr><td>Bank concentration (≥25% in one bank)</td><td><span class="pill amber">Jijau ₹1.05Cr FD</span></td><td>Diversify when FDs roll over</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Member &amp; KYC compliance</h3><span class="muted">from members PDF · 2,621 records</span></div>
+          <table class="tbl">
+            <thead><tr><th>Check</th><th class="r">Count</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Total members on register</td><td class="r">2,621</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>Last member ID issued</td><td class="r">2,634</td><td><span class="pill green">13 closed historically</span></td></tr>
+              <tr><td>Members onboarded FY25 (Apr-24 → Mar-25)</td><td class="r">2,621</td><td><span class="pill amber">100% in founding year — verify KYC vintage</span></td></tr>
+              <tr><td>Members with active loan account</td><td class="r">~95</td><td><span class="pill green">3.6% — low concentration</span></td></tr>
+              <tr><td>Members with active deposit account</td><td class="r">~2,318</td><td><span class="pill green">88%</span></td></tr>
+              <tr><td>PAN captured (estimated)</td><td class="r">~2,100</td><td><span class="pill amber">~80% · need DB to confirm</span></td></tr>
+              <tr><td>Aadhaar / address proof on file</td><td class="r">est. 100%</td><td><span class="pill amber">DB-confirm pending</span></td></tr>
+              <tr><td>Re-KYC due (≥ 3 yrs since onboarding)</td><td class="r">—</td><td><span class="pill grey">N/A · society &lt; 2 yrs old</span></td></tr>
+              <tr><td>Duplicate mobile numbers</td><td class="r">38</td><td><span class="pill amber">illustrative — DB to confirm</span></td></tr>
+              <tr><td>Duplicate PAN entries</td><td class="r">2</td><td><span class="pill amber">illustrative — DB to confirm</span></td></tr>
+              <tr><td>Members without nomination</td><td class="r">—</td><td><span class="pill grey">DB-only check</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== EXCEPTIONS SUMMARY (catalogue) =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Exceptions catalogue · K3 standard checks</h2>
+        <div class="panel-sub">21 categories per K3 §I exception list · <em>counts are illustrative until DB access</em> · click any tile to drill</div>
+      </div>
+
+      <div class="exc-grid" id="exc-grid">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- =================== STATUTORY RETURNS =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Statutory return readiness</h2>
+        <div class="panel-sub">filed by society · deadlines to be confirmed with DDR / CA</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Returns calendar</h3>
+            <span class="muted">next 90 days</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Return</th><th>Period</th><th class="r">Due</th><th>Status</th><th>Source</th></tr></thead>
+            <tbody>
+              <tr><td>DIGC Return</td><td>Q4 FY25-26</td><td class="r">30 May</td><td><span class="pill amber">Draft ready</span></td><td>K3 → us</td></tr>
+              <tr><td>CIBIL Submission</td><td>Apr 2026</td><td class="r">15 May (today!)</td><td><span class="pill red">Overdue 0d</span></td><td>K3 → us</td></tr>
+              <tr><td>Form 1 (CTR/STR)</td><td>May 2026</td><td class="r">10 Jun</td><td><span class="pill green">On track</span></td><td>K3 → us</td></tr>
+              <tr><td>TDS Return 26Q</td><td>Q1 FY26-27</td><td class="r">31 Jul</td><td><span class="pill green">Data collecting</span></td><td>K3 → us</td></tr>
+              <tr><td>GSTR-1</td><td>May 2026</td><td class="r">11 Jun</td><td><span class="pill green">On track</span></td><td>K3 → us</td></tr>
+              <tr><td>Form NDH-3</td><td>H1 FY26-27</td><td class="r">30 Oct</td><td><span class="pill grey">Not started</span></td><td>K3 → us</td></tr>
+              <tr><td>Form NDH-1</td><td>Annual FY26-27</td><td class="r">30 Jun 2027</td><td><span class="pill grey">Not started</span></td><td>K3 → us</td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:8px">⚠ Note: deadlines indicative — confirm with DDR office / CA before filing.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>TDS &amp; 15G/15H tracker</h3>
+            <span class="muted">FY 2026-27</span>
+          </div>
+          <div class="kpi-grid two-inline" style="margin-bottom:10px">
+            <div class="kpi compact">
+              <div class="kpi-label">Members crossing TDS threshold</div>
+              <div class="kpi-value">42</div>
+              <div class="kpi-delta down">▲ 6 this month</div>
+            </div>
+            <div class="kpi compact">
+              <div class="kpi-label">Valid 15G/15H on file</div>
+              <div class="kpi-value">28</div>
+              <div class="kpi-delta muted">14 missing</div>
+            </div>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Member</th><th>PAN</th><th class="r">Int FYTD</th><th>15G/15H</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Member-DP-01</td><td>ABCDE1234F</td><td class="r">₹ 48,200</td><td><span class="pill green">Valid</span></td><td>—</td></tr>
+              <tr><td>Member-DP-02</td><td>FGHIJ5678K</td><td class="r">₹ 52,800</td><td><span class="pill red">Missing</span></td><td><a href="#">Collect</a></td></tr>
+              <tr><td>Member-DP-03</td><td>KLMNO9012L</td><td class="r">₹ 46,500</td><td><span class="pill amber">Expires 30 Jun</span></td><td><a href="#">Renew</a></td></tr>
+              <tr><td>Member-DP-04</td><td>PQRST3456M</td><td class="r">₹ 41,200</td><td><span class="pill red">Missing</span></td><td><a href="#">Collect</a></td></tr>
+              <tr><td>Member-DP-05</td><td>UVWXY7890N</td><td class="r">₹ 43,800</td><td><span class="pill green">Valid</span></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== GST RECONCILIATION =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>GST &amp; charges reconciliation</h2>
+        <div class="panel-sub">charges posted in K3 vs GST output computed by us</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>GST output register · May 2026</h3>
+            <span class="muted">live tally with K3 charges master</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Charge category</th><th class="r">Charges posted</th><th class="r">GST @18%</th><th>Match</th></tr></thead>
+            <tbody>
+              <tr><td>Cheque book issuance</td><td class="r">₹ 12,400</td><td class="r">₹ 2,232</td><td><span class="pill green">✓</span></td></tr>
+              <tr><td>Demand draft commission</td><td class="r">₹ 28,750</td><td class="r">₹ 5,175</td><td><span class="pill green">✓</span></td></tr>
+              <tr><td>Locker rent</td><td class="r">₹ 1,42,000</td><td class="r">₹ 25,560</td><td><span class="pill green">✓</span></td></tr>
+              <tr><td>Loan processing fee</td><td class="r">₹ 84,200</td><td class="r">₹ 15,156</td><td><span class="pill amber">Δ ₹ 18</span></td></tr>
+              <tr><td>Account closure charges</td><td class="r">₹ 4,800</td><td class="r">₹ 864</td><td><span class="pill green">✓</span></td></tr>
+              <tr><td>SMS service charges</td><td class="r">₹ 32,100</td><td class="r">₹ 5,778</td><td><span class="pill green">✓</span></td></tr>
+              <tr><td><b>Total</b></td><td class="r"><b>₹ 3,04,250</b></td><td class="r"><b>₹ 54,765</b></td><td><span class="pill amber">1 mismatch</span></td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">⚠ 1 row off by ₹ 18 — likely rounding. Click to inspect.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>GST output trend</h3>
+            <span class="muted">6 months</span>
+          </div>
+          <svg id="gst-chart" viewBox="0 0 600 220" preserveAspectRatio="none"></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== AUDIT TRAIL =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Audit trail</h2>
+        <div class="panel-sub">who changed what, when · last 24 hours</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>Sensitive activity</h3>
+            <span class="muted">filter: master changes · rate changes · back-dated</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Time</th><th>User</th><th>Action</th><th>Entity</th><th class="r">Δ</th></tr></thead>
+            <tbody>
+              <tr><td>10:42</td><td>MGRC2</td><td>Back-dated voucher (3d)</td><td>Cash payment ₹ 1.2 L</td><td class="r">—</td></tr>
+              <tr><td>10:18</td><td>MGRC1</td><td>Edited FD rate</td><td>Scheme FDS-365</td><td class="r down">+25 bp</td></tr>
+              <tr><td>09:51</td><td>CASH3</td><td>Voided receipt</td><td>Voucher #R-08412</td><td class="r">₹ 18,400</td></tr>
+              <tr><td>09:30</td><td>MGRC2</td><td>Back-dated voucher (1d)</td><td>Loan recovery ₹ 8.4 L</td><td class="r">—</td></tr>
+              <tr><td>Yest. 17:55</td><td>CEO</td><td>Approved limit increase</td><td>OD a/c 1098-22-1</td><td class="r down">+₹ 5.0 L</td></tr>
+              <tr><td>Yest. 16:12</td><td>MGRC1</td><td>Edited member KYC</td><td>M-44829 Member-V-022</td><td class="r">PAN updated</td></tr>
+              <tr><td>Yest. 14:08</td><td>MGRC2</td><td>Manual interest entry</td><td>Loan #L-09112</td><td class="r down">+₹ 1,250</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Users with rate-change rights</h3>
+            <span class="muted">last logged in</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>User</th><th>Role</th><th class="r">Last login</th><th>MFA</th></tr></thead>
+            <tbody>
+              <tr><td>CEO</td><td>CEO</td><td class="r">Today 09:14</td><td><span class="pill green">On</span></td></tr>
+              <tr><td>MGRC1</td><td>Manager HO</td><td class="r">Today 08:42</td><td><span class="pill green">On</span></td></tr>
+              <tr><td>MGRC2</td><td>Manager HO</td><td class="r">Today 08:38</td><td><span class="pill amber">Pending</span></td></tr>
+              <tr><td>ADMIN</td><td>Sys-admin</td><td class="r">7d ago</td><td><span class="pill red">Off</span></td></tr>
+              <tr><td>OLDUSER1</td><td>Deactivated?</td><td class="r">94d ago</td><td><span class="pill red">Review</span></td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">⚠ Recommendation: enforce MFA on every user with rate-change rights; review OLDUSER1.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>Prototype · dummy data · 16 May 2026</span>
+      <span>Phase-1 deliverable per <a href="../03-Reporting-Layer-Plan.md">03-Reporting-Layer-Plan.md</a></span>
+    </footer>
+  </main>
+
+  <script src="compliance.js"></script>
+</body>
+</html>

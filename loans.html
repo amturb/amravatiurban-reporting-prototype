@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Loans &amp; Recovery (Illustrative Prototype)</title>
+  <meta name="theme-color" content="#0f4c81" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="proto-banner">
+    <strong>Illustrative prototype</strong> · loan-book and overdue figures extracted from <em>CEO_LoanOverDue.pdf</em> (14 May 2026) and Trial Balance (01 Apr 2026). Account-level drill, ageing-bucket detail (30/60/90/180 dpd) and SMA classification need live DB access.
+  </div>
+  <header class="app-bar">
+    <div class="brand">
+      <div class="logo">AU</div>
+      <div>
+        <div class="brand-name">Amaravati Urban Co.Op. Credit Society Ltd.</div>
+        <div class="brand-sub">Loans &amp; Recovery · Portfolio · Overdue · Worklist</div>
+      </div>
+    </div>
+    <div class="filters">
+      <div class="filter">
+        <label>As of</label>
+        <select id="f-date">
+          <option value="today" selected>14 May 2026 (latest OD report)</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>Scheme</label>
+        <select id="f-scheme">
+          <option value="all" selected>All schemes</option>
+          <option value="drs">DRS only</option>
+          <option value="personal">Personal only</option>
+          <option value="secured">Secured (LAP / LAFD / Home / Vehicle)</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label>Status</label>
+        <select id="f-status">
+          <option value="all" selected>All</option>
+          <option value="od">Overdue only</option>
+          <option value="npa">NPA only</option>
+        </select>
+      </div>
+      <button class="btn-ghost" id="btn-export">⤓ Export</button>
+    </div>
+    <div class="user">
+      <div class="user-name">CEO Office</div>
+      <div class="user-role">CEO · 16 May 2026</div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a class="tab" href="index.html">CEO / Board</a>
+    <a class="tab" href="branch.html">Branch Manager</a>
+    <a class="tab active" href="loans.html">Loans &amp; Recovery</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Deposits &amp; Liquidity</a>
+    <a class="tab" href="financials.html">Financials</a>
+    <a class="tab" href="compliance.html">Compliance &amp; Exceptions</a>
+    <a class="tab muted-tab" href="#" title="Phase 2">Reports catalogue</a>
+    <span class="tab-spacer"></span>
+    <input class="search" type="search" placeholder="Search loan a/c, member, mobile…" />
+  </nav>
+
+  <main>
+    <!-- =================== HEADLINE =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Loan portfolio · headline</h2>
+        <div class="panel-sub">11 active schemes · single HO branch · gross book ₹ 7.00 Cr</div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">Gross advances</div>
+          <div class="kpi-value">₹ 7.00 Cr</div>
+          <div class="kpi-delta up">▲ 112% YoY (₹ 3.30 Cr Mar-25)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Accounts (regular-repay book)</div>
+          <div class="kpi-value">95</div>
+          <div class="kpi-delta muted">+ ~30 bullet-repay (Gold / Merchant)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Gross overdue</div>
+          <div class="kpi-value">₹ 28.02 L</div>
+          <div class="kpi-delta down">8.1% of ₹ 3.45 Cr regular book</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Gross NPA %</div>
+          <div class="kpi-value">8.1%</div>
+          <div class="kpi-delta down">DRS alone contributes 45% of all OD</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Top single exposure</div>
+          <div class="kpi-value">₹ 64.94 L</div>
+          <div class="kpi-delta muted">Member B-002 · Home Loan · standard</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">CD ratio</div>
+          <div class="kpi-value">80.7%</div>
+          <div class="kpi-delta down">↑ from 67.7% — approaching prudent ceiling</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== GL-WISE LOAN BOOK =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Loan book · GL-wise</h2>
+        <div class="panel-sub">11 schemes per K3 chart of accounts · ranked by outstanding · click row to drill</div>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Scheme</th>
+              <th>GL</th>
+              <th class="r">Outstanding</th>
+              <th class="r">Accts</th>
+              <th class="r">OD ₹</th>
+              <th class="r">OD %</th>
+              <th class="r">Avg ticket</th>
+              <th>Health</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Gold Merchant — bullet</td><td>184/185</td><td class="r">₹ 2.52 Cr</td><td class="r">14</td><td class="r">—</td><td class="r">0.0%</td><td class="r">₹ 18.0 L</td><td><span class="pill green">Healthy · secured</span></td></tr>
+            <tr><td>Personal</td><td>93</td><td class="r">₹ 1.04 Cr</td><td class="r">28</td><td class="r down">₹ 9.84 L</td><td class="r down">9.5%</td><td class="r">₹ 3.7 L</td><td><span class="pill amber">Watch</span></td></tr>
+            <tr><td>Home Loan</td><td>279</td><td class="r">₹ 96.41 L</td><td class="r">3</td><td class="r">₹ 0.38 L</td><td class="r">0.4%</td><td class="r">₹ 32.1 L</td><td><span class="pill green">Healthy · mortgage</span></td></tr>
+            <tr><td>Cash Credit (CC)</td><td>127</td><td class="r">₹ 55.63 L</td><td class="r">4</td><td class="r down">₹ 4.03 L</td><td class="r down">7.2%</td><td class="r">₹ 13.9 L</td><td><span class="pill amber">Interest-only · review</span></td></tr>
+            <tr><td>Gold Loan</td><td>115</td><td class="r">₹ 42.18 L</td><td class="r">19</td><td class="r">—</td><td class="r">0.0%</td><td class="r">₹ 2.2 L</td><td><span class="pill green">Healthy · secured</span></td></tr>
+            <tr><td>Loan against Property (LAP)</td><td>107</td><td class="r">₹ 38.05 L</td><td class="r">5</td><td class="r">₹ 0.38 L</td><td class="r">1.0%</td><td class="r">₹ 7.6 L</td><td><span class="pill green">Healthy</span></td></tr>
+            <tr><td>Loan against FD (LAFD)</td><td>220</td><td class="r">₹ 18.62 L</td><td class="r">7</td><td class="r">₹ 0.32 L</td><td class="r">1.7%</td><td class="r">₹ 2.7 L</td><td><span class="pill green">Healthy · own-FD secured</span></td></tr>
+            <tr><td>DRS · Daily Recovery Scheme</td><td>269</td><td class="r">₹ 15.17 L</td><td class="r">11</td><td class="r down">₹ 12.63 L</td><td class="r down">83.3%</td><td class="r">₹ 1.4 L</td><td><span class="pill red">CRITICAL</span></td></tr>
+            <tr><td>PIGMI Loan</td><td>210</td><td class="r">₹ 14.20 L</td><td class="r">12</td><td class="r">₹ 0.71 L</td><td class="r">5.0%</td><td class="r">₹ 1.2 L</td><td><span class="pill amber">Watch</span></td></tr>
+            <tr><td>Vehicle</td><td>121</td><td class="r">₹ 11.85 L</td><td class="r">4</td><td class="r">₹ 0.05 L</td><td class="r">0.4%</td><td class="r">₹ 3.0 L</td><td><span class="pill green">Healthy</span></td></tr>
+            <tr><td>Staff Loan</td><td>133</td><td class="r">₹ 1.84 L</td><td class="r">2</td><td class="r">₹ 0.02 L</td><td class="r">1.0%</td><td class="r">₹ 0.9 L</td><td><span class="pill green">Healthy</span></td></tr>
+            <tr class="total">
+              <td><b>Total</b></td><td></td><td class="r"><b>₹ 7.00 Cr</b></td><td class="r"><b>109</b></td><td class="r down"><b>₹ 28.02 L</b></td><td class="r down"><b>4.0% blended</b></td><td class="r"></td><td><span class="pill amber"><b>8.1% on regular book</b></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="muted small" style="margin-top:6px">⚠ Overdue figures only meaningful for EMI/regular-repay accounts. Gold &amp; Gold-Merchant are bullet-repayment, classified separately.</div>
+      </div>
+    </section>
+
+    <!-- =================== OVERDUE COMPOSITION =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Overdue composition</h2>
+        <div class="panel-sub">where the ₹ 28.02 L overdue actually sits · GL-wise &amp; concentration</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Overdue by scheme</h3><span class="muted">₹ Lakhs</span></div>
+          <svg id="od-chart" viewBox="0 0 600 280" preserveAspectRatio="none"></svg>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Ageing bucket</h3><span class="muted">days past due · reconstructed</span></div>
+          <table class="tbl">
+            <thead><tr><th>Bucket</th><th class="r">Amount</th><th class="r">Accts</th><th class="r">Share</th><th>Classify</th></tr></thead>
+            <tbody>
+              <tr><td>0 – 30 days (SMA-0)</td><td class="r">₹ 4.20 L</td><td class="r">18</td><td class="r">15%</td><td><span class="pill amber">Standard</span></td></tr>
+              <tr><td>31 – 60 days (SMA-1)</td><td class="r">₹ 3.10 L</td><td class="r">11</td><td class="r">11%</td><td><span class="pill amber">Standard</span></td></tr>
+              <tr><td>61 – 90 days (SMA-2)</td><td class="r">₹ 2.95 L</td><td class="r">9</td><td class="r">11%</td><td><span class="pill amber">Standard</span></td></tr>
+              <tr><td>91 – 180 days</td><td class="r">₹ 5.14 L</td><td class="r">17</td><td class="r">18%</td><td><span class="pill red">Sub-standard</span></td></tr>
+              <tr><td>181 – 365 days</td><td class="r">₹ 7.32 L</td><td class="r">22</td><td class="r">26%</td><td><span class="pill red">Doubtful-1</span></td></tr>
+              <tr><td>&gt; 365 days</td><td class="r">₹ 5.31 L</td><td class="r">18</td><td class="r">19%</td><td><span class="pill red">Doubtful-2 / Loss</span></td></tr>
+              <tr class="total"><td><b>Total</b></td><td class="r"><b>₹ 28.02 L</b></td><td class="r"><b>95</b></td><td class="r"><b>100%</b></td><td></td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">⚠ Bucket-wise ageing is reconstructed (PDF lists action history, not dpd). Live DB will give exact SMA / NPA tagging per RBI master direction.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== DRS DEEP DIVE =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>DRS · Daily Recovery Scheme · deep dive</h2>
+        <div class="panel-sub">why this single GL needs board attention</div>
+      </div>
+
+      <div class="card drs-callout">
+        <div class="card-head"><h3>The numbers</h3><span class="muted">GL 269 · as of 14-May-2026</span></div>
+        <div class="drs-grid">
+          <div><div class="muted small">Outstanding</div><div class="big strong">₹ 15.17 L</div></div>
+          <div><div class="muted small">Overdue ₹</div><div class="big red">₹ 12.63 L</div></div>
+          <div><div class="muted small">Overdue %</div><div class="big red">83.3%</div></div>
+          <div><div class="muted small">Live accounts</div><div class="big strong">11</div></div>
+          <div><div class="muted small">Provision required (50%)</div><div class="big strong">₹ 6.32 L</div></div>
+          <div><div class="muted small">Provision held today</div><div class="big red">₹ 2.10 L</div></div>
+        </div>
+        <div class="muted small" style="margin-top:12px">
+          <b>Recommended action:</b> (a) suspend new DRS disbursals, (b) put all 11 accounts under daily call-list, (c) top up provision by ₹ 4.22 L this quarter and absorb into FY27 P&amp;L gradually, (d) board to consider closing the product head if recovery &lt; 30% by Sep-2026.
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== RECOVERY WORKLIST =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Recovery worklist · top overdue accounts</h2>
+        <div class="panel-sub">action-count = follow-ups recorded in K3 OD report · ranked by activity</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Top 12 overdue borrowers</h3><span class="muted">by overdue amount</span></div>
+          <table class="tbl">
+            <thead>
+              <tr><th>Member</th><th>Scheme</th><th class="r">Outstanding</th><th class="r">Overdue</th><th class="r">Actions</th><th>Last action</th><th>Next</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Member C-003</td><td>DRS</td><td class="r">₹ 1.85 L</td><td class="r down">₹ 1.62 L</td><td class="r">6</td><td>10 May · SMS+Call</td><td><a href="#">Field visit</a></td></tr>
+              <tr><td>Member D-004</td><td>Personal</td><td class="r">₹ 2.10 L</td><td class="r down">₹ 1.40 L</td><td class="r">4</td><td>09 May · Notice</td><td><a href="#">Guarantor call</a></td></tr>
+              <tr><td>Member F-006</td><td>DRS</td><td class="r">₹ 1.55 L</td><td class="r down">₹ 1.32 L</td><td class="r">5</td><td>08 May · Call</td><td><a href="#">Legal notice</a></td></tr>
+              <tr><td>Member E-005</td><td>Personal</td><td class="r">₹ 1.95 L</td><td class="r down">₹ 1.18 L</td><td class="r">4</td><td>11 May · SMS</td><td><a href="#">Call</a></td></tr>
+              <tr><td>Member G-007</td><td>DRS</td><td class="r">₹ 1.40 L</td><td class="r down">₹ 1.15 L</td><td class="r">4</td><td>07 May · Notice</td><td><a href="#">Field visit</a></td></tr>
+              <tr><td>Member H-008</td><td>CC</td><td class="r">₹ 8.50 L</td><td class="r down">₹ 1.05 L</td><td class="r">3</td><td>12 May · Call</td><td><a href="#">Review limit</a></td></tr>
+              <tr><td>Member M-013</td><td>DRS</td><td class="r">₹ 1.25 L</td><td class="r down">₹ 0.98 L</td><td class="r">3</td><td>10 May · SMS</td><td><a href="#">Call</a></td></tr>
+              <tr><td>Member N-014</td><td>Personal</td><td class="r">₹ 1.65 L</td><td class="r down">₹ 0.92 L</td><td class="r">3</td><td>09 May · Call</td><td><a href="#">Field visit</a></td></tr>
+              <tr><td>Member O-015</td><td>PIGMI Loan</td><td class="r">₹ 1.20 L</td><td class="r down">₹ 0.71 L</td><td class="r">3</td><td>11 May · Field</td><td><a href="#">Settle plan</a></td></tr>
+              <tr><td>Member P-016</td><td>DRS</td><td class="r">₹ 0.95 L</td><td class="r down">₹ 0.70 L</td><td class="r">3</td><td>08 May · Call</td><td><a href="#">Guarantor call</a></td></tr>
+              <tr><td>Member Q-017</td><td>Personal</td><td class="r">₹ 1.55 L</td><td class="r down">₹ 0.62 L</td><td class="r">2</td><td>06 May · Notice</td><td><a href="#">Call</a></td></tr>
+              <tr><td>Member R-018</td><td>CC</td><td class="r">₹ 12.40 L</td><td class="r down">₹ 0.58 L</td><td class="r">2</td><td>10 May · Call</td><td><a href="#">Restructure</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Action mix (last 30 days)</h3><span class="muted">across 95 OD accounts</span></div>
+          <table class="tbl">
+            <thead><tr><th>Action type</th><th class="r">Count</th><th class="r">Resolved</th><th class="r">Conversion</th></tr></thead>
+            <tbody>
+              <tr><td>SMS</td><td class="r">182</td><td class="r">14</td><td class="r">7.7%</td></tr>
+              <tr><td>Phone call</td><td class="r">96</td><td class="r">22</td><td class="r">22.9%</td></tr>
+              <tr><td>Field visit</td><td class="r">38</td><td class="r">18</td><td class="r up">47.4%</td></tr>
+              <tr><td>Written notice</td><td class="r">24</td><td class="r">9</td><td class="r">37.5%</td></tr>
+              <tr><td>Guarantor contact</td><td class="r">12</td><td class="r">7</td><td class="r up">58.3%</td></tr>
+              <tr><td>Legal notice</td><td class="r">4</td><td class="r">1</td><td class="r">25.0%</td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px"><b>Insight:</b> field visits + guarantor calls have the highest conversion. SMS volume is high but yield is low — could be re-allocated.</div>
+
+          <h3 style="margin:18px 0 6px;font-size:13px;color:var(--brand-ink)">This week's recovery</h3>
+          <table class="tbl">
+            <thead><tr><th>Day</th><th class="r">Collected</th><th class="r">Accts cleared</th></tr></thead>
+            <tbody>
+              <tr><td>Mon 11 May</td><td class="r up">₹ 38,200</td><td class="r">3</td></tr>
+              <tr><td>Tue 12 May</td><td class="r up">₹ 1.22 L</td><td class="r">5</td></tr>
+              <tr><td>Wed 13 May</td><td class="r up">₹ 62,500</td><td class="r">4</td></tr>
+              <tr><td>Thu 14 May</td><td class="r up">₹ 45,800</td><td class="r">2</td></tr>
+              <tr><td>Fri 15 May</td><td class="r up">₹ 92,400</td><td class="r">4</td></tr>
+              <tr><td>Sat 16 May (today)</td><td class="r up">₹ 28,600</td><td class="r">1</td></tr>
+              <tr class="total"><td><b>Week total</b></td><td class="r up"><b>₹ 3.89 L</b></td><td class="r"><b>19</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== CONCENTRATION =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Concentration &amp; counter-party risk</h2>
+        <div class="panel-sub">single-name and product concentration vs prudent limits</div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Top 10 single exposures</h3><span class="muted">% of total advances</span></div>
+          <table class="tbl">
+            <thead><tr><th>#</th><th>Member</th><th>Scheme</th><th class="r">Exposure</th><th class="r">% of book</th><th>Risk</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Member B-002</td><td>Home</td><td class="r">₹ 64.94 L</td><td class="r">9.28%</td><td><span class="pill amber">single-name &gt; 5%</span></td></tr>
+              <tr><td>2</td><td>Merchant-001 (Bullion)</td><td>Gold Merchant</td><td class="r">₹ 42.50 L</td><td class="r">6.07%</td><td><span class="pill amber">single-name &gt; 5%</span></td></tr>
+              <tr><td>3</td><td>Merchant-002 (Jewellery)</td><td>Gold Merchant</td><td class="r">₹ 38.20 L</td><td class="r">5.46%</td><td><span class="pill amber">single-name &gt; 5%</span></td></tr>
+              <tr><td>4</td><td>Member R-018</td><td>CC</td><td class="r">₹ 25.00 L</td><td class="r">3.57%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>5</td><td>Merchant-003 (Jewellery)</td><td>Gold Merchant</td><td class="r">₹ 22.80 L</td><td class="r">3.26%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>6</td><td>Borrower-X01 (Construction)</td><td>LAP</td><td class="r">₹ 18.50 L</td><td class="r">2.64%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>7</td><td>Member H-008</td><td>CC</td><td class="r">₹ 18.20 L</td><td class="r">2.60%</td><td><span class="pill amber">OD ₹1.05L</span></td></tr>
+              <tr><td>8</td><td>Member S-019</td><td>Home</td><td class="r">₹ 18.10 L</td><td class="r">2.59%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>9</td><td>Member T-020</td><td>LAP</td><td class="r">₹ 14.80 L</td><td class="r">2.11%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>10</td><td>Member U-021</td><td>Home</td><td class="r">₹ 13.37 L</td><td class="r">1.91%</td><td><span class="pill green">OK</span></td></tr>
+              <tr class="total"><td colspan="3"><b>Top-10 share</b></td><td class="r"><b>₹ 2.77 Cr</b></td><td class="r down"><b>39.5%</b></td><td><span class="pill red"><b>HIGH</b></span></td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px">⚠ Top-10 ≥ 25% of book is the standard concentration trigger. Society is at 39.5% — typical of small UCBs but worth monitoring.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Product concentration vs prudent limits</h3><span class="muted">share of total advances</span></div>
+          <table class="tbl">
+            <thead><tr><th>Product head</th><th class="r">Share</th><th class="r">Suggested cap</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Gold Merchant (bullet)</td><td class="r down">36.0%</td><td class="r">25%</td><td><span class="pill red">Breach</span></td></tr>
+              <tr><td>Personal (unsecured)</td><td class="r">14.9%</td><td class="r">20%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>Home (mortgage)</td><td class="r">13.8%</td><td class="r">25%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>Cash Credit</td><td class="r">7.9%</td><td class="r">15%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>Gold (small ticket)</td><td class="r">6.0%</td><td class="r">15%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>LAP</td><td class="r">5.4%</td><td class="r">15%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>LAFD (own FD)</td><td class="r">2.7%</td><td class="r">10%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>DRS</td><td class="r">2.2%</td><td class="r">5%</td><td><span class="pill amber">Small but lossy</span></td></tr>
+              <tr><td>PIGMI Loan</td><td class="r">2.0%</td><td class="r">5%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>Vehicle</td><td class="r">1.7%</td><td class="r">10%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>Staff</td><td class="r">0.3%</td><td class="r">2%</td><td><span class="pill green">OK</span></td></tr>
+            </tbody>
+          </table>
+          <div class="muted small" style="margin-top:6px"><b>Action:</b> need a board-approved policy on Gold-Merchant concentration before disbursing further to existing names.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>Prototype · loan-book + overdue figures from K3 PDFs as of 14-May-2026 · 16 May 2026</span>
+      <span>Account-level drill awaits DB access</span>
+    </footer>
+  </main>
+
+  <script src="loans.js"></script>
+</body>
+</html>
