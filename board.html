@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Board &amp; Committee</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="board">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · director names anonymised. Live version pulls from CBS director master + AGM meeting register.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">Board &amp; Committee</div><div class="brand-sub">Resolutions · Meetings · Attendance · Credit Committee</div></div></div>
+    <div class="filters"><div class="filter"><label>Term</label><select><option>2024-26 (current)</option><option>2022-24 (previous)</option></select></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>Board &amp; Committee Workspace</h1><p>Chairman-facing dashboard for AGM prep, resolution tracking and committee health.</p></div>
+
+    <section class="panel">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Directors on board</div><div class="kpi-value">12</div><div class="kpi-delta muted">2 women · 3 prof. directors</div></div>
+        <div class="kpi"><div class="kpi-label">Avg attendance YTD</div><div class="kpi-value">83%</div><div class="kpi-delta up">▲ 7 pp YoY</div></div>
+        <div class="kpi"><div class="kpi-label">Resolutions open</div><div class="kpi-value">6</div><div class="kpi-delta muted">3 critical</div></div>
+        <div class="kpi"><div class="kpi-label">Committees active</div><div class="kpi-value">4</div><div class="kpi-delta muted">Credit · Audit · HR · Recovery</div></div>
+        <div class="kpi"><div class="kpi-label">Days to next board meet</div><div class="kpi-value">9</div><div class="kpi-delta muted">25 May 2026</div></div>
+        <div class="kpi"><div class="kpi-label">Days to AGM</div><div class="kpi-value">93</div><div class="kpi-delta muted">17 Aug 2026 planned</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Resolution tracker</h3><span class="muted">open + last 3 closed</span></div>
+          <table class="tbl">
+            <thead><tr><th>#</th><th>Resolution</th><th>Raised</th><th>Owner</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>R-26-008</td><td>Suspend new DRS sanctions; top-up provision ₹2L</td><td>10 May</td><td>CEO + Loans</td><td><span class="pill red">Tabled 25-May</span></td></tr>
+              <tr><td>R-26-007</td><td>Capital raise plan — ₹38L fresh shares Class A</td><td>06 May</td><td>Chairman</td><td><span class="pill red">Tabled 25-May</span></td></tr>
+              <tr><td>R-26-006</td><td>Underwriting policy revision (Personal loan caps)</td><td>02 May</td><td>Credit Committee</td><td><span class="pill amber">Draft circulating</span></td></tr>
+              <tr><td>R-26-005</td><td>SLR diversification · split between DCCB/MF</td><td>25 Apr</td><td>CFO/Manager</td><td><span class="pill amber">Awaiting quote</span></td></tr>
+              <tr><td>R-26-004</td><td>Merchant Loan Engine Tier-2 pilot</td><td>18 Apr</td><td>Loans Officer-A</td><td><span class="pill blue">In progress</span></td></tr>
+              <tr><td>R-26-003</td><td>Co-branded merchant card MoU with payments partner</td><td>12 Apr</td><td>CEO</td><td><span class="pill blue">RFP issued</span></td></tr>
+              <tr><td>R-26-002</td><td>Approve FY26 NPA provision policy</td><td>05 Apr</td><td>Audit Committee</td><td><span class="pill green">Closed ✓</span></td></tr>
+              <tr><td>R-26-001</td><td>Reserve Fund opening journal entry ₹1.01L</td><td>02 Apr</td><td>Accounts</td><td><span class="pill green">Closed ✓</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Next board meeting · 25 May 2026 · agenda</h3><span class="muted">6 items · 90 min</span></div>
+          <table class="tbl">
+            <thead><tr><th>#</th><th>Item</th><th>Lead</th><th>Decision</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>FY26 closure pack · P&amp;L · BS · ratios</td><td>CFO / Accounts</td><td><span class="pill blue">Note</span></td></tr>
+              <tr><td>2</td><td>DRS resolution R-26-008</td><td>CEO + Loans</td><td><span class="pill red">Vote</span></td></tr>
+              <tr><td>3</td><td>Capital raise plan R-26-007</td><td>Chairman</td><td><span class="pill red">Vote</span></td></tr>
+              <tr><td>4</td><td>RCS audit response · final draft sign-off</td><td>Manager</td><td><span class="pill amber">Approve</span></td></tr>
+              <tr><td>5</td><td>Merchant Loan Engine · pilot results</td><td>Loans Officer-A</td><td><span class="pill blue">Note</span></td></tr>
+              <tr><td>6</td><td>AGM 2026 date &amp; venue confirmation</td><td>Chairman + Secretary</td><td><span class="pill amber">Approve</span></td></tr>
+            </tbody>
+          </table>
+          <div class="callout info mt8">📎 Pre-read materials auto-attached to each agenda item from the CBS once finalised.</div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Director attendance · last 6 meetings</h3><span class="muted">█ present  ░ leave  ✕ absent</span></div>
+          <table class="tbl">
+            <thead><tr><th>Director</th><th>Role</th><th colspan="6" style="text-align:center">Mtg 1 → 6</th><th class="r">%</th></tr></thead>
+            <tbody>
+              <tr><td>Chairman (R.M.C.)</td><td>Chair</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">100%</td></tr>
+              <tr><td>Director-D2</td><td>Vice-Chair</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot y"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">92%</td></tr>
+              <tr><td>Director-D3</td><td>Credit Comm.</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">100%</td></tr>
+              <tr><td>Director-D4</td><td>Audit Comm.</td><td><span class="dot g"></span></td><td><span class="dot y"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot r"></span></td><td><span class="dot g"></span></td><td class="r">75%</td></tr>
+              <tr><td>Director-D5</td><td>HR Comm.</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot r"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">83%</td></tr>
+              <tr><td>Director-D6</td><td>Recovery Comm.</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot y"></span></td><td class="r">92%</td></tr>
+              <tr><td>Director-D7</td><td>Director</td><td><span class="dot r"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot r"></span></td><td><span class="dot r"></span></td><td><span class="dot g"></span></td><td class="r">50%</td></tr>
+              <tr><td>Director-D8</td><td>Prof. Director</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">100%</td></tr>
+              <tr><td>Director-D9 (W)</td><td>Director</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot y"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">92%</td></tr>
+              <tr><td>Director-D10 (W)</td><td>Director</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot y"></span></td><td><span class="dot g"></span></td><td class="r">92%</td></tr>
+              <tr><td>Director-D11</td><td>Prof. Director</td><td><span class="dot g"></span></td><td><span class="dot r"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">83%</td></tr>
+              <tr><td>Director-D12</td><td>Prof. Director</td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td><span class="dot g"></span></td><td class="r">100%</td></tr>
+            </tbody>
+          </table>
+          <div class="callout warn mt8">Director-D7 at 50% attendance — by-law mandates Show-Cause if &lt; 50% in any 12-month window. Chairman to send formal note.</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Credit Committee · last 30 days</h3><span class="muted">approvals · rejections · re-priced</span></div>
+          <table class="tbl">
+            <thead><tr><th>Date</th><th>Ticket</th><th>Applicant</th><th>Decision</th><th>Member voting</th></tr></thead>
+            <tbody>
+              <tr><td>22 Apr</td><td>₹ 6.40 L Gold-Merchant</td><td>Merchant-005</td><td><span class="pill green">Approved</span></td><td>3 / 3</td></tr>
+              <tr><td>28 Apr</td><td>₹ 12.00 L UPI-Merchant</td><td>Merchant-prospect-B</td><td><span class="pill amber">Counter ₹3.5L</span></td><td>2 / 3</td></tr>
+              <tr><td>02 May</td><td>₹ 4.00 L Gold-Merchant</td><td>Merchant-009</td><td><span class="pill green">Approved</span></td><td>3 / 3</td></tr>
+              <tr><td>06 May</td><td>₹ 5.00 L Personal</td><td>Member L-012</td><td><span class="pill red">Rejected</span></td><td>3 / 3</td></tr>
+              <tr><td>10 May</td><td>₹ 6.00 L UPI-Merchant</td><td>Merchant-prospect-C</td><td><span class="pill red">Rejected</span></td><td>3 / 3</td></tr>
+              <tr><td>14 May</td><td>₹ 8.00 L UPI-Merchant</td><td>Merchant-007</td><td><span class="pill amber">Counter ₹6.5L</span></td><td>3 / 3</td></tr>
+            </tbody>
+          </table>
+          <div class="callout info mt8">Approval rate 33% · counter rate 33% · reject 33%. Healthy discipline.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · names anonymised</span><span>Board workspace · 16 May 2026</span></footer>
+  </main>
+</body>
+</html>

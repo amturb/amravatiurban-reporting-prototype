@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Budget vs Actual</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="budget">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · FY26 budget reconstructed from board minutes (Sep-2025 budget approval). Live version pulls budget from budget master.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">Budget vs Actual</div><div class="brand-sub">FY 2025-26 · variance analysis</div></div></div>
+    <div class="filters"><div class="filter"><label>Cut-off</label><select><option>FY26 full year</option><option>YTD May-2026</option></select></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>Budget vs Actual · FY 2025-26</h1><p>Income heads · expense heads · book growth targets · variance with reasons.</p></div>
+
+    <section class="panel">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Income · actual</div><div class="kpi-value">₹ 89.62 L</div><div class="kpi-delta up">▲ 7.6% vs budget</div></div>
+        <div class="kpi"><div class="kpi-label">Expense · actual</div><div class="kpi-value">₹ 84.19 L</div><div class="kpi-delta down">▲ 11.2% vs budget</div></div>
+        <div class="kpi positive"><div class="kpi-label">Net result · actual</div><div class="kpi-value">+₹ 5.43 L</div><div class="kpi-delta muted">budget +₹ 7.20 L · −₹ 1.77 L variance</div></div>
+        <div class="kpi"><div class="kpi-label">Advances book growth</div><div class="kpi-value">₹ 7.00 Cr</div><div class="kpi-delta up">▲ 12% above target</div></div>
+        <div class="kpi"><div class="kpi-label">Deposits book growth</div><div class="kpi-value">₹ 8.68 Cr</div><div class="kpi-delta up">▲ 18% above target</div></div>
+        <div class="kpi warning"><div class="kpi-label">Cost-to-Income</div><div class="kpi-value">94%</div><div class="kpi-delta down">budget 88% · expenses ran hot</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Income heads · variance</h3><span class="muted">₹ L</span></div>
+          <table class="tbl">
+            <thead><tr><th>Head</th><th class="r">Budget</th><th class="r">Actual</th><th class="r">Var</th><th class="r">Var %</th><th>Verdict</th></tr></thead>
+            <tbody>
+              <tr><td>Interest on loans</td><td class="r">68.00</td><td class="r">75.46</td><td class="r up">+7.46</td><td class="r up">+11.0%</td><td><span class="pill green">Beat</span></td></tr>
+              <tr><td>Investment income</td><td class="r">9.50</td><td class="r">11.04</td><td class="r up">+1.54</td><td class="r up">+16.2%</td><td><span class="pill green">Beat</span></td></tr>
+              <tr><td>Commission · PIGMI/Gold</td><td class="r">5.00</td><td class="r">2.42</td><td class="r down">−2.58</td><td class="r down">−51.6%</td><td><span class="pill red">Miss</span></td></tr>
+              <tr><td>Other income</td><td class="r">0.80</td><td class="r">0.70</td><td class="r down">−0.10</td><td class="r down">−12.5%</td><td><span class="pill amber">Soft</span></td></tr>
+              <tr class="total"><td><b>Total income</b></td><td class="r"><b>83.30</b></td><td class="r"><b>89.62</b></td><td class="r up"><b>+6.32</b></td><td class="r up"><b>+7.6%</b></td><td><span class="pill green">Beat</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Expense heads · variance</h3><span class="muted">₹ L</span></div>
+          <table class="tbl">
+            <thead><tr><th>Head</th><th class="r">Budget</th><th class="r">Actual</th><th class="r">Var</th><th class="r">Var %</th><th>Verdict</th></tr></thead>
+            <tbody>
+              <tr><td>Interest on deposits</td><td class="r">38.00</td><td class="r">43.80</td><td class="r down">+5.80</td><td class="r down">+15.3%</td><td><span class="pill red">Over</span></td></tr>
+              <tr><td>Staff salaries</td><td class="r">21.00</td><td class="r">22.31</td><td class="r down">+1.31</td><td class="r down">+6.2%</td><td><span class="pill amber">Slight</span></td></tr>
+              <tr><td>PIGMI / Gold commission paid</td><td class="r">7.50</td><td class="r">13.51</td><td class="r down">+6.01</td><td class="r down">+80.1%</td><td><span class="pill red">Over</span></td></tr>
+              <tr><td>Rent &amp; utilities</td><td class="r">8.40</td><td class="r">8.12</td><td class="r up">−0.28</td><td class="r up">−3.3%</td><td><span class="pill green">Under</span></td></tr>
+              <tr><td>NPA provision</td><td class="r">2.50</td><td class="r">3.10</td><td class="r down">+0.60</td><td class="r down">+24.0%</td><td><span class="pill amber">DRS</span></td></tr>
+              <tr><td>Admin &amp; overheads</td><td class="r">2.50</td><td class="r">2.84</td><td class="r down">+0.34</td><td class="r down">+13.6%</td><td><span class="pill amber">Slight</span></td></tr>
+              <tr class="total"><td><b>Total expense</b></td><td class="r"><b>75.70</b></td><td class="r"><b>84.19</b></td><td class="r down"><b>+8.49</b></td><td class="r down"><b>+11.2%</b></td><td><span class="pill red">Over</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card mt8">
+        <div class="card-head"><h3>Variance visualised</h3><span class="muted">budget bar vs actual bar · ₹ L</span></div>
+        <div class="cv"><canvas id="bud-chart"></canvas></div>
+      </div>
+
+      <div class="callout warn mt8">
+        <strong>Read for board:</strong> Top-line beat (+₹6.3 L) was meaningful but eaten by expense over-run (+₹8.5 L). Two real watch-outs:
+        <b>(1) PIGMI/Gold commission paid 80% over budget</b> — direct fallout of the merchant-book doubling; partial pass-through to borrower rate next FY.
+        <b>(2) Interest on deposits 15% over</b> — Spl 13-Mo FD at 8% is the costliest book in the country; phase out the rate or stagger maturities.
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Budget · variance · FY26 close</span></footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      new Chart(document.getElementById('bud-chart'), {
+        type: 'bar',
+        data: {
+          labels: ['Int·Loans','Int·Invest','Commission','Int·Deposits','Salaries','Gold·Comm','Rent','NPA prov','Admin'],
+          datasets: [
+            { label: 'Budget', data: [68.0, 9.5, 5.0, 38.0, 21.0, 7.5, 8.4, 2.5, 2.5], backgroundColor: AU.alpha(AU.colors.muted, .7), borderRadius: 4 },
+            { label: 'Actual', data: [75.46, 11.04, 2.42, 43.80, 22.31, 13.51, 8.12, 3.10, 2.84],
+              backgroundColor: ctx => {
+                const v = ctx.parsed.y, b = ctx.dataset.budget?.[ctx.dataIndex];
+                return v > b ? AU.alpha(AU.colors.red, .85) : AU.alpha(AU.colors.green, .85);
+              },
+              budget: [68.0, 9.5, 5.0, 38.0, 21.0, 7.5, 8.4, 2.5, 2.5],
+              borderRadius: 4
+            }
+          ]
+        },
+        options: Object.assign(AU.baseOpts(true), { plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } } })
+      });
+    });
+  </script>
+</body>
+</html>

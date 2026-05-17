@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Dividend &amp; Member Lifecycle</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="dividend">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · FY26 dividend = NIL (profit fully absorbed in accumulated loss recovery). This view models FY28 onwards when dividend resumes.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">Dividend &amp; Member Lifecycle</div><div class="brand-sub">AGM 2026 prep · profit waterfall · class-wise entitlement</div></div></div>
+    <div class="filters"><div class="filter"><label>Scenario</label><select><option>FY26 actual (no dividend)</option><option>FY28 projected (8% dividend)</option></select></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>Member Lifecycle &amp; Dividend Planning</h1><p>Statutory waterfall · class-wise entitlement · top-shareholder voting power · membership flow.</p></div>
+
+    <section class="panel">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Active members</div><div class="kpi-value">2,621</div><div class="kpi-delta up">▲ 143 YTD</div></div>
+        <div class="kpi"><div class="kpi-label">Class A · full voting</div><div class="kpi-value">842</div><div class="kpi-delta muted">31% of members</div></div>
+        <div class="kpi"><div class="kpi-label">Class B · limited</div><div class="kpi-value">1,597</div><div class="kpi-delta muted">61%</div></div>
+        <div class="kpi"><div class="kpi-label">Nominal members</div><div class="kpi-value">182</div><div class="kpi-delta muted">non-voting</div></div>
+        <div class="kpi"><div class="kpi-label">Total share capital</div><div class="kpi-value">₹ 49.89 L</div><div class="kpi-delta muted">25% of authorised</div></div>
+        <div class="kpi"><div class="kpi-label">FY26 dividend</div><div class="kpi-value">NIL</div><div class="kpi-delta down">absorbed in loss recovery</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Membership flow · last 12 months</h3></div>
+          <div class="cv"><canvas id="m-flow"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Class-wise dividend entitlement</h3><span class="muted">if FY28 declares 8%</span></div>
+          <table class="tbl">
+            <thead><tr><th>Class</th><th class="r">Members</th><th class="r">Share capital</th><th class="r">Dividend @8%</th><th>Voting</th></tr></thead>
+            <tbody>
+              <tr><td>Class A</td><td class="r">842</td><td class="r">₹ 36.20 L</td><td class="r">₹ 2.90 L</td><td><span class="pill green">Full · 1 vote/member</span></td></tr>
+              <tr><td>Class B</td><td class="r">1,597</td><td class="r">₹ 12.51 L</td><td class="r">₹ 1.00 L</td><td><span class="pill blue">Limited</span></td></tr>
+              <tr><td>Nominal</td><td class="r">182</td><td class="r">₹ 1.18 L</td><td class="r">₹ 0.09 L</td><td><span class="pill grey">No vote</span></td></tr>
+              <tr class="total"><td><b>Total</b></td><td class="r"><b>2,621</b></td><td class="r"><b>₹ 49.89 L</b></td><td class="r"><b>₹ 3.99 L</b></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Top shareholders by AGM voting power</h3><span class="muted">Class A · single-name concentration</span></div>
+          <table class="tbl">
+            <thead><tr><th>Member</th><th>Shares</th><th class="r">Capital</th><th class="r">% Cap</th><th class="r">Years</th><th>AGM history</th></tr></thead>
+            <tbody>
+              <tr><td>Member A-001</td><td>250</td><td class="r">₹ 25,000</td><td class="r">0.50%</td><td class="r">8</td><td><span class="pill green">7/8 attended</span></td></tr>
+              <tr><td>Member B-002</td><td>200</td><td class="r">₹ 20,000</td><td class="r">0.40%</td><td class="r">6</td><td><span class="pill green">5/6</span></td></tr>
+              <tr><td>Society T-01 (trust)</td><td>150</td><td class="r">₹ 15,000</td><td class="r">0.30%</td><td class="r">4</td><td><span class="pill amber">Proxy</span></td></tr>
+              <tr><td>Merchant-002</td><td>120</td><td class="r">₹ 12,000</td><td class="r">0.24%</td><td class="r">6</td><td><span class="pill green">6/6</span></td></tr>
+              <tr><td>Director-D8</td><td>100</td><td class="r">₹ 10,000</td><td class="r">0.20%</td><td class="r">5</td><td><span class="pill green">5/5</span></td></tr>
+            </tbody>
+          </table>
+          <div class="callout info mt8">Co-operative principle: <em>one member one vote</em> regardless of capital. But top depositors carry social weight at AGM — keep their pre-vote disposition known.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>FY28 dividend feasibility</h3><span class="muted">forward model</span></div>
+          <table class="tbl">
+            <tbody>
+              <tr><td>FY26 net profit</td><td class="r">₹ 5.43 L</td></tr>
+              <tr><td>FY27 projected net profit</td><td class="r">₹ 9.80 L</td></tr>
+              <tr><td>FY28 projected net profit</td><td class="r">₹ 15.00 L</td></tr>
+              <tr><td>Cumulative loss absorbed by FY28</td><td class="r up">100%</td></tr>
+              <tr><td>Distributable after statutory transfers</td><td class="r">₹ 11.04 L</td></tr>
+              <tr class="total"><td><b>8% dividend coverage</b></td><td class="r up"><b>2.77 ×</b></td></tr>
+            </tbody>
+          </table>
+          <div class="callout good mt8">First post-loss dividend declarable in FY28 (Aug-2028 AGM). Recommended: 8% dividend + 1% bonus to long-tenure members.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Dividend &amp; lifecycle</span></footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      new Chart(document.getElementById('m-flow'), {
+        type: 'bar',
+        data: {
+          labels: ['Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May'],
+          datasets: [
+            { label: 'New members', data: [10,12,8,14,11,15,12,16,13,18,14,12], backgroundColor: AU.alpha(AU.colors.green,.85), borderRadius: 4 },
+            { label: 'Resigned',    data: [-1,-2,0,-1,-2,-1,-3,-1,-2,-1,-1,-2], backgroundColor: AU.alpha(AU.colors.red,.7), borderRadius: 4 },
+          ]
+        },
+        options: Object.assign(AU.baseOpts(false), { plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } } })
+      });
+    });
+  </script>
+</body>
+</html>

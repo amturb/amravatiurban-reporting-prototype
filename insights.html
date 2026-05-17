@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — AI Insights &amp; Forward Calendar</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="insights">
+  <div class="proto-banner">
+    <strong>Illustrative prototype</strong> · narrative insights here are <em>rule-engine</em> driven (not LLM yet). Final version layers an LLM on top of the rule engine, but rules alone surface 80% of board-grade actions.
+  </div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">AI Insights &amp; Forward Calendar</div><div class="brand-sub">12 active findings · refreshed 16 May 2026 09:42</div></div></div>
+    <div class="filters">
+      <div class="filter"><label>Filter</label><select><option>All insights (12)</option><option>Critical only</option><option>Opportunities only</option></select></div>
+      <button class="btn-ghost">↻</button>
+    </div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title">
+      <h1>What the data is telling you · prioritised</h1>
+      <p>Critical findings demand immediate decisions · warnings need a call this week · opportunities can wait for the next board meeting.</p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi" style="border-left:3px solid var(--red)"><div class="kpi-label">Critical</div><div class="kpi-value" style="color:var(--red)">3</div><div class="kpi-delta down">decisions needed in 7 days</div></div>
+      <div class="kpi" style="border-left:3px solid var(--amber)"><div class="kpi-label">Warning</div><div class="kpi-value" style="color:var(--amber)">5</div><div class="kpi-delta muted">close watch · weekly</div></div>
+      <div class="kpi" style="border-left:3px solid var(--brand-2)"><div class="kpi-label">Opportunity</div><div class="kpi-value" style="color:var(--brand-2)">4</div><div class="kpi-delta muted">cash-on-table or risk-reduce</div></div>
+      <div class="kpi"><div class="kpi-label">Implemented YTD</div><div class="kpi-value">17</div><div class="kpi-delta up">est. ₹ 6.2 L impact</div></div>
+      <div class="kpi"><div class="kpi-label">Pending board approval</div><div class="kpi-value">2</div><div class="kpi-delta muted">tabled 25-May</div></div>
+      <div class="kpi"><div class="kpi-label">Auto-resolved</div><div class="kpi-value">9</div><div class="kpi-delta up">no human action needed</div></div>
+    </div>
+
+    <!-- CRITICAL -->
+    <section class="panel">
+      <div class="panel-head"><h2>🔴 Critical · decide this week</h2></div>
+
+      <div class="ins-card critical">
+        <div class="ins-head"><span class="ins-icon">⚠️</span><span class="ins-title">DRS book heading to full write-off if recovery &lt; 30% by Sep-2026</span><span class="ins-tag critical">Critical · Risk</span></div>
+        <div class="ins-body">
+          Daily Recovery Scheme: ₹15.17 L outstanding · 83% overdue · 11 of 17 accounts above 90 DPD. At current monthly recovery (₹0.40 L), book takes 3 years to clean up — but provision shortfall compounds quarterly. Board must decide: (a) full provision + write-off ₹4.2 L hit to FY27 P&amp;L, or (b) hire 2 dedicated field collectors at ₹2.4 L/yr for 18-month aggressive recovery.
+        </div>
+        <div class="ins-numbers">
+          <div class="ins-num"><div class="nl">O/S</div><div class="nv">₹ 15.17 L</div></div>
+          <div class="ins-num"><div class="nl">Overdue %</div><div class="nv" style="color:var(--red)">83.3%</div></div>
+          <div class="ins-num"><div class="nl">Provision shortfall</div><div class="nv">₹ 4.22 L</div></div>
+        </div>
+        <div class="ins-action">💡 <strong>Suggested action:</strong> Table 25-May board meeting · resolve to suspend new DRS sanctions, top-up provision by ₹2.0 L in Q1, and engage 1 field officer for a 6-month sprint. If recovery rate &lt; 25% by Sep-2026, write off remainder.</div>
+      </div>
+
+      <div class="ins-card critical">
+        <div class="ins-head"><span class="ins-icon">📉</span><span class="ins-title">CRAR at 3.2% — capital plan needed before RCS inspection in Aug-2026</span><span class="ins-tag critical">Critical · Capital</span></div>
+        <div class="ins-body">
+          Capital adequacy is 5.8 pp below the 9% RBI floor. At current capital build of ~₹6 L/yr and RWA growth of 60% YoY, CRAR <em>worsens</em>. Authorised share capital headroom is ₹1.50 Cr (we've issued ₹49.89 L of ₹2 Cr). A ₹38 L fresh share issuance in FY27 lifts CRAR to ~9.4% and removes the regulatory risk.
+        </div>
+        <div class="ins-numbers">
+          <div class="ins-num"><div class="nl">Current CRAR</div><div class="nv" style="color:var(--red)">3.2%</div></div>
+          <div class="ins-num"><div class="nl">Capital needed</div><div class="nv">₹ 38 L</div></div>
+          <div class="ins-num"><div class="nl">Authorised headroom</div><div class="nv" style="color:var(--green)">₹ 1.50 Cr</div></div>
+        </div>
+        <div class="ins-action">💡 <strong>Suggested action:</strong> Director nomination committee to identify Class-A members willing to take additional shares · target ₹38 L by 31-Jul-2026 to clear the RCS inspection. Alternative: slow advance growth to &lt; 25% in FY27.</div>
+      </div>
+
+      <div class="ins-card critical">
+        <div class="ins-head"><span class="ins-icon">🏦</span><span class="ins-title">SLR shortfall ₹85 L — concentration in single bank (Jijau) compounds risk</span><span class="ins-tag critical">Critical · Compliance</span></div>
+        <div class="ins-body">
+          Statutory liquidity ratio holding is 15.3% against the 25% floor for tier-3 UCBs. Of the ₹1.05 Cr SLR-counted assets, all sit with Jijau Bank — a single counterparty failure would wipe out the buffer. Need to (a) shore up by ₹85 L over Q1-Q2 FY27, and (b) split across at least 2 approved counterparties.
+        </div>
+        <div class="ins-numbers">
+          <div class="ins-num"><div class="nl">SLR holding</div><div class="nv">15.3%</div></div>
+          <div class="ins-num"><div class="nl">Shortfall to reach 25%</div><div class="nv" style="color:var(--red)">₹ 85 L</div></div>
+          <div class="ins-num"><div class="nl">Single counterparty</div><div class="nv">100% (Jijau)</div></div>
+        </div>
+        <div class="ins-action">💡 <strong>Suggested action:</strong> Park ₹40 L in DCCB (district central co-op) and ₹45 L in approved G-sec MF or NABARD bonds over Q1-Q2. Diversifies and closes SLR gap simultaneously.</div>
+      </div>
+    </section>
+
+    <!-- WARNING -->
+    <section class="panel">
+      <div class="panel-head"><h2>🟡 Warning · monitor weekly</h2></div>
+
+      <div class="ins-card warning">
+        <div class="ins-head"><span class="ins-icon">📊</span><span class="ins-title">Gold-Merchant book breaches 15% own-funds cap by 21 pp</span><span class="ins-tag warning">Warning · Concentration</span></div>
+        <div class="ins-body">Merchant gold loans at 36.2% of own funds vs RBI cap of 15%. Three options: raise own funds (links to CRAR issue above), pare exposure ₹100 L over 12 months by not renewing two largest, or convert to staggered LAP-secured facilities to reduce single-product risk weight.</div>
+        <div class="ins-action">💡 Combine with capital raise — if ₹38 L share issue happens, cap headroom expands to ₹13.3 L. Buys time to grow into the cap.</div>
+      </div>
+
+      <div class="ins-card warning">
+        <div class="ins-head"><span class="ins-icon">📞</span><span class="ins-title">Top-3 depositors hold 11.8% of liabilities — pre-call before maturity</span><span class="ins-tag warning">Warning · Liquidity</span></div>
+        <div class="ins-body">Member A-001 (₹55 L FD), Trust T-01 (₹28.5 L), Member F-006 (₹18.4 L) together = ₹1.01 Cr. Spl 13-Mo FD of A-001 matures 28-Sep-2026. Non-renewal would force fire-sale of ₹55 L Jijau FD.</div>
+        <div class="ins-action">💡 CEO to call each personally 45 days before maturity · offer 25 bp loyalty top-up. Cost of retention ₹14K, much cheaper than break + re-borrow.</div>
+      </div>
+
+      <div class="ins-card warning">
+        <div class="ins-head"><span class="ins-icon">💼</span><span class="ins-title">Personal Loan overdue 9.5% — above 7% comfort band</span><span class="ins-tag warning">Warning · Underwriting</span></div>
+        <div class="ins-body">Personal Loan (GL 93) overdue ratio is 9.5%. Underwriting policy was last revised May 2023. Recent vintages (Q3-FY26 disbursements) show 14% slippage — material drift. Tighten income-multiple cap from 4× to 3×, add 1-guarantor mandatory above ₹1 L.</div>
+        <div class="ins-action">💡 Pause new personal loan approvals above ₹1 L for 30 days while policy is revised. Existing pipeline ~8 applications — re-score under new policy.</div>
+      </div>
+
+      <div class="ins-card warning">
+        <div class="ins-head"><span class="ins-icon">🪪</span><span class="ins-title">KYC re-verification overdue for 162 members</span><span class="ins-tag warning">Warning · Compliance</span></div>
+        <div class="ins-body">Periodic KYC (3-year cycle for low-risk, 2-year for medium) overdue for 162 of 2,621 members — 6.2%. RCS expects &lt; 2%. Most are dormant SB-only members.</div>
+        <div class="ins-action">💡 Bulk SMS campaign · cap of dormant SB withdrawals till re-KYC. Target close-out by 30-Jun-2026.</div>
+      </div>
+
+      <div class="ins-card warning">
+        <div class="ins-head"><span class="ins-icon">📋</span><span class="ins-title">RCS audit qualification response pending</span><span class="ins-tag warning">Warning · Governance</span></div>
+        <div class="ins-body">Last year's RCS qualification on inadequate NPA provision still has no formal point-wise response on file. Deadline 30-Jun-2026 — risk of repeat qualification.</div>
+        <div class="ins-action">💡 Manager to draft point-wise reply to all 7 observations by 31-May. Board chairman to review and sign before submission.</div>
+      </div>
+    </section>
+
+    <!-- OPPORTUNITY -->
+    <section class="panel">
+      <div class="panel-head"><h2>🔵 Opportunity · plan for next board</h2></div>
+
+      <div class="ins-card opportunity">
+        <div class="ins-head"><span class="ins-icon">⚡</span><span class="ins-title">Redeploy ₹22 L idle bank balance to fresh loans</span><span class="ins-tag opportunity">Opportunity · Yield</span></div>
+        <div class="ins-body">₹22 L sits in ICICI + Jijau (above operational liquidity needs of ₹15 L). Earning ~6.5% in bank vs 12.5% as advances. Redeployment = ₹1.32 L/year extra NII. Pairs naturally with Merchant Loan Engine pipeline.</div>
+        <div class="ins-action">💡 Allocate ₹15 L to Tier-2 Merchant approvals, ₹7 L to LAP top-ups. Six-month deployment plan.</div>
+      </div>
+
+      <div class="ins-card opportunity">
+        <div class="ins-head"><span class="ins-icon">🌟</span><span class="ins-title">Merchant-002 ready for Platinum upgrade · co-branded card pilot</span><span class="ins-tag opportunity">Opportunity · Network</span></div>
+        <div class="ins-body">Merchant-002 hit loyalty score 912 last week — 6 services, 6 years, 0 missed EMI, attended 5/5 AGMs, referred 4 members. Ideal first Platinum customer. Pilot the co-branded merchant card here.</div>
+        <div class="ins-action">💡 Invite to next board meeting · co-design the Platinum benefits package. Use as marketing case study for other merchants.</div>
+      </div>
+
+      <div class="ins-card opportunity">
+        <div class="ins-head"><span class="ins-icon">📲</span><span class="ins-title">UPI-EMI auto-debit pilot · could cut DRS-style overdue origination</span><span class="ins-tag opportunity">Opportunity · Digital</span></div>
+        <div class="ins-body">38% of EMI repayments still come via cash counter. Mandatory UPI-mandate on new loan sanctions would reduce missed-EMI events by ~60% (industry data). Zero cost — just a policy change.</div>
+        <div class="ins-action">💡 Add to standard sanction letter: UPI auto-mandate required. Existing borrowers can voluntarily migrate (25 bp rate concession as incentive).</div>
+      </div>
+
+      <div class="ins-card opportunity">
+        <div class="ins-head"><span class="ins-icon">📞</span><span class="ins-title">FD maturity calling can lift renewal rate from 78% to 90%</span><span class="ins-tag opportunity">Opportunity · Liability</span></div>
+        <div class="ins-body">Renewal rate on FD maturities is 78% (industry top quartile 90%). Each lost ₹1 L FD costs ~₹4K in higher cost of replacement deposit. With 130+ maturities/year, lifting rate to 90% = ₹52K saving + ₹13 L fresh-acquisition avoided.</div>
+        <div class="ins-action">💡 Implement T-30 call · T-15 SMS · T-3 personal visit protocol. Cost: ₹12K/yr. Net benefit: ₹40K + retained relationships.</div>
+      </div>
+    </section>
+
+    <!-- 30-DAY CALENDAR -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>📅 Forward calendar · next 30 days</h2>
+        <div class="panel-sub">Auto-aggregated from FD maturities, EMI dues, compliance deadlines, board calendar</div>
+      </div>
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Date</th><th>Event</th><th>Amount / impact</th><th>Owner</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td><b>18 May</b></td><td>SMA-2 cohort hits 90 DPD — 4 accounts convert to NPA if unpaid</td><td>₹ 5.40 L · ₹1.6L provision</td><td>Loans · Officer-A</td><td><span class="cal-tag cal-crit">Critical</span></td></tr>
+            <tr><td><b>20 May</b></td><td>Member A-001 FD partial maturity ₹15 L · call needed</td><td>₹ 15.00 L</td><td>Deposits · Officer-B</td><td><span class="cal-tag cal-watch">Watch</span></td></tr>
+            <tr><td><b>22 May</b></td><td>Merchant-007 application acceptance deadline (counter ₹6.5L)</td><td>₹ 6.50 L</td><td>Loans · Officer-A</td><td><span class="cal-tag cal-watch">Watch</span></td></tr>
+            <tr><td><b>25 May</b></td><td>Board meeting · 6 agenda items including DRS resolution</td><td>strategic</td><td>Chairman</td><td><span class="cal-tag cal-crit">Critical</span></td></tr>
+            <tr><td><b>27 May</b></td><td>3 Spl 100-Day FDs mature ₹ 28.5 L (Trust T-01)</td><td>₹ 28.50 L</td><td>Deposits · CEO call</td><td><span class="cal-tag cal-crit">Critical</span></td></tr>
+            <tr><td><b>31 May</b></td><td>RCS audit qualification response · final draft to chairman</td><td>regulatory</td><td>Manager</td><td><span class="cal-tag cal-watch">Watch</span></td></tr>
+            <tr><td><b>05 Jun</b></td><td>Statutory provision review · monthly NPA closure</td><td>₹ 0.40 L</td><td>Accounts</td><td><span class="cal-tag cal-routine">Routine</span></td></tr>
+            <tr><td><b>10 Jun</b></td><td>FD maturity cluster · ~12 accounts · ₹ 18 L</td><td>₹ 18.00 L</td><td>Deposits</td><td><span class="cal-tag cal-watch">Watch</span></td></tr>
+            <tr><td><b>15 Jun</b></td><td>Member-360 KYC bulk drive begins (162 members)</td><td>compliance</td><td>Membership · Officer-C</td><td><span class="cal-tag cal-routine">Routine</span></td></tr>
+            <tr style="background:#f0fdf4"><td><b>Jul 2026</b></td><td>Capital raise drive · target ₹38 L fresh shares</td><td>₹ 38 L</td><td>Chairman</td><td><span class="cal-tag cal-planned">Planned</span></td></tr>
+            <tr style="background:#f0fdf4"><td><b>Aug 2026</b></td><td>RCS biennial inspection (tentative)</td><td>regulatory</td><td>Manager + Auditor</td><td><span class="cal-tag cal-planned">Planned</span></td></tr>
+            <tr style="background:#f0fdf4"><td><b>Sep 2026</b></td><td>DRS go/no-go decision (recovery review)</td><td>₹ 4.2 L provision</td><td>Board</td><td><span class="cal-tag cal-planned">Planned</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Rule-engine driven · LLM layer = Phase-2</span></footer>
+  </main>
+</body>
+</html>

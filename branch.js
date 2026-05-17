@@ -69,3 +69,25 @@ document.addEventListener("DOMContentLoaded", () => {
   drawAgeingChart();
   wireDrill();
 });
+
+/* ---------------- v2: 7-day cash trend ---------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.Chart) return;
+  const el = document.getElementById('branch-7day');
+  if (!el) return;
+  new Chart(el, {
+    type: 'line',
+    data: {
+      labels: ['10 May','11 May','12 May','13 May','14 May','15 May','16 May'],
+      datasets: [
+        { label: 'Cash in hand', data: [12.4, 14.8, 16.2, 15.6, 17.3, 18.4, 19.08],
+          borderColor: AU.colors.accent, backgroundColor: AU.alpha(AU.colors.accent, .14), fill: true, tension: .35, pointRadius: 3 },
+        { label: 'Bank balances', data: [18.6, 19.4, 20.2, 21.5, 22.1, 22.8, 22.34],
+          borderColor: AU.colors.brand, backgroundColor: AU.alpha(AU.colors.brand, .12), fill: true, tension: .35, pointRadius: 3 },
+        { label: 'Total liquid', data: [31.0, 34.2, 36.4, 37.1, 39.4, 41.2, 41.42],
+          borderColor: AU.colors.green, borderDash: [4,3], pointRadius: 3, fill: false, tension: .35 }
+      ]
+    },
+    options: Object.assign(AU.baseOpts(false), { plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10 } } } })
+  });
+});

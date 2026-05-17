@@ -236,3 +236,25 @@ function wirePeriodLabel() {
   compare.addEventListener("change", update);
   update();
 }
+
+/* ---------------- v2 enrichment: CRAR headroom (Chart.js) ---------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.Chart) return;
+  const el = document.getElementById('crar-headroom');
+  if (!el) return;
+  new Chart(el, {
+    type: 'line',
+    data: {
+      labels: ['FY24', 'FY25', 'FY26', 'FY27 (proj)', 'FY28 (proj)', 'FY29 (proj)'],
+      datasets: [
+        { label: 'CRAR % (current pace)', data: [4.8, 4.2, 3.2, 2.4, 1.6, 0.9],
+          borderColor: AU.colors.red, backgroundColor: AU.alpha(AU.colors.red, .12), fill: true, tension: .35, pointRadius: 3 },
+        { label: 'CRAR % (if ?38L fresh capital in FY27)', data: [4.8, 4.2, 3.2, 9.4, 9.8, 10.4],
+          borderColor: AU.colors.green, backgroundColor: AU.alpha(AU.colors.green, .12), fill: true, tension: .35, pointRadius: 3, borderDash: [4,3] },
+        { label: 'RBI floor 9%', data: [9,9,9,9,9,9],
+          borderColor: AU.colors.muted, borderWidth: 1.4, borderDash: [2,3], pointRadius: 0, fill: false }
+      ]
+    },
+    options: Object.assign(AU.baseOpts(true), { plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10 } } } })
+  });
+});

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Employee Performance</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="employee">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · staff names anonymised. KPIs auto-aggregate from CBS user-action audit trail.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">Employee Performance</div><div class="brand-sub">Officer accountability · SMA origination · txn throughput</div></div></div>
+    <div class="filters"><div class="filter"><label>Period</label><select><option>May 2026 (MTD)</option><option>Apr 2026</option><option>FY26 full</option></select></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>Staff productivity &amp; accountability</h1><p>Who originated NPAs? · Who's overloaded? · Where's the throughput?</p></div>
+
+    <section class="panel">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Total staff</div><div class="kpi-value">7</div><div class="kpi-delta muted">incl. recovery officer</div></div>
+        <div class="kpi"><div class="kpi-label">Txns MTD</div><div class="kpi-value">1,847</div><div class="kpi-delta up">▲ 12% MoM</div></div>
+        <div class="kpi"><div class="kpi-label">Loans disbursed</div><div class="kpi-value">14</div><div class="kpi-delta muted">₹ 22.4 L</div></div>
+        <div class="kpi"><div class="kpi-label">New a/cs opened</div><div class="kpi-value">28</div><div class="kpi-delta up">22 SB · 6 FD</div></div>
+        <div class="kpi warning"><div class="kpi-label">SMA originated this FY</div><div class="kpi-value">11</div><div class="kpi-delta down">7 by one officer ⚠</div></div>
+        <div class="kpi"><div class="kpi-label">Avg login → action</div><div class="kpi-value">28 min</div><div class="kpi-delta up">healthy active time</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="card">
+        <div class="card-head"><h3>Staff scorecard · May 2026 MTD</h3></div>
+        <table class="tbl">
+          <thead><tr><th>Employee</th><th>Role</th><th class="r">Txns</th><th class="r">Deposits booked</th><th class="r">Loans appr.</th><th class="r">Loan volume</th><th class="r">SMA originated</th><th>Rating</th></tr></thead>
+          <tbody>
+            <tr><td>Officer-A (Loans)</td><td>Branch Manager</td><td class="r">412</td><td class="r">₹ 6.20 L</td><td class="r">8</td><td class="r">₹ 12.80 L</td><td class="r"><b style="color:var(--green)">0</b></td><td><span class="pill green">Excellent</span></td></tr>
+            <tr><td>Officer-B (Deposits)</td><td>Deposits Officer</td><td class="r">386</td><td class="r">₹ 18.40 L</td><td class="r">2</td><td class="r">₹ 1.20 L</td><td class="r"><b style="color:var(--green)">0</b></td><td><span class="pill green">Excellent</span></td></tr>
+            <tr><td>Officer-C (Membership)</td><td>Accounts Clerk</td><td class="r">298</td><td class="r">₹ 4.20 L</td><td class="r">3</td><td class="r">₹ 4.40 L</td><td class="r"><b style="color:var(--amber)">2</b></td><td><span class="pill blue">Good</span></td></tr>
+            <tr><td>Officer-D (Teller)</td><td>Teller / Cashier</td><td class="r">428</td><td class="r">₹ 3.10 L</td><td class="r">0</td><td class="r">—</td><td class="r">0</td><td><span class="pill blue">Good</span></td></tr>
+            <tr><td>Officer-E (Loans-2)</td><td>Loan Officer</td><td class="r">187</td><td class="r">₹ 1.20 L</td><td class="r">1</td><td class="r">₹ 4.00 L</td><td class="r"><b style="color:var(--red)">7</b></td><td><span class="pill red">Review ⚠</span></td></tr>
+            <tr><td>Officer-F (Recovery)</td><td>Recovery Officer</td><td class="r">86</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">N/A</td><td><span class="pill blue">Recovery focus</span></td></tr>
+            <tr><td>CEO Office</td><td>CEO</td><td class="r">50</td><td class="r">overrides</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td><span class="pill grey">N/A</span></td></tr>
+          </tbody>
+        </table>
+        <div class="callout bad mt8">
+          <strong>Concentration:</strong> Officer-E originated 7 of the 11 SMA-tagged loans this FY (64%). Either training gap or judgement issue. Recommended: pause solo origination · pair-review with Officer-A for 60 days · revisit at 31-Jul.
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Transaction throughput · MTD</h3></div>
+          <div class="cv"><canvas id="emp-tx"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Loan-quality by originator</h3><span class="muted">SMA originated vs disbursed · last 12 m</span></div>
+          <div class="cv"><canvas id="emp-quality"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Officer accountability</span></footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      new Chart(document.getElementById('emp-tx'), {
+        type: 'bar',
+        data: {
+          labels: ['Officer-A','Officer-B','Officer-C','Officer-D','Officer-E','Officer-F','CEO'],
+          datasets: [{ label: 'Txns MTD', data: [412, 386, 298, 428, 187, 86, 50],
+            backgroundColor: AU.alpha(AU.colors.brand,.85), borderRadius: 4 }]
+        },
+        options: Object.assign(AU.baseOpts(true), { plugins: { legend: { display: false } } })
+      });
+      new Chart(document.getElementById('emp-quality'), {
+        type: 'bar',
+        data: {
+          labels: ['Officer-A','Officer-C','Officer-E'],
+          datasets: [
+            { label: 'Loans originated', data: [42, 18, 14], backgroundColor: AU.alpha(AU.colors.brand,.85), borderRadius: 4 },
+            { label: 'Of which SMA / NPA', data: [1, 2, 7], backgroundColor: AU.alpha(AU.colors.red,.85), borderRadius: 4 },
+          ]
+        },
+        options: Object.assign(AU.baseOpts(true), { plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } } })
+      });
+    });
+  </script>
+</body>
+</html>

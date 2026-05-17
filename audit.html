@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Audit &amp; Inspection</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="audit">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · audit-trail items reconstructed from typical UCB qualification patterns. Live tracker auto-imports observations from auditor PDFs.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">Audit &amp; Inspection Tracker</div><div class="brand-sub">Internal · RCS · Statutory · NABARD</div></div></div>
+    <div class="filters"><div class="filter"><label>Audit type</label><select><option>All (current + last 2 yrs)</option><option>Internal</option><option>RCS</option><option>Statutory</option><option>NABARD</option></select></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>Audit &amp; Inspection</h1><p>Single source of truth for every observation, ARR (Action Taken Report) and clearance timeline.</p></div>
+
+    <section class="panel">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Total observations open</div><div class="kpi-value">14</div><div class="kpi-delta down">3 critical · 6 medium · 5 low</div></div>
+        <div class="kpi"><div class="kpi-label">Closed YTD</div><div class="kpi-value">22</div><div class="kpi-delta up">▲ 11 vs prior FY</div></div>
+        <div class="kpi"><div class="kpi-label">RCS qualification points</div><div class="kpi-value">7</div><div class="kpi-delta down">response pending 30-Jun</div></div>
+        <div class="kpi"><div class="kpi-label">Statutory audit status</div><div class="kpi-value">In progress</div><div class="kpi-delta muted">CA firm engaged · 18-Aug close</div></div>
+        <div class="kpi"><div class="kpi-label">Internal audit cycle</div><div class="kpi-value">Q1 done</div><div class="kpi-delta up">Q2 starts 02-Jun</div></div>
+        <div class="kpi"><div class="kpi-label">Next NABARD ref</div><div class="kpi-value">2027</div><div class="kpi-delta muted">indirect via RCS</div></div>
+      </div>
+    </section>
+
+    <!-- Tabs for audit types -->
+    <section class="panel">
+      <div class="panel-head"><h2>Open observations by source</h2></div>
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>RCS audit qualification · FY25 · open response</h3><span class="muted">7 observations</span></div>
+          <table class="tbl">
+            <thead><tr><th>#</th><th>Observation</th><th>Severity</th><th>Owner</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>RCS-1</td><td>NPA provision shortfall ₹0.40 L on doubtful book</td><td><span class="pill red">High</span></td><td>Accounts</td><td><span class="pill amber">In progress</span></td></tr>
+              <tr><td>RCS-2</td><td>SLR holding 15.3% below statutory 25%</td><td><span class="pill red">High</span></td><td>CEO</td><td><span class="pill amber">Plan tabled</span></td></tr>
+              <tr><td>RCS-3</td><td>CRAR 3.2% below RBI floor 9%</td><td><span class="pill red">High</span></td><td>Chairman</td><td><span class="pill amber">Capital plan</span></td></tr>
+              <tr><td>RCS-4</td><td>Gold-Merchant exposure exceeds 15% own funds cap</td><td><span class="pill amber">Medium</span></td><td>Credit Comm.</td><td><span class="pill amber">Plan tabled</span></td></tr>
+              <tr><td>RCS-5</td><td>KYC re-verification overdue for 6.2% members</td><td><span class="pill amber">Medium</span></td><td>Membership</td><td><span class="pill blue">Drive started</span></td></tr>
+              <tr><td>RCS-6</td><td>Director-D7 attendance 50% — by-law trigger</td><td><span class="pill amber">Medium</span></td><td>Chairman</td><td><span class="pill blue">Show-cause</span></td></tr>
+              <tr><td>RCS-7</td><td>Cash retention &gt; ₹15 L on 4 occasions</td><td><span class="pill grey">Low</span></td><td>Branch Mgr</td><td><span class="pill amber">SOP revised</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Internal audit · Q1 FY27 findings</h3><span class="muted">4 observations · internal CA</span></div>
+          <table class="tbl">
+            <thead><tr><th>#</th><th>Observation</th><th>Severity</th><th>Owner</th><th>Target</th></tr></thead>
+            <tbody>
+              <tr><td>IA-1</td><td>Daybook voucher numbering breaks on 5 days</td><td><span class="pill amber">Medium</span></td><td>Branch Mgr</td><td>31-May</td></tr>
+              <tr><td>IA-2</td><td>EOD cash count missed on 3 days (no signed register)</td><td><span class="pill amber">Medium</span></td><td>Teller</td><td>20-May</td></tr>
+              <tr><td>IA-3</td><td>Personal loan disbursement on weak documentation (2 cases)</td><td><span class="pill red">High</span></td><td>Loans Officer-A</td><td>31-May</td></tr>
+              <tr><td>IA-4</td><td>FD payout receipts not collected back from 2 members</td><td><span class="pill grey">Low</span></td><td>Deposits Officer-B</td><td>10-Jun</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Statutory audit · FY26 timeline</h3><span class="muted">CA Firm M/s Padalkar &amp; Co.</span></div>
+          <table class="tbl">
+            <tbody>
+              <tr><td>Engagement letter signed</td><td class="r">02 Apr 2026</td><td><span class="pill green">Closed</span></td></tr>
+              <tr><td>Books cut-off &amp; TB shared</td><td class="r">14 Apr 2026</td><td><span class="pill green">Closed</span></td></tr>
+              <tr><td>Voucher sampling (5%) complete</td><td class="r">28 Apr 2026</td><td><span class="pill green">Closed</span></td></tr>
+              <tr><td>SLR / CRR verification</td><td class="r">12 May 2026</td><td><span class="pill amber">In progress</span></td></tr>
+              <tr><td>Loan portfolio quality review</td><td class="r">25 May 2026</td><td><span class="pill blue">Scheduled</span></td></tr>
+              <tr><td>Draft report to board</td><td class="r">14 Jul 2026</td><td><span class="pill blue">Scheduled</span></td></tr>
+              <tr><td>Signed report &amp; AGM presentation</td><td class="r">18 Aug 2026</td><td><span class="pill blue">Scheduled</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Inspection history (3 years)</h3></div>
+          <div class="cv"><canvas id="audit-history"></canvas></div>
+          <div class="callout good mt8">Observation count trending down — 38 (FY24) → 28 (FY25) → 14 open (FY26). Closure cadence is improving.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Audit workspace</span></footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      new Chart(document.getElementById('audit-history'), {
+        type: 'bar',
+        data: { labels: ['FY24','FY25','FY26'],
+          datasets: [
+            { label: 'Critical', data: [12, 8, 3], backgroundColor: AU.colors.red, stack: 's' },
+            { label: 'Medium',   data: [18, 14, 6], backgroundColor: AU.colors.amber, stack: 's' },
+            { label: 'Low',      data: [8, 6, 5],  backgroundColor: AU.colors.muted, stack: 's' },
+          ]
+        },
+        options: Object.assign(AU.baseOpts(true), {
+          plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10 } } },
+          scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true } }
+        })
+      });
+    });
+  </script>
+</body>
+</html>

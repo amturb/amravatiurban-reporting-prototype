@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Merchant Loan Engine (Prototype)</title>
+  <meta name="theme-color" content="#0f4c81" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="merchants">
+  <div class="proto-banner">
+    <strong>Illustrative prototype</strong> · this is the <em>flagship</em> module for Amravati Urban's UPI-Merchant lending vision.
+    A merchant's <strong>loyalty score</strong> rewards length-of-relationship and breadth-of-service-usage over raw turnover — so we build a network that grows <em>with</em> us, not one that leaves the moment a loan is denied.
+  </div>
+
+  <header class="app-bar">
+    <div class="brand">
+      <div class="logo">AU</div>
+      <div>
+        <div class="brand-name">Merchant Loan Engine</div>
+        <div class="brand-sub">UPI eligibility · Loyalty-weighted · CBS-native</div>
+      </div>
+    </div>
+    <div class="filters">
+      <div class="filter">
+        <label>Branch</label>
+        <select><option>Amravati (HO)</option></select>
+      </div>
+      <div class="filter">
+        <label>Underwriting policy</label>
+        <select><option>FY26-Q3 policy</option><option>Pilot policy</option></select>
+      </div>
+      <button class="btn-ghost" title="Refresh">↻</button>
+    </div>
+    <div class="user">
+      <div class="user-name">CEO Office</div>
+      <div class="user-role">CEO · Underwriting committee</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="pg-title">
+      <h1>Merchant Loan Engine · Loyalty-Weighted Eligibility</h1>
+      <p>5-factor score on 1000 points · UPI volume only counts <em>after</em> 12-month tenure with the society · cross-sell counts more than transaction count.</p>
+    </div>
+
+    <!-- =================== PORTFOLIO HEADLINE =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Merchant portfolio at a glance</h2>
+        <div class="panel-sub">14 active Gold-Merchant accounts · book ₹ 2.50 Cr · target FY27 = 60 merchants · ₹ 4.20 Cr</div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Active merchants</div><div class="kpi-value">14</div><div class="kpi-delta up">▲ 6 in FY26</div></div>
+        <div class="kpi"><div class="kpi-label">Loyalty score · weighted avg</div><div class="kpi-value">642 / 1000</div><div class="kpi-delta muted">improving · was 591 in Sep-25</div></div>
+        <div class="kpi"><div class="kpi-label">Avg services per merchant</div><div class="kpi-value">2.4</div><div class="kpi-delta up">SB+Loan baseline · 3 are 4-service</div></div>
+        <div class="kpi"><div class="kpi-label">UPI volume (Apr-26)</div><div class="kpi-value">₹ 18.40 L</div><div class="kpi-delta up">▲ 4× YoY</div></div>
+        <div class="kpi warning"><div class="kpi-label">Single-merchant cap breach</div><div class="kpi-value">1</div><div class="kpi-delta down">Merchant-001 · 11.4% of own funds</div></div>
+        <div class="kpi"><div class="kpi-label">Pending applications</div><div class="kpi-value">5</div><div class="kpi-delta muted">3 likely · 2 review</div></div>
+      </div>
+    </section>
+
+    <!-- =================== ACTIVE APPLICATION =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Active application · APP-2026-018</h2>
+        <div class="panel-sub">Merchant-007 · seeking ₹ 8,00,000 · auto-scored 18 minutes ago</div>
+      </div>
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Merchant profile</h3><span class="muted">CBS-linked snapshot</span></div>
+          <div class="flex" style="gap:14px">
+            <div style="width:48px;height:48px;border-radius:10px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:800">🛒</div>
+            <div>
+              <div style="font-size:15px;font-weight:800">Merchant-007 · Retail Provisions</div>
+              <div class="muted small">VPA: merchant007@upi · Class-A member since Aug-2022 (3y 9m)</div>
+              <span class="pill blue mt8" style="display:inline-block">Loyalty tier: Silver</span>
+            </div>
+          </div>
+          <table class="tbl mt14">
+            <tbody>
+              <tr><td class="muted">Business</td><td>Kirana / FMCG retail</td></tr>
+              <tr><td class="muted">Declared annual turnover</td><td>₹ 62.00 L (GST-filed)</td></tr>
+              <tr><td class="muted">SB balance · avg 6m</td><td>₹ 84,200</td></tr>
+              <tr><td class="muted">FDs with society</td><td>2 FDs · ₹ 1.20 L</td></tr>
+              <tr><td class="muted">Existing loan</td><td>Gold loan ₹ 1.50 L · 0 missed EMI</td></tr>
+              <tr><td class="muted">UPI txns (12m via society QR)</td><td>2,847 txns · ₹ 38.60 L volume</td></tr>
+              <tr><td class="muted">CIBIL</td><td>724 (good)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Loyalty-weighted eligibility</h3><span class="muted">5-factor · max 1000 pts</span></div>
+          <div class="flex" style="gap:18px;align-items:center;margin:6px 0 12px">
+            <div class="score-ring hi"><div><span>724</span><small style="font-size:9px">/1000</small></div></div>
+            <div>
+              <div style="font-size:14px;font-weight:800;color:var(--green)">✓ Approve · Tier-2 eligibility</div>
+              <div class="muted small">Eligible: <b style="color:var(--ink)">₹ 6.50 L</b> (counter from ₹ 8.00 L sought)</div>
+              <div class="muted small">Pricing: 13.5% (peer rate 14%) · 24-mo tenure · personal-guarantee waiver</div>
+            </div>
+          </div>
+          <div class="loyalty-bar">
+            <div><b>Tenure &amp; loyalty</b><div class="muted small">25% weight · 3y 9m</div></div>
+            <div class="lb-track"><div class="lb-fill good" style="width:78%"></div></div>
+            <div style="text-align:right"><b>195</b>/250</div>
+          </div>
+          <div class="loyalty-bar">
+            <div><b>Service breadth</b><div class="muted small">20% weight · SB+FD+Gold+UPI = 4/6 services</div></div>
+            <div class="lb-track"><div class="lb-fill good" style="width:67%"></div></div>
+            <div style="text-align:right"><b>134</b>/200</div>
+          </div>
+          <div class="loyalty-bar">
+            <div><b>Banking discipline</b><div class="muted small">20% weight · 0 missed EMI · low SB-volatility</div></div>
+            <div class="lb-track"><div class="lb-fill good" style="width:88%"></div></div>
+            <div style="text-align:right"><b>175</b>/200</div>
+          </div>
+          <div class="loyalty-bar">
+            <div><b>UPI consistency</b><div class="muted small">15% weight · 237 txns/mo · cv 18%</div></div>
+            <div class="lb-track"><div class="lb-fill warn" style="width:60%"></div></div>
+            <div style="text-align:right"><b>90</b>/150</div>
+          </div>
+          <div class="loyalty-bar">
+            <div><b>External credit (CIBIL)</b><div class="muted small">10% weight · 724</div></div>
+            <div class="lb-track"><div class="lb-fill good" style="width:72%"></div></div>
+            <div style="text-align:right"><b>72</b>/100</div>
+          </div>
+          <div class="loyalty-bar">
+            <div><b>Engagement bonus</b><div class="muted small">10% weight · attended 3/4 AGMs · referred 2 members</div></div>
+            <div class="lb-track"><div class="lb-fill good" style="width:58%"></div></div>
+            <div style="text-align:right"><b>58</b>/100</div>
+          </div>
+          <div class="flex mt14" style="gap:8px">
+            <button class="btn-ghost" style="background:var(--green);color:#fff;border-color:var(--green);flex:1">✓ Approve ₹ 6.50 L</button>
+            <button class="btn-ghost" style="background:var(--amber);color:#fff;border-color:var(--amber);flex:1">↻ Counter offer</button>
+            <button class="btn-ghost" style="background:var(--red);color:#fff;border-color:var(--red);flex:1">✗ Decline</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>UPI transaction history · last 12 months</h3><span class="muted">society-QR volume vs txn count</span></div>
+          <div class="cv"><canvas id="m-upi"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Eligibility radar</h3><span class="muted">vs network median for Class-A members</span></div>
+          <div class="cv"><canvas id="m-radar"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== LOYALTY-TIER POLICY =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Loyalty-tier policy · how scores translate to product access</h2>
+        <div class="panel-sub">Designed to grow merchants with us — not reward turnover alone</div>
+      </div>
+      <div class="row">
+        <div class="card">
+          <table class="tbl">
+            <thead><tr><th>Tier</th><th>Score band</th><th>Tenure floor</th><th>Service floor</th><th class="r">Max ticket</th><th class="r">Rate</th><th>Collateral</th><th>What unlocks</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="pill grey">Bronze</span></td>
+                <td>400 – 549</td>
+                <td>≥ 6 months</td>
+                <td>SB + UPI</td>
+                <td class="r">₹ 1.50 L</td>
+                <td class="r">15.0%</td>
+                <td>Personal guarantee + post-dated cheques</td>
+                <td>Onboarding tier — entry to merchant network</td>
+              </tr>
+              <tr>
+                <td><span class="pill blue">Silver</span></td>
+                <td>550 – 699</td>
+                <td>≥ 18 months</td>
+                <td>3 services</td>
+                <td class="r">₹ 5.00 L</td>
+                <td class="r">13.5%</td>
+                <td>Gold or PDC + 1 guarantor</td>
+                <td>UPI top-up · early FD-renewal cashback</td>
+              </tr>
+              <tr>
+                <td><span class="pill amber">Gold</span></td>
+                <td>700 – 849</td>
+                <td>≥ 3 years</td>
+                <td>4 services</td>
+                <td class="r">₹ 10.00 L</td>
+                <td class="r">12.5%</td>
+                <td>Hypothecation only</td>
+                <td>Working-capital CC limit · doorstep cash · waived processing fee</td>
+              </tr>
+              <tr>
+                <td><span class="pill green">Platinum</span></td>
+                <td>850 – 1000</td>
+                <td>≥ 5 years</td>
+                <td>5 services + AGM</td>
+                <td class="r">₹ 25.00 L</td>
+                <td class="r">11.0%</td>
+                <td>Clean balance sheet</td>
+                <td>Co-branded merchant card · priority dividend · board referral right</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout info mt8">
+            <strong>Design intent:</strong> A merchant who only uses our QR for two months and asks for ₹10 L gets Bronze. A 4-year member using SB+FD+Gold+UPI and attending AGMs gets Gold — even if turnover is modest. The score punishes "loan-and-leave" behaviour and rewards staying.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== NETWORK VIEW =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Merchant network · who's growing with us</h2>
+        <div class="panel-sub">14 active merchants ranked by loyalty score · spot the platinum prospects</div>
+      </div>
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Top loyalty merchants</h3><span class="muted">cross-sell + tenure ranked</span></div>
+          <table class="tbl">
+            <thead><tr><th>Merchant</th><th>Tier</th><th class="r">Score</th><th>Tenure</th><th>Services</th><th class="r">UPI vol/mo</th><th class="r">Active loan</th></tr></thead>
+            <tbody>
+              <tr><td>Merchant-002</td><td><span class="pill green">Platinum</span></td><td class="r">912</td><td>6y 2m</td><td>SB · FD · Gold · UPI · RD · CC</td><td class="r">₹ 4.20 L</td><td class="r">₹ 17.20 L</td></tr>
+              <tr><td>Merchant-005</td><td><span class="pill amber">Gold</span></td><td class="r">814</td><td>4y 5m</td><td>SB · FD · Gold · UPI · RD</td><td class="r">₹ 2.80 L</td><td class="r">₹ 6.40 L</td></tr>
+              <tr><td>Merchant-001</td><td><span class="pill amber">Gold</span></td><td class="r">782</td><td>5y 8m</td><td>SB · FD · Gold · UPI</td><td class="r">₹ 5.10 L</td><td class="r">₹ 28.40 L</td></tr>
+              <tr><td>Merchant-003</td><td><span class="pill blue">Silver</span></td><td class="r">688</td><td>2y 11m</td><td>SB · Gold · UPI</td><td class="r">₹ 1.60 L</td><td class="r">₹ 4.80 L</td></tr>
+              <tr><td>Merchant-007</td><td><span class="pill blue">Silver</span></td><td class="r">724</td><td>3y 9m</td><td>SB · FD · Gold · UPI</td><td class="r">₹ 3.20 L</td><td class="r">₹ 1.50 L</td></tr>
+              <tr><td>Merchant-009</td><td><span class="pill blue">Silver</span></td><td class="r">612</td><td>2y 2m</td><td>SB · Gold · UPI</td><td class="r">₹ 0.90 L</td><td class="r">₹ 2.00 L</td></tr>
+              <tr><td>Merchant-011</td><td><span class="pill grey">Bronze</span></td><td class="r">498</td><td>1y 1m</td><td>SB · UPI</td><td class="r">₹ 0.70 L</td><td class="r">₹ 1.20 L</td></tr>
+              <tr><td>Merchant-014</td><td><span class="pill grey">Bronze</span></td><td class="r">442</td><td>7m</td><td>SB · UPI</td><td class="r">₹ 0.40 L</td><td class="r">₹ 0.50 L</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Network growth · "growing with us" cohort</h3><span class="muted">tier transitions · last 18 months</span></div>
+          <div class="cv"><canvas id="m-tiers"></canvas></div>
+          <div class="callout good mt8">
+            <strong>Healthy signal:</strong> Of 14 merchants, 9 (64%) upgraded tier in last 18 months. Merchant-002 graduated Bronze → Platinum in 4 years — referenceable case for branch pitches.
+          </div>
+          <table class="tbl mt8">
+            <thead><tr><th>Behaviour</th><th class="r">Count</th><th>Treatment</th></tr></thead>
+            <tbody>
+              <tr><td>Tier upgraded in 18m</td><td class="r">9</td><td><span class="pill green">Network builder</span></td></tr>
+              <tr><td>Stable in tier</td><td class="r">3</td><td><span class="pill blue">Maintain</span></td></tr>
+              <tr><td>Tier downgrade risk (UPI inactive 60d)</td><td class="r">1</td><td><span class="pill amber">Re-engage</span></td></tr>
+              <tr><td>"Loan &amp; leave" flag (closed FD post-disbursement)</td><td class="r">1</td><td><span class="pill red">Do not renew</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== DECLINED COHORT =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Recent decisions · including declines we re-pitched</h2>
+        <div class="panel-sub">Auto-counter beats outright decline · keeps the network warm</div>
+      </div>
+      <div class="row">
+        <div class="card">
+          <table class="tbl">
+            <thead><tr><th>App #</th><th>Merchant</th><th class="r">Sought</th><th class="r">Score</th><th>Decision</th><th>Counter</th><th>Outcome</th></tr></thead>
+            <tbody>
+              <tr><td>APP-2026-014</td><td>Merchant-prospect-A</td><td class="r">₹ 5.00 L</td><td class="r">388</td><td><span class="pill red">Decline</span></td><td>Open SB + 6-mo UPI; re-apply</td><td>SB opened · 4 months in</td></tr>
+              <tr><td>APP-2026-015</td><td>Merchant-prospect-B</td><td class="r">₹ 12.00 L</td><td class="r">522</td><td><span class="pill amber">Counter</span></td><td>₹ 3.50 L Bronze + FD pledge</td><td>Accepted ₹3.5L · scoring Silver in 6m</td></tr>
+              <tr><td>APP-2026-016</td><td>Merchant-009</td><td class="r">₹ 4.00 L</td><td class="r">612</td><td><span class="pill green">Approve</span></td><td>—</td><td>Disbursed · regular EMI</td></tr>
+              <tr><td>APP-2026-017</td><td>Merchant-prospect-C</td><td class="r">₹ 6.00 L</td><td class="r">418</td><td><span class="pill red">Decline</span></td><td>Cross-sell SB + Gold; revisit</td><td>Walked away (loan-only intent)</td></tr>
+              <tr><td>APP-2026-018</td><td>Merchant-007</td><td class="r">₹ 8.00 L</td><td class="r">724</td><td><span class="pill green">Approve</span></td><td>Counter ₹ 6.50 L</td><td>Pending acceptance</td></tr>
+            </tbody>
+          </table>
+          <div class="callout info mt8">
+            <strong>Network discipline:</strong> Outright declines are rare (2 in 5). Most low-scorers get a small Bronze counter + service-cross-sell — they either bond or self-select out. The single "loan-only walkaway" is exactly the kind of merchant we don't want — model is filtering correctly.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>Illustrative prototype · merchant model uses real Gold-Merchant book · live UPI &amp; CIBIL pulls land Phase-2</span>
+      <span>Designed for K3One CBS</span>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      const months = ['Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May'];
+      new Chart(document.getElementById('m-upi'), {
+        type: 'bar',
+        data: {
+          labels: months,
+          datasets: [
+            { label: 'Volume (₹ L)', data: [1.8,2.1,2.4,2.6,3.0,3.2,3.4,3.6,3.9,4.1,4.3,4.6],
+              backgroundColor: AU.alpha(AU.colors.brand, .8), borderRadius: 4, yAxisID: 'y' },
+            { label: 'Txn count', data: [124,142,158,172,189,202,218,237,251,268,274,289],
+              type: 'line', borderColor: AU.colors.accent, backgroundColor: AU.alpha(AU.colors.accent, .12),
+              tension: .35, yAxisID: 'y1', pointRadius: 3 }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10 } } },
+          scales: {
+            y:  { beginAtZero: true, position: 'left',  ticks: { font: { size: 10 } }, title: { display: true, text: '₹ Lakhs', font: { size: 10 } } },
+            y1: { beginAtZero: true, position: 'right', ticks: { font: { size: 10 } }, grid: { display: false }, title: { display: true, text: 'Txn count', font: { size: 10 } } },
+            x:  { grid: { display: false }, ticks: { font: { size: 10 } } }
+          }
+        }
+      });
+
+      new Chart(document.getElementById('m-radar'), {
+        type: 'radar',
+        data: {
+          labels: ['Tenure','Service breadth','Discipline','UPI consistency','CIBIL','Engagement'],
+          datasets: [
+            { label: 'Merchant-007', data: [78, 67, 88, 60, 72, 58],
+              borderColor: AU.colors.brand, backgroundColor: AU.alpha(AU.colors.brand, .25), borderWidth: 2, pointRadius: 3 },
+            { label: 'Network median', data: [55, 50, 65, 55, 60, 40],
+              borderColor: AU.colors.muted, backgroundColor: AU.alpha(AU.colors.muted, .12), borderWidth: 1.6, borderDash: [3,3], pointRadius: 0 }
+          ]
+        },
+        options: AU.radarOpts()
+      });
+
+      new Chart(document.getElementById('m-tiers'), {
+        type: 'bar',
+        data: {
+          labels: ['Oct-24','Jan-25','Apr-25','Jul-25','Oct-25','Jan-26','Apr-26'],
+          datasets: [
+            { label: 'Bronze', data: [5,5,4,4,3,3,3], backgroundColor: AU.alpha('#94a3b8',.85), stack: 's' },
+            { label: 'Silver', data: [2,2,3,3,4,5,5], backgroundColor: AU.alpha(AU.colors.brand2,.85), stack: 's' },
+            { label: 'Gold',   data: [1,1,1,2,2,3,4], backgroundColor: AU.alpha(AU.colors.amber,.95), stack: 's' },
+            { label: 'Platinum', data: [0,0,1,1,1,1,2], backgroundColor: AU.alpha(AU.colors.green,.85), stack: 's' }
+          ]
+        },
+        options: Object.assign(AU.baseOpts(true), {
+          plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10 } } },
+          scales: { x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } }, y: { stacked: true, beginAtZero: true, ticks: { font: { size: 10 } } } }
+        })
+      });
+    });
+  </script>
+</body>
+</html>

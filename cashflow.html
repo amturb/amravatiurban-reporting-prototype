@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Cash Flow Statement</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="cashflow">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · indirect-method cash flow statement reconstructed from FY26 P&amp;L + balance-sheet movement.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">Cash Flow Statement</div><div class="brand-sub">FY 2025-26 · indirect method · ₹ L</div></div></div>
+    <div class="filters"><div class="filter"><label>Period</label><select><option>FY 2025-26 full</option><option>H1 FY26</option><option>H2 FY26</option></select></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>Cash flow statement · FY 2025-26</h1><p>Operating · Investing · Financing — where the cash came from and where it went.</p></div>
+
+    <section class="panel">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Opening cash &amp; bank</div><div class="kpi-value">₹ 21.42 L</div><div class="kpi-delta muted">01-Apr-25</div></div>
+        <div class="kpi positive"><div class="kpi-label">Net cash · Operating</div><div class="kpi-value">+₹ 23.18 L</div><div class="kpi-delta up">▲ profit + deposit growth</div></div>
+        <div class="kpi"><div class="kpi-label">Net cash · Investing</div><div class="kpi-value">−₹ 70.40 L</div><div class="kpi-delta down">SLR FD + advances</div></div>
+        <div class="kpi positive"><div class="kpi-label">Net cash · Financing</div><div class="kpi-value">+₹ 48.46 L</div><div class="kpi-delta up">deposit mobilisation</div></div>
+        <div class="kpi"><div class="kpi-label">Closing cash &amp; bank</div><div class="kpi-value">₹ 22.66 L</div><div class="kpi-delta up">▲ ₹ 1.24 L</div></div>
+        <div class="kpi"><div class="kpi-label">Cash conv. of profit</div><div class="kpi-value">4.27 ×</div><div class="kpi-delta up">healthy</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Cash flow statement (indirect)</h3><span class="muted">₹ L</span></div>
+          <table class="tbl">
+            <tbody>
+              <tr style="background:#fffbeb"><td colspan="2"><b>A · Cash flow from Operating activities</b></td></tr>
+              <tr><td>Net profit before tax</td><td class="r up">+5.43</td></tr>
+              <tr><td>Depreciation</td><td class="r up">+1.84</td></tr>
+              <tr><td>NPA provision (non-cash)</td><td class="r up">+3.10</td></tr>
+              <tr><td>Interest accrued but not received</td><td class="r down">−1.20</td></tr>
+              <tr><td>Movement in other working capital</td><td class="r down">−2.40</td></tr>
+              <tr><td>(Increase) in interest receivables</td><td class="r down">−0.84</td></tr>
+              <tr><td>Increase in operating deposits (SB+RD)</td><td class="r up">+17.25</td></tr>
+              <tr class="total"><td><b>Net cash from operating</b></td><td class="r up"><b>+23.18</b></td></tr>
+
+              <tr style="background:#fffbeb"><td colspan="2"><b>B · Cash flow from Investing activities</b></td></tr>
+              <tr><td>Increase in advances book</td><td class="r down">−3,70.00</td></tr>
+              <tr><td>EMI principal repaid</td><td class="r up">+3,12.00</td></tr>
+              <tr><td>(Increase) in SLR FD with banks</td><td class="r down">−66.60</td></tr>
+              <tr><td>Maturity proceeds — bank FDs</td><td class="r up">+58.20</td></tr>
+              <tr><td>Furniture / IT purchase</td><td class="r down">−4.00</td></tr>
+              <tr class="total"><td><b>Net cash from investing</b></td><td class="r down"><b>−70.40</b></td></tr>
+
+              <tr style="background:#fffbeb"><td colspan="2"><b>C · Cash flow from Financing activities</b></td></tr>
+              <tr><td>Increase in Fixed Deposits</td><td class="r up">+2,82.40</td></tr>
+              <tr><td>FD maturity outflow</td><td class="r down">−2,38.20</td></tr>
+              <tr><td>Share capital subscribed (net)</td><td class="r up">+4.26</td></tr>
+              <tr class="total"><td><b>Net cash from financing</b></td><td class="r up"><b>+48.46</b></td></tr>
+
+              <tr style="background:#f0fdf4" class="total"><td><b>Net increase in cash</b></td><td class="r up"><b>+1.24</b></td></tr>
+              <tr><td>Opening cash &amp; bank</td><td class="r">21.42</td></tr>
+              <tr class="total"><td><b>Closing cash &amp; bank</b></td><td class="r"><b>22.66</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Visual waterfall</h3></div>
+          <div class="cv"><canvas id="cf-wf"></canvas></div>
+          <div class="callout good mt8">Operating cash flow ₹23 L is healthy and 4× the reported profit — profit quality is solid. The big investing outflow reflects book growth (good) and forced SLR buy-up (mandatory).</div>
+          <div class="callout warn mt8">FY27 watch: a single ₹3.25 Cr Spl-13-Mo FD bucket matures together — must be staggered or replaced with a 7.25% retention offer ahead of maturity.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Cash flow statement · FY26</span></footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      // simple waterfall using floating bars
+      const labels = ['Opening','Operating','Investing','Financing','Closing'];
+      const opening = 21.42, op = 23.18, inv = -70.40, fin = 48.46;
+      const closing = opening + op + inv + fin;
+      const bars = [
+        [0, opening],
+        [opening, opening + op],
+        [opening + op + inv, opening + op],
+        [opening + op + inv, opening + op + inv + fin],
+        [0, closing]
+      ];
+      const colors = [AU.colors.muted, AU.colors.green, AU.colors.red, AU.colors.green, AU.colors.brand];
+      new Chart(document.getElementById('cf-wf'), {
+        type: 'bar',
+        data: { labels, datasets: [{ data: bars, backgroundColor: colors, borderRadius: 4 }] },
+        options: Object.assign(AU.baseOpts(true), {
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => '₹ ' + (c.raw[1] - c.raw[0]).toFixed(2) + ' L' } } },
+          scales: { y: { beginAtZero: true, ticks: { callback: v => '₹' + v + ' L' } } }
+        })
+      });
+    });
+  </script>
+</body>
+</html>

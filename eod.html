@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — EOD Close Register</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="shell.js" defer></script>
+</head>
+<body data-page="eod">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · read-only EOD verification register. CBS keeps the live close — this dashboard shows the audit trail.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">EOD Close Register</div><div class="brand-sub">16 May 2026 · Status: pending verification</div></div></div>
+    <div class="filters"><div class="filter"><label>Date</label><input type="date" value="2026-05-16" /></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">EOD verifier</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>End-of-day close register</h1><p>9-point checklist · auto-marked from CBS · Branch Manager signs off · auditor inspects this register.</p></div>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>EOD checklist</h3><span class="muted">3 pending · 1 not done</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+            <div class="callout good">✅ <b>Daybook entries verified</b> · 62/62 vouchers · auto-checked</div>
+            <div class="callout good">✅ <b>Cash count verified</b> · ₹ 19,08,200 (matches teller cash sheet)</div>
+            <div class="callout good">✅ <b>Cheques received entered in CBS</b> · 8 cheques · ₹ 4.20 L</div>
+            <div class="callout good">✅ <b>Loan disbursals authorised</b> · 3 disbursals · ₹ 3.50 L (within delegated limits)</div>
+            <div class="callout good">✅ <b>FD/RD bookings posted</b> · 5 new FDs · ₹ 8.40 L</div>
+            <div class="callout warn">⏳ <b>Bank reconciliation (ICICI)</b> · pending — Officer-B to clear by 18:00</div>
+            <div class="callout warn">⏳ <b>SMA accounts reviewed by manager</b> · 9 SMA-2 accounts · review notes pending</div>
+            <div class="callout warn">⏳ <b>Tomorrow's outflow notes prepared</b> · in draft</div>
+            <div class="callout bad">❌ <b>Provision journal for new NPA (1 a/c)</b> · NOT DONE · pass before 17-May open</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Day summary · 16 May 2026</h3></div>
+          <table class="tbl">
+            <tbody>
+              <tr><td>Opening balance</td><td class="r">₹ 41.42 L</td></tr>
+              <tr style="background:#f0fdf4"><td>Total receipts</td><td class="r up">+₹ 24.88 L</td></tr>
+              <tr style="background:#fef2f2"><td>Total payments</td><td class="r down">−₹ 23.16 L</td></tr>
+              <tr style="background:#fffbeb" class="total"><td><b>Closing balance</b></td><td class="r"><b>₹ 41.42 L (=)</b></td></tr>
+              <tr><td>Total transactions</td><td class="r">62</td></tr>
+              <tr><td>EMIs collected</td><td class="r">18 (₹ 4.62 L)</td></tr>
+              <tr><td>New deposits</td><td class="r">5 (₹ 8.40 L)</td></tr>
+              <tr><td>Loans disbursed</td><td class="r">3 (₹ 3.50 L)</td></tr>
+              <tr><td>System overrides / exceptions</td><td class="r">0 ✓</td></tr>
+              <tr><td>Cash retention vs cap</td><td class="r">₹ 19.08 L / ₹ 25 L cap</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card mt8">
+        <div class="card-head"><h3>Sign-off log</h3></div>
+        <table class="tbl">
+          <thead><tr><th>Step</th><th>By</th><th>At</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Teller cash count</td><td>Officer-D (Teller)</td><td>17:32</td><td><span class="pill green">Verified ✓</span></td></tr>
+            <tr><td>Daybook close</td><td>Branch Manager</td><td>17:48</td><td><span class="pill green">Posted ✓</span></td></tr>
+            <tr><td>Bank reconciliation</td><td>Officer-B</td><td>—</td><td><span class="pill amber">Pending</span></td></tr>
+            <tr><td>Manager EOD sign-off</td><td>Branch Manager</td><td>—</td><td><span class="pill amber">Awaiting recon</span></td></tr>
+            <tr><td>CEO daily review</td><td>CEO Office</td><td>—</td><td><span class="pill grey">Next-morning</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026 EOD</span><span>Read-only register</span></footer>
+  </main>
+</body>
+</html>

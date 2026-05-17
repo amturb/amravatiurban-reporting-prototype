@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — Member 360°</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="member360">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · single-member drill view. Live version receives data via clicking any member row anywhere in the dashboard.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">Member Profile 360°</div><div class="brand-sub">Unified member view · accounts · loans · activity · KYC</div></div></div>
+    <div class="filters"><div class="filter"><label>Member</label><select><option>Member A-001 (MEM-00124)</option><option>Merchant-002 (MEM-00488)</option><option>Member B-002 (MEM-00216)</option></select></div></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="hero-360">
+      <div class="hero-avatar">A1</div>
+      <div>
+        <div style="font-size:11px;opacity:.85;letter-spacing:.6px;text-transform:uppercase">🏅 Class A · Director · Top Depositor</div>
+        <div class="hero-name">Member A-001</div>
+        <div class="hero-sub">MEM-00124 · Joined 12 Jan 2018 (8 y 4 m) · 9XXXXXXX01 · Anonymised</div>
+      </div>
+      <div class="hero-score">
+        <div class="v">786</div>
+        <div class="l">RELATIONSHIP SCORE</div>
+        <span class="pill green mt8" style="display:inline-block">LOW RISK</span>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Total deposits with society</div><div class="kpi-value">₹ 55.40 L</div><div class="kpi-delta muted">6.34% of liab</div></div>
+        <div class="kpi"><div class="kpi-label">Loan outstanding</div><div class="kpi-value">— Nil</div><div class="kpi-delta up">No borrower exposure</div></div>
+        <div class="kpi"><div class="kpi-label">Share capital</div><div class="kpi-value">₹ 25,000</div><div class="kpi-delta muted">250 shares (Class A)</div></div>
+        <div class="kpi"><div class="kpi-label">EMI track</div><div class="kpi-value">N/A</div><div class="kpi-delta muted">depositor-only</div></div>
+        <div class="kpi"><div class="kpi-label">AGM attendance</div><div class="kpi-value">7 / 8</div><div class="kpi-delta up">88% engaged</div></div>
+        <div class="kpi"><div class="kpi-label">Referrals</div><div class="kpi-value">11</div><div class="kpi-delta up">8 active members</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Accounts &amp; deposits</h3></div>
+          <table class="tbl">
+            <thead><tr><th>A/c</th><th>Type</th><th class="r">Balance</th><th>Rate</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>SB-0001-124</td><td>Savings</td><td class="r">₹ 0.40 L</td><td>4.0%</td><td><span class="pill green">Active</span></td></tr>
+              <tr><td>FD-2025-088</td><td>Spl 13-Mo</td><td class="r">₹ 25.00 L</td><td>8.0%</td><td><span class="pill amber">Mat 28-Sep-2026</span></td></tr>
+              <tr><td>FD-2025-091</td><td>Spl 13-Mo</td><td class="r">₹ 30.00 L</td><td>8.0%</td><td><span class="pill amber">Mat 14-Oct-2026</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>KYC &amp; member metadata</h3></div>
+          <table class="tbl">
+            <tbody>
+              <tr><td class="muted">Member class</td><td>Class A · Full voting rights</td></tr>
+              <tr><td class="muted">PAN / Aadhaar</td><td>Both verified · last re-verified 14-Mar-2025</td></tr>
+              <tr><td class="muted">Nominee</td><td>Registered ✓</td></tr>
+              <tr><td class="muted">Joint holder</td><td>—</td></tr>
+              <tr><td class="muted">Voting rights</td><td><span class="pill green">Active</span></td></tr>
+              <tr><td class="muted">Dividend FY-26</td><td>NIL (board not declaring · FY28 planned)</td></tr>
+              <tr><td class="muted">Last AGM attended</td><td>2024-25 · in-person</td></tr>
+              <tr><td class="muted">Member-feedback flag</td><td><span class="pill green">Positive</span> · suggested digital passbook</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Transaction timeline · last 6 months</h3></div>
+          <div class="tl">
+            <div class="tl-i green"><div class="tl-t">FD-2025-088 booked · ₹25 L · Spl 13-Mo · 8.0%</div><div class="tl-m">28 Aug 2025 · NEFT from SBI · Teller: Officer-B</div></div>
+            <div class="tl-i green"><div class="tl-t">FD-2025-091 booked · ₹30 L · Spl 13-Mo · 8.0%</div><div class="tl-m">14 Sep 2025 · NEFT</div></div>
+            <div class="tl-i"><div class="tl-t">SB-0001-124 cash deposit ₹50,000</div><div class="tl-m">12 Jan 2026 · counter</div></div>
+            <div class="tl-i"><div class="tl-t">Voted on AGM resolution — DRS recovery escalation</div><div class="tl-m">22 Sep 2025 · AGM 2024-25</div></div>
+            <div class="tl-i"><div class="tl-t">Referred new member (Merchant-014)</div><div class="tl-m">04 Feb 2026 · new merchant onboarding</div></div>
+            <div class="tl-i"><div class="tl-t">Renewal-intent call · confirmed both FDs will roll over</div><div class="tl-m">10 May 2026 · CEO call · disposition: positive</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Lifetime value with society</h3></div>
+          <div class="cv"><canvas id="m-clv"></canvas></div>
+          <div class="callout good mt8">
+            <strong>LTV note:</strong> Member A-001 has generated ₹ 18.4 L cumulative deposit-spread income over 8 years (net of interest paid). One of top-5 LTV members.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row">
+        <div class="card">
+          <div class="card-head"><h3>Cross-sell candidates</h3><span class="muted">rule-engine suggestions</span></div>
+          <ul class="alert-list" style="font-size:13px">
+            <li class="sev-low">▶ <b>RD pitch for spouse / daughter:</b> Member has shown family-savings intent (mentioned in member feedback Feb-2026). RD ₹5K/mo for 36 months brings additional ₹1.8 L liability.</li>
+            <li class="sev-low">▶ <b>Refer-a-merchant reward:</b> Member has referred 11 individuals · zero merchant referrals. ₹1,000 bonus per Bronze-tier merchant referred.</li>
+            <li class="sev-low">▶ <b>Spl 13-Mo at maturity:</b> Pre-negotiate 25 bp loyalty top-up; cost ₹14K, retains ₹55 L deposit.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · names anonymised</span><span>Member detail · 16 May 2026</span></footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      new Chart(document.getElementById('m-clv'), {
+        type: 'line',
+        data: { labels: ['FY19','FY20','FY21','FY22','FY23','FY24','FY25','FY26'],
+          datasets: [{ label: 'Cumulative spread earned (₹ L)', data: [0.8, 2.4, 4.8, 7.6, 10.4, 13.0, 15.8, 18.4],
+            borderColor: AU.colors.brand, backgroundColor: AU.alpha(AU.colors.brand, .15), fill: true, tension: .35, pointRadius: 3 }]
+        },
+        options: Object.assign(AU.baseOpts(true), { plugins: { legend: { display: false } } })
+      });
+    });
+  </script>
+</body>
+</html>

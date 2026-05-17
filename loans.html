@@ -6,8 +6,11 @@
   <title>Amravati Urban — Loans &amp; Recovery (Illustrative Prototype)</title>
   <meta name="theme-color" content="#0f4c81" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
 </head>
-<body>
+<body data-page="loans">
   <div class="proto-banner">
     <strong>Illustrative prototype</strong> · loan-book and overdue figures extracted from <em>CEO_LoanOverDue.pdf</em> (14 May 2026) and Trial Balance (01 Apr 2026). Account-level drill, ageing-bucket detail (30/60/90/180 dpd) and SMA classification need live DB access.
   </div>
@@ -151,6 +154,34 @@
       <div class="panel-head">
         <h2>Overdue composition</h2>
         <div class="panel-sub">where the ₹ 28.02 L overdue actually sits · GL-wise &amp; concentration</div>
+      </div>
+
+      <!-- SMA heat tiles -->
+      <div class="sma-row">
+        <div class="sma-tile s0">
+          <div class="lbl">SMA-0 · 1-30 days</div>
+          <div class="num">18</div>
+          <div class="meta">₹ 4.20 L at risk · still standard</div>
+          <span class="cd">average DPD 17d</span>
+        </div>
+        <div class="sma-tile s1">
+          <div class="lbl">SMA-1 · 31-60 days</div>
+          <div class="num">11</div>
+          <div class="meta">₹ 3.10 L · stiffer follow-up</div>
+          <span class="cd">notice trigger 50d</span>
+        </div>
+        <div class="sma-tile s2">
+          <div class="lbl">SMA-2 · 61-90 days</div>
+          <div class="num">9</div>
+          <div class="meta">₹ 2.95 L · NPA in &lt; 30 days</div>
+          <span class="cd">9 accts cross 90d this month</span>
+        </div>
+        <div class="sma-tile npa">
+          <div class="lbl">Gross NPA · 90d+</div>
+          <div class="num">57</div>
+          <div class="meta">₹ 17.77 L doubtful + loss</div>
+          <span class="cd">63% of overdue book</span>
+        </div>
       </div>
 
       <div class="row two">

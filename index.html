@@ -6,8 +6,11 @@
   <title>Amravati Urban — CEO Dashboard (Illustrative Prototype)</title>
   <meta name="theme-color" content="#0f4c81" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
 </head>
-<body>
+<body data-page="ceo">
   <!-- Illustrative-data banner -->
   <div class="proto-banner">
     <strong>Illustrative prototype</strong> · numbers reconstructed from a handful of K3 PDF reports (P&L, BS, Trial Balance, Overdue list, Members &amp; Directors).
@@ -185,6 +188,143 @@
           </table>
           <div class="muted small" style="margin-top:8px">
             Gold Loan (Merchant) book is <strong>₹2.50 Cr</strong> across multiple borrowers — full concentration table needs database access to extract top-10.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== PEER BENCHMARK & CONCENTRATION =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Peer benchmarking &amp; concentration</h2>
+        <div class="panel-sub">Society vs Maharashtra Tier-3 UCB peers · regulatory floors marked · concentration is a forward liquidity-risk signal</div>
+      </div>
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>How we stack up against peer UCBs</h3>
+            <span class="muted">peer median = vertical marker · source: NAFCUB FY25 round-up</span>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label">CRAR <span class="small">min 9%</span></div>
+            <div class="bench-bar">
+              <div class="bench-fill bad" style="width:21%">3.2%</div>
+              <div class="bench-marker" style="left:60%"></div>
+            </div>
+            <div class="bench-side"><b>−5.8 pp</b> below RBI floor</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label">SLR <span class="small">min 25%</span></div>
+            <div class="bench-bar">
+              <div class="bench-fill bad" style="width:31%">15.3%</div>
+              <div class="bench-marker" style="left:50%"></div>
+            </div>
+            <div class="bench-side"><b>−9.7 pp</b> shortfall</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label">NIM <span class="small">peer 3.6%</span></div>
+            <div class="bench-bar">
+              <div class="bench-fill good" style="width:72%">5.0%</div>
+              <div class="bench-marker" style="left:52%"></div>
+            </div>
+            <div class="bench-side"><b>+1.4 pp</b> above peer</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label">CD Ratio <span class="small">peer 64%</span></div>
+            <div class="bench-bar">
+              <div class="bench-fill good" style="width:81%">80.7%</div>
+              <div class="bench-marker" style="left:64%"></div>
+            </div>
+            <div class="bench-side"><b>+16.7 pp</b> above peer</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label">Gross NPA <span class="small">peer 6.4%</span></div>
+            <div class="bench-bar">
+              <div class="bench-fill warn" style="width:32%">8.1%</div>
+              <div class="bench-marker" style="left:50%"></div>
+            </div>
+            <div class="bench-side"><b>+1.7 pp</b> worse than peer</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-label">Cost-to-Income <span class="small">peer 72%</span></div>
+            <div class="bench-bar">
+              <div class="bench-fill bad" style="width:94%">94%</div>
+              <div class="bench-marker" style="left:72%"></div>
+            </div>
+            <div class="bench-side"><b>+22 pp</b> heavier</div>
+          </div>
+          <div class="callout warn mt8">
+            <strong>Read:</strong> Profitability ratios (NIM, CD) are <em>better</em> than peers — story to tell the board. Capital &amp; statutory (CRAR, SLR) are the cleanup workstreams. NPA is in striking distance of peer-median if DRS is fixed.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Concentration risk · borrowers &amp; depositors</h3>
+            <span class="muted">5%+ single-name = liquidity red flag</span>
+          </div>
+          <div class="flex between mt0">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px">Top borrowers (% of advances)</div>
+            <span class="pill amber">Top-5 = 18.3%</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Borrower</th><th>Product</th><th class="r">O/S (₹L)</th><th class="r">% book</th></tr></thead>
+            <tbody>
+              <tr><td>Member B-002</td><td>Home</td><td class="r">64.94</td><td class="r">9.28%</td></tr>
+              <tr><td>Merchant-001</td><td>Gold-Merchant</td><td class="r">28.40</td><td class="r">4.06%</td></tr>
+              <tr><td>Merchant-002</td><td>Gold-Merchant</td><td class="r">17.20</td><td class="r">2.46%</td></tr>
+              <tr><td>Member I-009</td><td>CC</td><td class="r">9.60</td><td class="r">1.37%</td></tr>
+              <tr><td>Member D-004</td><td>LAP</td><td class="r">8.10</td><td class="r">1.16%</td></tr>
+            </tbody>
+          </table>
+          <div class="flex between mt14">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px">Top depositors (% of liabilities)</div>
+            <span class="pill red">Top-3 = 11.8% — call before maturity</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Depositor</th><th>Product</th><th class="r">Balance (₹L)</th><th class="r">% liab</th></tr></thead>
+            <tbody>
+              <tr><td>Member A-001</td><td>Spl 13-Mo FD</td><td class="r">55.00</td><td class="r">6.34%</td></tr>
+              <tr><td>Trust / Society T-01</td><td>Spl 100-Day</td><td class="r">28.50</td><td class="r">3.28%</td></tr>
+              <tr><td>Member F-006</td><td>MIS</td><td class="r">18.40</td><td class="r">2.12%</td></tr>
+              <tr><td>Member K-011</td><td>RD</td><td class="r">6.20</td><td class="r">0.71%</td></tr>
+              <tr><td>Member J-010</td><td>FD</td><td class="r">5.40</td><td class="r">0.62%</td></tr>
+            </tbody>
+          </table>
+          <div class="callout bad mt8">
+            <strong>Action:</strong> Top-3 depositors hold ₹1.01 Cr — a single non-renewal would force a fire-sale of FD investments. Pre-call them 30 days before maturity with a personalised rollover offer.
+          </div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head">
+            <h3>CRAR headroom — when do we breach 9% if growth continues?</h3>
+            <span class="muted">capital build vs RWA growth · projection</span>
+          </div>
+          <div class="cv sm"><canvas id="crar-headroom"></canvas></div>
+          <div class="callout info mt8">
+            On current FY26 capital build (~₹6 L/yr net) and RWA growth of 60% YoY, CRAR widens the gap unless capital is raised. Need <strong>₹38 L fresh share capital</strong> in FY27 to reach 9%, or slow RWA growth to &lt;25%.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3>Product caps vs RBI/RCS norms</h3>
+            <span class="muted">single-product exposure as % of own funds</span>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Segment</th><th class="r">Exposure (₹L)</th><th class="r">% own funds</th><th class="r">Cap</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Gold Loan (Merchant)</td><td class="r">250.0</td><td class="r"><b>36.2%</b></td><td class="r">15%</td><td><span class="pill red">Breach</span></td></tr>
+              <tr><td>Home / LAP</td><td class="r">142.0</td><td class="r">20.6%</td><td class="r">25%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>Personal</td><td class="r">104.0</td><td class="r">15.1%</td><td class="r">15%</td><td><span class="pill amber">At limit</span></td></tr>
+              <tr><td>Cash Credit</td><td class="r">56.0</td><td class="r">8.1%</td><td class="r">15%</td><td><span class="pill green">OK</span></td></tr>
+              <tr><td>DRS</td><td class="r">15.2</td><td class="r">2.2%</td><td class="r">5%</td><td><span class="pill green">OK</span></td></tr>
+            </tbody>
+          </table>
+          <div class="callout warn mt8">
+            Gold-Merchant breaches the 15% own-funds cap by <strong>21 pp</strong>. Either raise own funds (Tier-2 bonds, fresh shares) or pare ₹100 L of merchant exposure over FY27.
           </div>
         </div>
       </div>

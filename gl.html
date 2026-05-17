@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — GL / Trial Balance</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="shell.js" defer></script>
+</head>
+<body data-page="gl">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · trial-balance heads reconstructed from real TB-01-Apr-2026 PDF. Drill-down to voucher requires DB access.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">GL · Trial Balance</div><div class="brand-sub">Auditor-grade view · per-GL movement &amp; balances</div></div></div>
+    <div class="filters">
+      <div class="filter"><label>From</label><input type="date" value="2025-04-01" /></div>
+      <div class="filter"><label>To</label><input type="date" value="2026-03-31" /></div>
+      <div class="filter"><label>GL group</label><select><option>All</option><option>Assets</option><option>Liabilities</option><option>Income</option><option>Expense</option></select></div>
+    </div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title"><h1>General ledger · trial balance</h1><p>FY 2025-26 · opening 01-Apr-2025 · closing 31-Mar-2026 · all figures in ₹</p></div>
+
+    <section class="panel">
+      <div class="card">
+        <div class="card-head"><h3>Trial balance (top heads)</h3><span class="muted">36 GLs · top 20 shown · click for drill</span></div>
+        <table class="tbl">
+          <thead>
+            <tr><th>GL</th><th>Account head</th><th class="r">Opening</th><th class="r">Debit</th><th class="r">Credit</th><th class="r">Closing</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1001</td><td>Cash in hand</td><td class="r">2,84,612</td><td class="r">2,84,12,400</td><td class="r">2,81,77,400</td><td class="r">5,31,612</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>1002</td><td>ICICI Bank — Current A/c</td><td class="r">9,42,300</td><td class="r">3,12,40,000</td><td class="r">3,09,88,300</td><td class="r">11,94,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>1003</td><td>Jijau Bank — Savings</td><td class="r">5,80,400</td><td class="r">1,18,40,000</td><td class="r">1,14,99,400</td><td class="r">9,21,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>1004</td><td>ADCC Bank — Current</td><td class="r">1,02,000</td><td class="r">42,40,000</td><td class="r">42,24,000</td><td class="r">1,18,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>1100</td><td>FD with Jijau (SLR investment)</td><td class="r">38,40,000</td><td class="r">75,00,000</td><td class="r">8,40,000</td><td class="r">1,05,00,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>3001</td><td>Home Loans (Std)</td><td class="r">82,40,000</td><td class="r">68,00,000</td><td class="r">8,40,000</td><td class="r">1,42,00,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>3002</td><td>Personal Loans</td><td class="r">38,00,000</td><td class="r">94,00,000</td><td class="r">28,00,000</td><td class="r">1,04,00,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>3003</td><td>Gold Loan (Retail)</td><td class="r">42,00,000</td><td class="r">68,00,000</td><td class="r">19,00,000</td><td class="r">91,00,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>3004</td><td>Gold Loan (Merchant)</td><td class="r">1,22,00,000</td><td class="r">1,84,00,000</td><td class="r">56,00,000</td><td class="r">2,50,00,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>3005</td><td>Cash Credit</td><td class="r">22,40,000</td><td class="r">66,00,000</td><td class="r">32,40,000</td><td class="r">56,00,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>269</td><td>DRS · Daily Recovery Scheme</td><td class="r">—</td><td class="r">18,80,000</td><td class="r">3,63,000</td><td class="r">15,17,000</td><td><span class="pill blue">Asset</span></td></tr>
+            <tr><td>2001</td><td>Savings Bank deposits</td><td class="r">1,28,40,000</td><td class="r">88,00,000</td><td class="r">1,32,00,000</td><td class="r">1,72,40,000</td><td><span class="pill amber">Liability</span></td></tr>
+            <tr><td>2002</td><td>Fixed Deposits (general)</td><td class="r">1,42,00,000</td><td class="r">18,00,000</td><td class="r">1,82,00,000</td><td class="r">3,06,00,000</td><td><span class="pill amber">Liability</span></td></tr>
+            <tr><td>2003</td><td>Spl 13-Mo FD</td><td class="r">68,00,000</td><td class="r">12,00,000</td><td class="r">2,69,00,000</td><td class="r">3,25,00,000</td><td><span class="pill amber">Liability</span></td></tr>
+            <tr><td>2004</td><td>Spl 100-Day FD</td><td class="r">28,00,000</td><td class="r">22,00,000</td><td class="r">1,55,00,000</td><td class="r">1,61,00,000</td><td><span class="pill amber">Liability</span></td></tr>
+            <tr><td>2010</td><td>Recurring Deposits</td><td class="r">42,00,000</td><td class="r">8,00,000</td><td class="r">74,00,000</td><td class="r">1,08,00,000</td><td><span class="pill amber">Liability</span></td></tr>
+            <tr><td>4001</td><td>Interest earned — Loans</td><td class="r">—</td><td class="r">—</td><td class="r">75,46,000</td><td class="r">75,46,000</td><td><span class="pill green">Income</span></td></tr>
+            <tr><td>4002</td><td>Investment income</td><td class="r">—</td><td class="r">—</td><td class="r">11,04,000</td><td class="r">11,04,000</td><td><span class="pill green">Income</span></td></tr>
+            <tr><td>5001</td><td>Interest paid — Deposits</td><td class="r">—</td><td class="r">43,80,000</td><td class="r">—</td><td class="r">43,80,000</td><td><span class="pill red">Expense</span></td></tr>
+            <tr><td>6001</td><td>Staff salaries</td><td class="r">—</td><td class="r">22,31,000</td><td class="r">—</td><td class="r">22,31,000</td><td><span class="pill red">Expense</span></td></tr>
+          </tbody>
+        </table>
+        <div class="callout info mt8">Auditor sampling: filter by movement % to surface the top-30 most-active GLs first. Each row drills to voucher-level audit trail.</div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Trial balance · FY26 close</span></footer>
+  </main>
+</body>
+</html>

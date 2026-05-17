@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amravati Urban — ALM Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
+</head>
+<body data-page="alm">
+  <div class="proto-banner"><strong>Illustrative prototype</strong> · ALM bucket maturities reconstructed from deposit-mix and loan-book PDFs. Daily-bucket precision arrives with DB access.</div>
+  <header class="app-bar">
+    <div class="brand"><div class="logo">AU</div><div><div class="brand-name">ALM Dashboard</div><div class="brand-sub">Asset-Liability gap · NIM sensitivity · Liquidity coverage</div></div></div>
+    <div class="filters"><div class="filter"><label>As of</label><select><option>01-Apr-2026 (TB open)</option><option>31-Mar-2026 (BS close)</option></select></div><button class="btn-ghost">↻</button></div>
+    <div class="user"><div class="user-name">CEO Office</div><div class="user-role">16 May 2026</div></div>
+  </header>
+
+  <main>
+    <div class="pg-title">
+      <h1>Asset-Liability Management</h1>
+      <p>Are we maturity-matched? · Is NIM resilient to a rate shock? · How long can outflows be funded without fire-sale?</p>
+    </div>
+
+    <div class="callout warn">
+      🔄 <strong>ALM signal:</strong> Negative cumulative gap of ₹47 L in the 31-90 day bucket. Manageable but pre-call top-3 depositors before Jun-2026.
+    </div>
+
+    <section class="panel mt8">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Positive-gap buckets</div><div class="kpi-value">3 / 5</div><div class="kpi-delta up">long-end well covered</div></div>
+        <div class="kpi warning"><div class="kpi-label">Negative-gap buckets</div><div class="kpi-value">2 / 5</div><div class="kpi-delta down">31d–6m window</div></div>
+        <div class="kpi"><div class="kpi-label">NIM</div><div class="kpi-value">5.0%</div><div class="kpi-delta muted">yield 13.2% − CoF 8.2%</div></div>
+        <div class="kpi"><div class="kpi-label">+50 bp rate shock</div><div class="kpi-value">−₹ 1.4 L</div><div class="kpi-delta muted">NIM impact / year</div></div>
+        <div class="kpi"><div class="kpi-label">Liquidity coverage (30d)</div><div class="kpi-value">186%</div><div class="kpi-delta up">vs 100% min</div></div>
+        <div class="kpi"><div class="kpi-label">Cumulative gap / total assets</div><div class="kpi-value">+4.5%</div><div class="kpi-delta up">healthy long-term</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Maturity bucket analysis</h2><div class="panel-sub">RBI prudential format · 5 buckets · ₹ Lakhs</div></div>
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Bucket</th><th class="r">Assets</th><th class="r">Liabilities</th><th class="r">Gap</th><th class="r">Cumulative gap</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>1 – 30 days</td><td class="r">62.4</td><td class="r">48.0</td><td class="r gap-pos">+14.4</td><td class="r gap-pos">+14.4</td><td><span class="pill green">Positive</span></td></tr>
+            <tr><td>31 – 90 days</td><td class="r">94.0</td><td class="r">141.2</td><td class="r gap-neg">−47.2</td><td class="r gap-neg">−32.8</td><td><span class="pill amber">Negative ⚠</span></td></tr>
+            <tr><td>91 d – 6 months</td><td class="r">128.0</td><td class="r">162.0</td><td class="r gap-neg">−34.0</td><td class="r gap-neg">−66.8</td><td><span class="pill red">Negative ⚠</span></td></tr>
+            <tr><td>6 mo – 1 year</td><td class="r">204.0</td><td class="r">138.6</td><td class="r gap-pos">+65.4</td><td class="r gap-neg">−1.4</td><td><span class="pill amber">Edge</span></td></tr>
+            <tr><td>1 – 3 years</td><td class="r">312.0</td><td class="r">274.0</td><td class="r gap-pos">+38.0</td><td class="r gap-pos">+36.6</td><td><span class="pill green">Positive</span></td></tr>
+            <tr><td>&gt; 3 years</td><td class="r">112.0</td><td class="r">68.4</td><td class="r gap-pos">+43.6</td><td class="r gap-pos">+80.2</td><td><span class="pill green">Positive</span></td></tr>
+            <tr class="total"><td><b>Total</b></td><td class="r"><b>912.4</b></td><td class="r"><b>832.2</b></td><td class="r gap-pos"><b>+80.2</b></td><td class="r"></td><td><span class="pill green">Overall +</span></td></tr>
+          </tbody>
+        </table>
+        <div class="muted small mt8">Negative window in 31d–6m mirrors the Spl 100-Day FD concentration and matures faster than gold-loan recoveries arrive. Bridge with redeployment from idle bank balances or pre-renewed FDs.</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Liquidity gap visualisation</h3><span class="muted">bucket-wise</span></div>
+          <div class="cv"><canvas id="alm-gap"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>NIM rate-shock sensitivity</h3><span class="muted">parallel shifts</span></div>
+          <div class="cv"><canvas id="alm-nim"></canvas></div>
+          <div class="callout info mt8">
+            +200 bp shock = −₹5.6 L NIM impact · still positive NIM. We're naturally hedged because liability re-pricing lags asset re-pricing in a co-op (FDs are fixed-rate to maturity).
+          </div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Liquidity coverage ratio (LCR-style)</h3><span class="muted">HQLA / next-30d outflows</span></div>
+          <table class="tbl">
+            <tbody>
+              <tr><td>Cash in hand</td><td class="r">₹ 5.3 L</td></tr>
+              <tr><td>Bank balances (3 a/c)</td><td class="r">₹ 22.3 L</td></tr>
+              <tr><td>SLR-counted FD (Jijau)</td><td class="r">₹ 105.0 L</td></tr>
+              <tr class="total"><td><b>Total HQLA</b></td><td class="r"><b>₹ 132.6 L</b></td></tr>
+              <tr><td>Stressed 30-day outflows</td><td class="r">₹ 71.3 L</td></tr>
+              <tr class="total"><td><b>Coverage ratio</b></td><td class="r"><b style="color:var(--green)">186%</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Repricing GAP · 1-year horizon</h3><span class="muted">re-priceable in &lt; 12 m</span></div>
+          <table class="tbl">
+            <tbody>
+              <tr><td>RSAs (advances re-pricing in 12m)</td><td class="r">₹ 5.18 Cr</td></tr>
+              <tr><td>RSLs (deposits re-pricing in 12m)</td><td class="r">₹ 6.42 Cr</td></tr>
+              <tr class="total"><td><b>Repricing GAP</b></td><td class="r gap-neg"><b>−₹ 1.24 Cr</b></td></tr>
+              <tr><td>As % of total assets</td><td class="r">−13.6%</td></tr>
+            </tbody>
+          </table>
+          <div class="callout warn mt8">
+            Liability-sensitive in 12m window. If rates rise &gt; 100 bp, deposit repricing hits us before asset repricing helps. Mitigation: longer-tenure FD push.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot"><span>Illustrative prototype · 16 May 2026</span><span>Bucket precision = DB access</span></footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.Chart) return;
+      new Chart(document.getElementById('alm-gap'), {
+        type: 'bar',
+        data: { labels: ['1-30d','31-90d','91d-6m','6m-1y','1-3y','>3y'],
+          datasets: [
+            { label: 'Assets',     data: [62.4, 94.0, 128.0, 204.0, 312.0, 112.0], backgroundColor: AU.alpha(AU.colors.brand, .8), borderRadius: 4 },
+            { label: 'Liabilities',data: [48.0, 141.2, 162.0, 138.6, 274.0,  68.4], backgroundColor: AU.alpha(AU.colors.red, .7),  borderRadius: 4 },
+            { label: 'Gap',        data: [14.4, -47.2, -34.0,  65.4,  38.0,  43.6], type: 'line', borderColor: AU.colors.accent, pointRadius: 4, tension: .25 }
+          ]
+        },
+        options: Object.assign(AU.baseOpts(false), { plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10 } } } })
+      });
+      new Chart(document.getElementById('alm-nim'), {
+        type: 'bar',
+        data: { labels: ['−200bp','−100bp','−50bp','0','+50bp','+100bp','+200bp'],
+          datasets: [{ label: 'NIM impact (₹L/yr)', data: [5.6, 2.8, 1.4, 0, -1.4, -2.8, -5.6],
+            backgroundColor: ['#0a7d2e','#38b864','#a0d4a8','#cbd5e1','#fbcfe8','#dc2626','#7f1d1d'], borderRadius: 4 }]
+        },
+        options: Object.assign(AU.baseOpts(false), { plugins: { legend: { display: false } } })
+      });
+    });
+  </script>
+</body>
+</html>

@@ -6,8 +6,11 @@
   <title>Amravati Urban — Financials (Illustrative Prototype)</title>
   <meta name="theme-color" content="#0f4c81" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="shell.js" defer></script>
+  <script src="charts.js" defer></script>
 </head>
-<body>
+<body data-page="financials">
   <div class="proto-banner">
     <strong>Illustrative prototype</strong> · numbers extracted from FY 2024-25 and FY 2025-26 P&amp;L, Balance Sheet and Trial Balance PDFs. Schedule-level detail (interest-on-deposits split, individual expense heads beyond the top few) needs DB access.
   </div>
@@ -263,6 +266,74 @@
           <li><b>CRAR ~3.2%</b> — well below the 9% prudential floor. Either raise ₹50–60 L more share capital (authorised cap ₹2 Cr leaves room) or slow advance growth.</li>
           <li><b>DRS book 83% overdue (₹12.63 L on ₹15.17 L)</b> — single product driving Gross NPA from 5.4% → 8.1%. Either recover or fully provide and write off; current 22% provision coverage is light.</li>
         </ol>
+      </div>
+    </section>
+
+    <!-- =================== PROFIT APPROPRIATION WATERFALL =================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Profit appropriation · FY26 → AGM proposal</h2>
+        <div class="panel-sub">Maharashtra Co-op Societies Act §66 + by-laws · how ₹5.43 L net profit gets split before dividend</div>
+      </div>
+      <div class="row two">
+        <div class="card">
+          <div class="card-head"><h3>Statutory waterfall — illustrative</h3><span class="muted">amounts in ₹</span></div>
+          <div class="wf">
+            <div class="wf-row"><div class="wf-label">Net profit (FY26)</div>
+              <div class="wf-track"><div class="wf-fill green" style="width:100%">₹ 5,43,000 (100%)</div></div>
+              <div class="wf-amt">5,43,000</div></div>
+            <div class="wf-row"><div class="wf-label">Less: Accumulated loss set-off (P&amp;L A/c)</div>
+              <div class="wf-track"><div class="wf-fill amber" style="width:100%">all of profit absorbs FY25 loss</div></div>
+              <div class="wf-amt">−5,43,000</div></div>
+            <div class="wf-row"><div class="wf-label"><b>Distributable profit</b></div>
+              <div class="wf-track"><div class="wf-fill" style="width:0.5%">nil</div></div>
+              <div class="wf-amt"><b>0</b></div></div>
+            <div class="wf-row"><div class="wf-label">25% to Reserve Fund</div>
+              <div class="wf-track"><div class="wf-fill" style="width:0%"></div></div>
+              <div class="wf-amt">0</div></div>
+            <div class="wf-row"><div class="wf-label">1% to Education Fund</div>
+              <div class="wf-track"><div class="wf-fill" style="width:0%"></div></div>
+              <div class="wf-amt">0</div></div>
+            <div class="wf-row"><div class="wf-label">1% to Co-op Dev. Fund</div>
+              <div class="wf-track"><div class="wf-fill" style="width:0%"></div></div>
+              <div class="wf-amt">0</div></div>
+            <div class="wf-row"><div class="wf-label">Dividend (proposed)</div>
+              <div class="wf-track"><div class="wf-fill" style="width:0%"></div></div>
+              <div class="wf-amt">0</div></div>
+          </div>
+          <div class="callout warn mt8">
+            <strong>Board read:</strong> FY26 profit fully absorbs into accumulated loss recovery — no statutory appropriations or dividend payable. Accumulated loss reduces from ₹27.55 L to ₹22.12 L. <em>Plan</em>: declare first dividend in FY28 once accumulated loss is fully wiped.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>FY28 forward-look · post-recovery appropriation</h3><span class="muted">if FY28 net profit reaches ₹15 L</span></div>
+          <div class="wf">
+            <div class="wf-row"><div class="wf-label">Projected net profit FY28</div>
+              <div class="wf-track"><div class="wf-fill green" style="width:100%">₹ 15,00,000 (100%)</div></div>
+              <div class="wf-amt">15,00,000</div></div>
+            <div class="wf-row"><div class="wf-label">25% Reserve Fund (statutory)</div>
+              <div class="wf-track"><div class="wf-fill" style="width:25%">₹ 3,75,000</div></div>
+              <div class="wf-amt">3,75,000</div></div>
+            <div class="wf-row"><div class="wf-label">1% Education Fund (MSCS)</div>
+              <div class="wf-track"><div class="wf-fill" style="width:1%">15K</div></div>
+              <div class="wf-amt">15,000</div></div>
+            <div class="wf-row"><div class="wf-label">1% Co-op Development Fund</div>
+              <div class="wf-track"><div class="wf-fill" style="width:1%">15K</div></div>
+              <div class="wf-amt">15,000</div></div>
+            <div class="wf-row"><div class="wf-label">Dividend @ 8% on ₹49.89 L share capital</div>
+              <div class="wf-track"><div class="wf-fill green" style="width:27%">₹ 3,99,000</div></div>
+              <div class="wf-amt">3,99,000</div></div>
+            <div class="wf-row"><div class="wf-label">Bonus to Class-A members</div>
+              <div class="wf-track"><div class="wf-fill amber" style="width:10%">₹ 1,50,000</div></div>
+              <div class="wf-amt">1,50,000</div></div>
+            <div class="wf-row"><div class="wf-label">Balance to General Reserve</div>
+              <div class="wf-track"><div class="wf-fill" style="width:36%">₹ 5,46,000</div></div>
+              <div class="wf-amt">5,46,000</div></div>
+          </div>
+          <div class="callout good mt8">
+            <strong>Dividend coverage:</strong> 8% dividend on ₹49.89 L issued share capital = ₹3.99 L. Coverage from current profit = 3.8×. Sustainable.
+          </div>
+        </div>
       </div>
     </section>
 
